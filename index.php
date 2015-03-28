@@ -22,10 +22,16 @@
 	}
 
 	# display the corresponding page
-	if($page == 'login') {
-		include_once('login.php');
-	} else if($page = "search") {
-		include_once('search.php');
+	switch($page) {
+		case 'login':
+			include_once('login.php');
+			break;
+		case "search":
+			include_once('search.php');
+			break;
+		default:
+			include_once('login.php');
+			break;
 	}
 ?>
 		

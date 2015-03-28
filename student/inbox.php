@@ -33,33 +33,20 @@
         
 		<div class="container">
         	<div class="row">
-				<div class="dropdown">
-                
-                	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    	<span class="glyphicon glyphicon-asterisk"></span>
-                    </button>
-                    
-                    <ul class="dropdown-menu">
-	                    <li>
-                        	<a href="">
-	                        	<span class="glyphicon glyphicon-list-alt"></span>
-                            </a>
-                        </li>
-                        <li>
-	                        <span class="divider"></span>
-                        </li>
-                    	<li>
-                        	<a href="">
-	                        	<span class="glyphicon glyphicon-log-out"></span>
-                            </a>
-                        </li>
-                    </ul>
-                    
-                </div>
 
 			</div>
-
 		</div>
+        
+
+        <script>
+			$(document).ready(function() {
+			    $('.table tr').click(function(event) {
+			        if (event.target.type !== 'radio') {
+			            $(':radio', this).trigger('click');
+	        		}
+			    });
+			});
+		</script>
 
 	</body>
 </html>
