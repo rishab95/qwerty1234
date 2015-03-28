@@ -1,12 +1,33 @@
-body {
+.body1 {
+	background-image: url('images/bg3.bmp');
+	background-repeat: no-repeat;
+}
+
+.body1, .body2 {
+	background-size: contain;
+	background-color: #dee1b6;
+	z-index: -1;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.body2 {
 	background-image: url('images/bg1.png');
 	background-repeat: repeat;
-	background-color: #dee1b6;
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
 }
 
 form.login {
 	text-align: center;
-	margin-top: 118px;
+	margin-top: 150px;
 }
 
 header {
@@ -33,8 +54,15 @@ header {
 .btn-primary, .btn-group {
 	background-color: transparent;
 	background-image: none;
-	color: #dee1b6;
 	border-color: #373b44;
+}
+
+.btn-primary {
+	color: #dee1b6 !important;	
+}
+
+.btn-group {
+	color: #dee1b6;	
 }
 
 .btn-group {
@@ -45,7 +73,9 @@ header {
 	background-color: transparent;
 	background-image: none;
 	color: #dee1b6;
-	border-color: #dee1b6;
+	border-color: #bcbf94;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(222,225,182,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(222,225,182,.6);
 }
 
 .btn-group:hover, .btn-group:focus {
@@ -58,15 +88,15 @@ header {
 }
 
 .form-control {
-	background-color: #dee1b6;	
+	background-color: transparent;	
 	color: #373b44;
 	border-color: #373b44;
 }
 
 .form-control:focus {
-	background-color: #dee1b6;
+	background-color: transparent;
 	color: #373b44;
-	border-color: #373b44;
+	border-color: #151922;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
 }
@@ -75,4 +105,14 @@ header {
 	background-color: #373b44;
 	border-color: #151922;
 	color: #dee1b6;	
+}
+
+.head-item, .head-item:focus {
+	background-color: #dee1b6;
+	color: #373b44;
+}
+
+.head-item:focus {
+	border-color: #bcbf94;
+	border-width: 1px
 }
