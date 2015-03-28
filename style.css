@@ -1,0 +1,78 @@
+body {
+	background-image: url('images/bg1.png');
+	background-repeat: repeat;
+	background-color: #dee1b6;
+}
+
+form.login {
+	text-align: center;
+	margin-top: 118px;
+}
+
+header {
+	background-image: url('images/bg2.png');
+}
+
+.page-header {
+	border-bottom-width: 0px;	
+}
+
+.image-container {
+	padding-left: auto;
+	padding-right: auto;	
+}
+
+.page-header {
+	margin-top: 10px;
+}
+
+#search-button-head {
+	background:	
+}
+
+.btn-primary, .btn-group {
+	background-color: transparent;
+	background-image: none;
+	color: #dee1b6;
+	border-color: #373b44;
+}
+
+.btn-group {
+	color: #373b44;	
+}
+
+.btn-primary:hover, btn-primary:focus {
+	background-color: transparent;
+	background-image: none;
+	color: #dee1b6;
+	border-color: #dee1b6;
+}
+
+.btn-group:hover, .btn-group:focus {
+	backgroun-color: #dee1b6;
+	background-image: none;
+	color: #373b44;
+	border-color: #373b44;	
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
+}
+
+.form-control {
+	background-color: #dee1b6;	
+	color: #373b44;
+	border-color: #373b44;
+}
+
+.form-control:focus {
+	background-color: #dee1b6;
+	color: #373b44;
+	border-color: #373b44;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(55,59,68,.6);
+}
+
+.input-group-addon {
+	background-color: #373b44;
+	border-color: #151922;
+	color: #dee1b6;	
+}
