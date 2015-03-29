@@ -1,31 +1,31 @@
 <header class="page-header">
-	<!-- main contianer of this header -->
-	<div class="container">
-    	<div class="row">
-        
-        	<div class="col-xs-3"></div>
-            <div class="col-xs-6 col-md-6">
+	
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    	<div class="container">
+        	<div class="row">
             
-            	<!-- search form -->
-               	<form action="searchController.php" method="get">
-                   	<div class="form-group">
-                    
-                       	<div class="col-xs-11">
-		            		<input type="search" class="form-control head-item" name="search" placeholder="Who are you looking for?" value="" />
+            	<div class="col-sm-3">
+		        	<div class="navbar-header">
+		            	<a href="" class="navbar-brand">PAP</a>
+		            </div>
+                </div>
+            
+            	<div class="col-sm-6" style="margin-top: 7px;">
+                        <div class="input-group">
+                            <input type="search" class="form-control head-item" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
                         </div>
-                        
-                        <div class="col-xs-1">
-		                	<button class="form-control btn btn-primary" type="submit">
-                              	<span class="glyphicon glyphicon-search"></span>
-	                        </button>
-                        </div>
-                        
-                    </div>
-                </form>
+
+                </div>
+                
+            	<div class="col-sm-3"></div>
                 
             </div>
-            <div class="col-xs-3"></div>
-            
         </div>
-    </div>
+    </nav>
+
 </header>

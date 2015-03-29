@@ -5,8 +5,11 @@
 	if(!empty($_GET)) {
 		
 		# obtaining the page type
-		if(!empty($_GET['p']) && $_GET['p'] == 'search') {
-			$page = 'search';	
+		if(isset($_GET['search'])) {
+			$page = 'search';
+			if(!empty($_GET['search'])){
+				$search = $_GET['search'];	
+			}
 		} else {
 			$page = 'login';	
 		}

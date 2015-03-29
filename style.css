@@ -128,6 +128,11 @@ header {
 
 .table-hover > tbody > tr:hover {
 	background-color: #d0d3a8;	
+	cursor: pointer;
+}
+
+input[type=checkbox] {
+	cursor: pointer;	
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
@@ -135,7 +140,8 @@ header {
 }
 
 .navbar-inverse {
-	background-color: #373b46;
+	background-color: #373b44;
+	background-image: none;
 	border-color: #474b56 !important;
 }
 

@@ -12,7 +12,7 @@
                 
                 	<li class="nav-search">
                     	<div class="input-group">
-                        	<input type="search" class="form-control" placeholder="Search" />
+                        	<input type="search" class="form-control head-item" placeholder="Search" />
                             <span class="input-group-btn">
                             	<button class="btn btn-primary" type="submit">
                                 	<span class="glyphicon glyphicon-search"></span>
@@ -20,7 +20,7 @@
                             </span>
                         </div>
                     </li>
-                    
+                  <!--  
                     <li>
                     	<a href="">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
@@ -36,7 +36,7 @@
                		        </button>
    	            		</a>
                     </li>
-                
+                -->
                 </ul>
             </div>
             
