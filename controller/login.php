@@ -1,31 +1,15 @@
 <?php
-	$servername="localhost"
+	# obtain form data
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$userType = $_POST['usertype'];
 	
-	$conn = mysql_connect($servername, $username, $password,$usertype);
-	if (!$conn) {}
-    		#die("Connection failed") #mysqli_error()
-
-		
-
+	# authentication variable
 	$auth = False;
 	
-	$query=mysql_query("select user_name from authentication WHERE pass_word='$password' && user_type='$usertype');
-	$exists=mysql_num_rows($query);
-	if($exists==1)
-	{
-		if($query==$username)
-			{
-				$auth=True;
-			}
-		else
-			{
-				$auth=False;
-			}
-	}
-			
+	# mysql queries to check for authenticity in the database table 
+	# return $auth = True if authenticated
+	
 	if($auth == True) {
 		# create session and redirect to user's home page
 		session_start();

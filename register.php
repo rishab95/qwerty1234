@@ -44,20 +44,29 @@
                 	<div class="col-md-4 col-xs-4">
                     
                     	<!-- login form -->
-                    	<form action="controller/login.php" method="post" class="login">
+                    	<form action="controller/register.php" method="post" class="register">
                     
                        		<div class="form-group">
-	                           	<h2>Log-in</h2>
+	                           	<h2>Register</h2>
 	                        </div>
                             
-                        <?php 
-							if ($attempt) {
-	                            echo "<p class='help-block' style='color: #880000'>
-    	                        	<span class='glyphicon glyphicon-remove'></span>
-        	                        Username or Password incorrect.
-            	                </p>";
-							}
-						?>
+                            <div class="form-group">
+                            	<div class="input-group">
+									<span class="input-group-addon">
+                                    	<span class="glyphicon glyphicon-user"></span>
+                                    </span>
+									<input type="text" class="form-control" name="Name" placeholder="Name?" value="" required>
+								</div>
+                            </div>
+                            
+                            <div class="form-group">
+                            	<div class="input-group">
+									<span class="input-group-addon">
+                                    	<span class="glyphicon glyphicon-envelope"></span>
+                                    </span>
+									<input type="email" class="form-control" name="email" placeholder="E-mail?" value="" required>
+								</div>
+                            </div>
                             
                             <div class="form-group">
                             	<div class="input-group">
@@ -84,8 +93,6 @@
 								</div>
                             </div>
                             
-                            <div class="clearfix hidden-xs"></div>
-                            
                             <div class="form-group">
                             	<div class="input-group">
                                 	<span class="input-group-addon">
@@ -94,6 +101,16 @@
                                     <input class="form-control" type="password" placeholder="Password?" name="password" value="" required />
                             	</div>
                             </div>
+                            
+                            <div class="form-group">
+                            	<div class="input-group">
+                                	<span class="input-group-addon">
+	                                    <span class="glyphicon glyphicon-lock"></span>
+                                    </span>
+                                    <input class="form-control" type="password" placeholder="Confirm Password?" name="cpassword" value="" required />
+                            	</div>
+                            </div>
+                            
                             <div class="form-group">
                                 <button type="submit" class="btn btn-group">Log in</button>
                             </div>

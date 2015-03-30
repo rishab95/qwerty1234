@@ -34,6 +34,11 @@ form.login {
 	margin-top: 200px;
 }
 
+form.register {
+	text-align: center;
+	margin-top: 175px;
+}
+
 header {
 	background-image: url('images/bg2.png');
 }
