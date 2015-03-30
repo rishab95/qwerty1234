@@ -52,12 +52,10 @@
                             
                         <?php 
 							if ($attempt) {
-						?>
-	                            <p class='help-block' style='color: #880000'>
+	                            echo "<p class='help-block' style='color: #880000'>
     	                        	<span class='glyphicon glyphicon-remove'></span>
         	                        Username or Password incorrect.
             	                </p>";
-                        <?php
 							}
 						?>
                             

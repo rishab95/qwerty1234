@@ -30,41 +30,58 @@
 		?>
         
         <div class="body2"></div>
-
-		<!-- gap for the header -->        
-        <div style="height: 60px;"></div>
+        
+        <!-- space from header -->
+        <div style="margin-top: 40px;"></div>
         
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
 				<table class="table table-hover">
-                	<thead>
-                    	<tr>
-                        	<td colspan="4"></td>
-                        </tr>
-                    </thead>
+                
                     <colgroup>
                     	<col></col>
                         <col></col>
                         <col></col>
                         <col></col>
+                        <col></col>
                     </colgroup>
+                    
+                	<thead>
+                    	<tr>
+                        	<th colspan="4"></th>
+                            <th>
+                            	<span class="glyphicon glyphicon-time"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    
                     <tbody>
-                    	<a href="viewCompanyDetails?id=">
-                            <tr>
+
+                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
                                 <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
                                 <td>Microsot India</td>
                                 <td>Something related to whatever they have to say including their details and the packages offered</td>
                                 <td>29 Mar</td>
+                                <td>2 Apr</td>
                             </tr>
-                        </a>
-                    	<a href="viewCompanyDetails?id=">
-                            <tr>
+
+                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
                                 <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
                                 <td>Microsot India</td>
                                 <td>Something related to whatever they have to say including their details and the packages offered</td>
                                 <td>29 Mar</td>
+                                <td>2 Apr</td>
                             </tr>
+                            
+                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
+                                <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
+                                <td>Microsot India</td>
+                                <td>Something related to whatever they have to say including their details and the packages offered</td>
+                                <td>29 Mar</td>
+                                <td>2 Apr</td>
+                            </tr>
+                        
                     </tbody>
                 </table>
 			</div>

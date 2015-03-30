@@ -31,7 +31,7 @@ body {
 
 form.login {
 	text-align: center;
-	margin-top: 150px;
+	margin-top: 200px;
 }
 
 header {
@@ -61,19 +61,15 @@ header {
 	border-color: #373b44;
 }
 
-.btn-primary {
-	color: #dee1b6 !important;	
-}
-
-.btn-group {
-	color: #dee1b6;	
+.btn-primary, .navbar-toggle {
+	color: #dee1b6 !important;
 }
 
 .btn-group {
 	color: #373b44;	
 }
 
-.btn-primary:hover, btn-primary:focus {
+.btn-primary:hover, .btn-primary:focus, .navbar-toggle:focus, .navbar-toggle:hover {
 	background-color: transparent;
 	background-image: none;
 	color: #dee1b6;
@@ -132,7 +128,8 @@ header {
 }
 
 input[type=checkbox] {
-	cursor: pointer;	
+	cursor: pointer;
+	margin-top: 2.5px;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
@@ -151,4 +148,25 @@ input[type=checkbox] {
 
 .navbar-right {
 	margin-right: 15px;
+}
+
+.navbar-brand:hover {
+	color: #dee1b6 !important;
+}
+
+.navbar-nav > li > a {
+	padding: 0px;	
+}
+
+.navbar-btn {
+	margin: 0px;
+	margin-left: 10px
+}
+
+.navbar-toggle:hover, .navbar-toggle:focus {
+	background-color: transparent !important;
+}
+
+form {
+	margin-bottom: 0px;
 }

@@ -11,7 +11,12 @@
 				$search = $_GET['search'];	
 			}
 		} else {
-			$page = 'login';	
+			$page = 'login';
+		}
+		
+		if(isset($_GET['register'])) {
+			if(!empty($_GET['register']) && $_GET['register']=='1')
+				$page = 'register';
 		}
 
 		# obtaining if authentication has been attemted or not
@@ -32,6 +37,8 @@
 		case "search":
 			include_once('search.php');
 			break;
+		case "register":
+			include_once('register.php');
 		default:
 			include_once('login.php');
 			break;
