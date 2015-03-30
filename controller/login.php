@@ -3,8 +3,8 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$userType = $_POST['usertype'];
-	
-	$conn = mysql_connect($servername, $username, $password,$userType);
+	$dbname="pap";
+	$conn = mysql_connect($servername, $username, $password,$userType,$dbname);
 	if (!$conn) {}
     		#die("Connection failed") #mysql_error()
 

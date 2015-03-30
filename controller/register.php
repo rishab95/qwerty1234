@@ -6,8 +6,8 @@
 	$userType = $_POST['usertype'];
 	$name=$_POST['name'];
 	$email=$_POST['email'];
-	
-	$conn=mysql_connect($servername,$username,$password,$userType,$name,$email);
+	$dbname="pap"
+	$conn=mysql_connect($servername,$username,$password,$userType,$name,$email,$dbname);
 	if(!$conn){}
 		#die("connection failed") mysql_error()
 
@@ -15,7 +15,7 @@
 	
 	# mysql queries to check for registration in the database table 
 	$sql=mysql_query("INSERT INTO auth(user_name,pass_word,user_type,name,email) 
-		VALUES ('$username','$password','$userType','$name','$email')");
+		VALUES ($username,'$password','$userType','$name','$email')");
 
 	if($conn->query($sql)==True)
 		{echo "Registered Successfully";
