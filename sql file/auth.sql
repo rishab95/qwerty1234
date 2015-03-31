@@ -11,6 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
+CREATE DATABASE pap;
+
+USE pap;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -27,21 +31,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `auth` (
-  `user_name` int(11) NOT NULL,
-  `pass_word` varchar(32) NOT NULL,
-  `type` varchar(10) NOT NULL,
+  `username` int(11) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `user_type` varchar(10) NOT NULL,
   `name` varchar(40) NOT NULL,
   `email` varchar(20) NOT NULL,
-  PRIMARY KEY (`user_name`)
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `auth`
 --
 
-INSERT INTO `auth` (`user_name`, `pass_word`, `type`, `name`, `email`) VALUES
-(101203075, 'prisha', 'student', 'prisha', 'prishagupta21@gmail.'),
-(101203081, 'rohit', 'student', 'rohit', 'ruhi.saluja@gmail.co');
+INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
+('000', '098f6bcd4621d373cade4e832627b4f6', 'student', 'Test', 'test@test');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

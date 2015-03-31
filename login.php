@@ -56,7 +56,7 @@
 	                            <p class='help-block' style='color: #880000'>
     	                        	<span class='glyphicon glyphicon-remove'></span>
         	                        Username or Password incorrect.
-            	                </p>";
+            	                </p>
                         <?php
 							}
 						?>
