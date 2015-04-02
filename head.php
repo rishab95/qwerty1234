@@ -29,7 +29,7 @@
                 
             	<div class="col-sm-3">
                 	<div class="pull-right" style="margin-top: 10px;">
-                       	<a href="">
+                       	<a href="/?register=1">
     			           	<button class="btn btn-primary navbar-btn pull-right" type="button">
         	   		           	<span class="glyphicon glyphicon-user"></span> Register
     	           	        </button>
