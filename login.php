@@ -6,16 +6,16 @@
 		<title>PAP | Login</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/bootstrap.js"></script>
         
         <!-- Latest complied and minified JQuery -->
-        <script src="bootstrap/jquery-2.1.3.min.js"></script>
+        <script src="bootstrap/jquery-2.1.3.js"></script>
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
@@ -70,7 +70,7 @@
 	                                	<option value="student">Student</option>
     	                                <option value="coordinator">Coordinator</option>
         	                            <option value="company">Company</option>
-            	                        <option value="admin">Admin</option>
+            	                        <option value="admin">Administrator</option>
                 	                </select>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
                                     </span>
-									<input type="text" class="form-control" name="username" placeholder="Username?" value="" required>
+									<input type="text" class="form-control" name="username" placeholder="Roll Number" value="" required>
 								</div>
                             </div>
                             
@@ -93,7 +93,7 @@
                                 	<span class="input-group-addon">
 	                                    <span class="glyphicon glyphicon-lock"></span>
                                     </span>
-                                    <input class="form-control" type="password" placeholder="Password?" name="password" value="" required />
+                                    <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
                             	</div>
                             </div>
                             <div class="form-group">

@@ -15,7 +15,7 @@
 		}
 		
 		if(isset($_GET['register'])) {
-			if(!empty($_GET['register']) && $_GET['register']=='1')
+			if(!empty($_GET['register']))
 				$page = 'register';
 		}
 

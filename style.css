@@ -36,7 +36,7 @@ form.login {
 
 form.register {
 	text-align: center;
-	margin-top: 175px;
+	margin-top: 150px;
 }
 
 header {
@@ -107,7 +107,7 @@ header {
 }
 
 .input-group-addon {
-	background-color: #373b44;
+	background-color: #373b44 !important;
 	border-color: #151922;
 	color: #dee1b6;	
 }

@@ -44,31 +44,31 @@
                 	<div class="col-md-4 col-xs-4">
                     
                     	<!-- login form -->
-                    	<form action="controller/register.php" method="post" class="register">
+                    	<form action="controller/register.php" method="post" class="register form-horizontal">
                     
                        		<div class="form-group">
 	                           	<h2>Register</h2>
 	                        </div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['name']) && ($_POST['name']=='error')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
                                     </span>
-									<input type="text" class="form-control" name="Name" placeholder="Name?" value="" required>
+									<input type="text" class="form-control" name="Name" placeholder="Name" value="" required>
 								</div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['email']) && ($_POST['email']=='error')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-envelope"></span>
                                     </span>
-									<input type="email" class="form-control" name="email" placeholder="E-mail?" value="" required>
+									<input type="email" class="form-control" name="email" placeholder="E-mail" value="" required>
 								</div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['usertype']) && ($_POST['usertype']=='error')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
                                 	<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-pencil"></span>
@@ -84,30 +84,30 @@
                             
                             <div class="clearfix hidden-xs"></div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['username']) && ($_POST['username']=='error')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
                                     </span>
-									<input type="text" class="form-control" name="username" placeholder="Username?" value="" required>
+									<input type="text" class="form-control" name="username" placeholder="Username" value="" required>
 								</div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['password']) && ($_POST['password']=='error')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
                                 	<span class="input-group-addon">
 	                                    <span class="glyphicon glyphicon-lock"></span>
                                     </span>
-                                    <input class="form-control" type="password" placeholder="Password?" name="password" value="" required />
+                                    <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
                             	</div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group <?php echo (!empty($_POST['password']) && ($_POST['email']=='password')) ?"has-error" : ""; ?>">
                             	<div class="input-group">
                                 	<span class="input-group-addon">
 	                                    <span class="glyphicon glyphicon-lock"></span>
                                     </span>
-                                    <input class="form-control" type="password" placeholder="Confirm Password?" name="cpassword" value="" required />
+                                    <input class="form-control" type="password" placeholder="Confirm Password" name="cpassword" value="" required />
                             	</div>
                             </div>
                             
@@ -123,6 +123,29 @@
             	</div>
         	</div>
         </div>
+
+		<script>
+			$(document).ready(function() {
+			    $('#identicalForm').formValidation({
+			        framework: 'bootstrap',
+				        icon: {
+				            valid: 'glyphicon glyphicon-ok',
+				            invalid: 'glyphicon glyphicon-remove',
+				            validating: 'glyphicon glyphicon-refresh'
+				        },
+				        fields: {
+				            confirmPassword: {
+				                validators: {
+				                    identical: {
+				                        field: 'password',
+				                        message: 'The password and its confirm are not the same'
+                				    }
+				                }
+				            }
+				        }
+			    });
+			});
+		</script>
 
 </body>
 </html>
