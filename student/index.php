@@ -3,23 +3,30 @@
 	$page = 'inbox';
 	if(!empty($_GET)) {
 		
-		# obtaining the page type
-		if(!empty($_GET['p']) && $_GET['p'] == 'inbox') {
-			$page = 'inbox';
+		# display corresponding pages as requested
+		if(!empty($_GET['p'])) {
+			switch($_GET['p']) {
+				case 'inbox':
+					include_once('inbox.php');
+					break;
+				case 'schedule':
+					include_once('schedule.php'); 
+					break;
+				case 'timeline':
+					include_once('timeline.php');
+					break;
+				case 'profile':
+					include_once('profile.php');
+					break;
+				default:
+					include_once('inbox.php');
+					break;
+			}
 		} else {
-			$page = 'inbox';
+			include_once('inbox.php');
 		}
-				
-	}
-
-	# display the corresponding page
-	switch($page) {
-		case 'inbox':
+	} else {
 			include_once('inbox.php');
-			break;
-		default:
-			include_once('inbox.php');
-			break;
 	}
 ?>
 		

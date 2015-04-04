@@ -58,7 +58,7 @@
                     
                     <tbody>
 
-                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
+                            <tr onClick="document.location='/controller/viewCompanyDetails?id=';">
                                 <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
                                 <td>Microsot India</td>
                                 <td>Something related to whatever they have to say including their details and the packages offered</td>
@@ -66,7 +66,7 @@
                                 <td>2 Apr</td>
                             </tr>
 
-                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
+                            <tr onClick="document.location='/controller/viewCompanyDetails?id=';">
                                 <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
                                 <td>Microsot India</td>
                                 <td>Something related to whatever they have to say including their details and the packages offered</td>
@@ -74,7 +74,7 @@
                                 <td>2 Apr</td>
                             </tr>
                             
-                            <tr onClick="document.location='../controller/viewCompanyDetails?id=';">
+                            <tr onClick="document.location='/controller/viewCompanyDetails?id=';">
                                 <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
                                 <td>Microsot India</td>
                                 <td>Something related to whatever they have to say including their details and the packages offered</td>

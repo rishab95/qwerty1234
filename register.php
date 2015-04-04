@@ -55,7 +55,7 @@
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
                                     </span>
-									<input type="text" class="form-control" name="Name" placeholder="Name" value="" required>
+									<input type="text" class="form-control" name="Name" placeholder="Full name" value="" required>
 								</div>
                             </div>
                             
@@ -90,7 +90,7 @@
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
                                     </span>
-									<input type="text" class="form-control" name="username" placeholder="Username" value="" required>
+									<input type="text" class="form-control" name="username" placeholder="Roll number" value="" required>
 								</div>
                             </div>
                             
