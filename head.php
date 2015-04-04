@@ -45,6 +45,7 @@
             	<div class="col-sm-3">
                 	<div class="pull-right" style="margin-top: 10px;">
                        	<a href="<?php echo $link; ?>">
+
     			           	<button class="btn btn-primary navbar-btn pull-right" type="button">
         	   		           	<span class="glyphicon glyphicon-user"></span> <?php echo $name; ?>
     	           	        </button>

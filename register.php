@@ -85,6 +85,7 @@
                             <div class="clearfix hidden-xs"></div>
                             
                             <div class="form-group <?php echo (!empty($_POST['username']) && ($_POST['username']=='error')) ?"has-error" : ""; ?>">
+
                             	<div class="input-group">
 									<span class="input-group-addon">
                                     	<span class="glyphicon glyphicon-user"></span>
