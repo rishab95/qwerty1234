@@ -50,6 +50,9 @@
 			$pass = False;
 	}
 	
+	# password conversion
+	$password = md5($password);
+	
 	# initialize MySQL connection
 	$servername="localhost";
 	$dbname = "pap";
@@ -59,12 +62,10 @@
 	
 	# mysql queries to check for registration in the database table
 	$query = "INSERT INTO auth(username,password,user_type,name,email) VALUES ($username, '$password', '$userType', '$name', '$email');";
- 
-	$sql = mysqli_query($query);
 
-	if($conn->query($sql)==True) {
+	if($conn->query($query)==True) {
 		# registration successful
-		header("Location: /?reg=");
+		header("Location: /login=");
 	} else {
 		# registration unsuccessful
 		echo "Not Registered";
