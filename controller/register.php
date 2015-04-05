@@ -36,6 +36,7 @@
 
 <?php
 	$pass = True;
+	
 	# obtain form data
 	$name = $_POST['Name'];
 	$email = $_POST['email'];
@@ -46,7 +47,7 @@
 	
 	# perform validations
 	if($cpass != $password) {
-	    	echo "<input type='hidden' name='password' value='error'>";
+	    	echo "<input type='hidden' name='password' value='error' />";
 			$pass = False;
 	}
 	

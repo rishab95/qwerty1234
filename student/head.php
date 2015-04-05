@@ -36,7 +36,7 @@
                     </li>
 
                     <li>
-                    	<a href="/student/?p=timeline">
+                    	<a href="/controller/viewEvent.php?t=timeline">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-list"></span> Timeline
                		        </button>
@@ -44,7 +44,7 @@
                     </li>
                     
                     <li>
-                    	<a href="/student/?p=schedule">
+                    	<a href="/controller/viewEvent.php?t=schedule">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-calendar"></span> Schedule
                		        </button>

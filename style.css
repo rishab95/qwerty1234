@@ -174,3 +174,7 @@ input[type=checkbox] {
 form {
 	margin-bottom: 0px;
 }
+
+table {
+	table-layout: auto;	
+}

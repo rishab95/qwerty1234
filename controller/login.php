@@ -55,7 +55,7 @@
 			# create session and redirect to user's home page
 			session_start();
 			$_SESSION['username'] = $username;
-			header('Location: /'.student.'/');
+			header('Location: /student/');
 		} else if($auth == False) {
 			# redirect to login interface
 			header('Location: /?auth=false');
