@@ -46,10 +46,53 @@
 	$cpass = $_POST['cpassword'];
 	
 	# perform validations
+	if (empty($_POST["name"])) {
+		$nameError = "Name is required";
+		} 
+	else {
+		$name = test_input($_POST["name"]);
+		// check name only contains letters and whitespace
+		if (!preg_match("^[a-zA-Z ]*$",$name)) {
+			$nameError = "Only letters and white space allowed";
+	}
+		
+	if (empty($_POST["email"])) {
+		$emailError = "Email is required";
+		}
+	else {
+		$email = test_input($_POST["email"]);
+		// check if e-mail address syntax is valid or not
+		if (!preg_match('^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$',$email)) {
+			$emailError = "Invalid email format";
+	}
+	
+	if (empty($_POST["username"])) {
+		$usernameError = "Username is required";
+		}
+	else {
+		$username = test_input($_POST["username"]);
+		// check name only contains letters and whitespace
+		if (!preg_match("^[0..9]{9}$",$name)) {
+			$usernameError = "Only numbers allowed";
+	}
+
+	if (empty($_POST["password"])) {
+		$passwordError = "Password is required";
+		}
+	else {
+		$password = test_input($_POST["password"]);
+		// check name only contains letters and whitespace
+		if (!preg_match("^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$",$password)) {
+			$passwordError = "Only numbers,characters allowed";
+	}
+		
+		
 	if($cpass != $password) {
 	    	echo "<input type='hidden' name='password' value='error' />";
 			$pass = False;
 	}
+	
+	
 	
 	# password conversion
 	$password = md5($password);
