@@ -176,5 +176,14 @@ form {
 }
 
 table {
-	table-layout: auto;	
+	table-layout: auto;
+	white-space: nowrap;
+}
+
+.well {
+	background-image: none;
+	background-color: #d4d7ad;
+	background-repeat: repeat-x;
+	border-color: #bbbe93;
+	box-shadow: 0px 1px 3px rgba(55, 59, 68, 0.05) inset, 0px 1px 0px rgba(222, 225, 182, 0.1);
 }

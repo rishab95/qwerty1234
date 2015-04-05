@@ -79,11 +79,11 @@
             	<h2>Loading</h2>
                 <img src="../images/loading.gif" alt="Loading" height="30"/>
             </div>
-            <style>
+            <script>
 				$(document).ready(function() {
 					$("#form").submit();
 				});
-            </style>
+            </script>
             
 		</div>
 	</body>
