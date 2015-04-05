@@ -1,8 +1,8 @@
 <?php
 #	if(!empty($_SESSION['username'])) {
-		if(empty($_POST)) {
-			header();
-		}
+#		if(empty($_POST)) {
+#			header("Location: /controller/interestedList.php");
+#		} else {
 ?>
 
 <!doctype html>
@@ -44,7 +44,12 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-            	
+
+                <div class="col-lg-6">
+	                <div class="well-lg well" id="detailsContainer">
+                    	Please click on a student entry to view details
+    	            </div>
+                </div>            	
 
             	<div class="col-lg-6">
 	                <div class="well-lg well">
@@ -88,23 +93,37 @@
 	                </div>
                 </div>
                 
-                <div class="col-lg-6">
-	                <div class="well-lg well">
-                    	Please click on a student entry to view details
-    	            </div>
-                </div>
-                
 			</div>
 		</div>
 
         <script>
-			// use ajax to populate the 
+			// use ajax to populate the details well
+			function loadDetails(roll) {
+				var xmlhttp;
+				if (window.XMLHttpRequest) {
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+						document.getElementById("detailsContainer").innerHTML = xmlhttp.responseText;
+					}
+				}
+				
+				xmlhttp.open("POST","/controller/studentDetails.php",false);
+				xmlhttp.send(concat("companyId=",roll));
+			}
 		</script>
 
 	</body>
 </html>
 
 <?php
+#		}
 #	} else {
 #		header("Location: /");
 #	}
