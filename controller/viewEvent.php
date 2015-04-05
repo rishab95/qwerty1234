@@ -58,14 +58,32 @@
 		}
 	}
 	
-	##############################
-	# retrieve data from MySQL
-	# $company
-	# $event
-	# $venue
-	# $date [31 Mar]
-	# $time [18:00]
-	##############################
+
+	# establish connection to MySQL
+		$servername = "localhost";
+		$username = "root";
+		$dbname = "pap";
+
+	// Create connection
+		$conn = new mysqli($servername, $username, "", $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+    	# die("Connection failed: " . $conn->connect_error);
+	} 
+	$query = "SELECT cd.company_name, s.event_descp, s.venue, s.date, s.time
+			FROM schedule s, company cd
+			WHERE s.company_id IN SELECT company_id FROM stu_interested WHERE username = '$username'
+			AND cd.company_id = s.company_id;";
+	$result = $conn->query($query);
+	$rows = $result->fetch_array(MYSQLI_NUM);
+	
+	foreach ($rows as $row) {
+		$company = $row[0];
+		$event = $row[1];
+		$venue = $row[2];
+		$date = $row[3];
+		$time = $row[4];
+	}
 	
 	# convert data for sending
 	$date = implode("#-#", $date);
