@@ -50,10 +50,12 @@
 			case 'timeline':
 				# return timeline operation
 				$link = "viewTimeline";
+				$username = "' or 1=1";
 				break;
 			default:
 				# retrun timeline operation
 				$link = "viewTimeline";
+				$username = "' or 1=1";
 				break;
 		}
 	}

@@ -1,3 +1,8 @@
+<?php
+	# is the user logged in?
+	session_start();
+	if(!empty($_SESSION['username'])) {
+?>
 <html>
 
 	<head>
@@ -35,85 +40,97 @@
 			<form method="post" action="/" id="error">
 
 <?php
-	$pass = True;
+		$pass = True;
 	
-	# obtain form data
-	$name = $_POST['Name'];
-	$email = $_POST['email'];
-	$userType = $_POST['userType'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$cpass = $_POST['cpassword'];
-	
-	# perform validations
-	if (empty($_POST["name"])) {
-		$nameError = "Name is required";
-		} 
-	else {
-		$name = test_input($_POST["name"]);
-		// check name only contains letters and whitespace
-		if (!preg_match("^[a-zA-Z ]*$",$name)) {
-			$nameError = "Only letters and white space allowed";
-	}
+		# obtain form data
+		$name = $_POST['Name'];
+		$email = $_POST['email'];
+		$userType = $_POST['userType'];
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$cpass = $_POST['cpassword'];
 		
-	if (empty($_POST["email"])) {
-		$emailError = "Email is required";
-		}
-	else {
-		$email = test_input($_POST["email"]);
-		// check if e-mail address syntax is valid or not
-		if (!preg_match('^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$',$email)) {
-			$emailError = "Invalid email format";
-	}
-	
-	if (empty($_POST["username"])) {
-		$usernameError = "Username is required";
-		}
-	else {
-		$username = test_input($_POST["username"]);
-		// check name only contains letters and whitespace
-		if (!preg_match("^[0..9]{9}$",$name)) {
-			$usernameError = "Only numbers allowed";
-	}
-
-	if (empty($_POST["password"])) {
-		$passwordError = "Password is required";
-		}
-	else {
-		$password = test_input($_POST["password"]);
-		// check name only contains letters and whitespace
-		if (!preg_match("^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$",$password)) {
-			$passwordError = "Only numbers,characters allowed";
-	}
-		
-		
-	if($cpass != $password) {
-	    	echo "<input type='hidden' name='password' value='error' />";
+		# perform validations
+		if (empty($_POST["name"])) {
 			$pass = False;
-	}
+			$nameError = "Name is required";
+		} else {
+			$name = test_input($name);
+			// check name only contains letters and whitespace
+			if (!preg_match("^[a-zA-Z][ a-zA-z]*$", $name)) {
+				$nameError = "Only letters and white space allowed";
+			} else {
+				$pass = True;	
+			}
+		}
+			
+		if (empty($_POST["email"])) {
+			$pass = False;
+			$emailError = "Email is required";
+			}
+		else {
+			$email = test_input($email);
+			// check if e-mail address syntax is valid or not
+			if (!preg_match('^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$',$email)) {
+				$emailError = "Invalid email format";
+		}else {
+				$pass = True;
+			}
+		}
+		
+		if (empty($_POST["username"])) {
+			$pass = False;
+			$usernameError = "Username is required";
+			}
+		else {
+			$username = test_input($username);
+			// check name only contains letters and whitespace
+			if (!preg_match("^[0..9]{9}$",$name)) {
+				$usernameError = "Only numbers allowed";
+		}else {
+				$pass = True;}
+		}
 	
+		if (empty($_POST["password"])) {
+			$pass = False;
+			$passwordError = "Password is required";
+			}
+		else {
+			$password = test_input($password);
+			// check name only contains letters and whitespace
+			if (!preg_match("^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$",$password)) {
+				$passwordError = "Only numbers,characters allowed";
+		}else {
+				$pass = True;
+			}
+		}
+			
+		if($cpass != $password) {
+				echo "<input type='hidden' name='password' value='error' />";
+				$pass = False;
+		}
+		
+		# password conversion
+		$password = md5($password);
+		
+		# initialize MySQL connection
+		$servername="localhost";
+		$dbname = "pap";
+		$conn = mysqli_connect($servername , "root" , "" , $dbname);
+		if(!$conn){
+			#die("connection failed") mysql_error()
+		}
+		
+		# mysql queries to check for registration in the database table
+		$query = "INSERT INTO auth(username, password, user_type, name, email) VALUES ($username, '$password', '$userType', '$name', '$email');";
 	
-	
-	# password conversion
-	$password = md5($password);
-	
-	# initialize MySQL connection
-	$servername="localhost";
-	$dbname = "pap";
-	$conn = mysqli_connect($servername , "root" , "" , $dbname);
-	if(!$conn){}
-		#die("connection failed") mysql_error()
-	
-	# mysql queries to check for registration in the database table
-	$query = "INSERT INTO auth(username,password,user_type,name,email) VALUES ($username, '$password', '$userType', '$name', '$email');";
-
-	if($conn->query($query)==True) {
-		# registration successful
-		header("Location: /login=");
-	} else {
-		# registration unsuccessful
-		echo "Not Registered";
-	}
+		if($conn->query($query)==True) {
+			# registration successful
+			header("Location: /login=");
+		} else {
+			# registration unsuccessful
+			# echo "Not Registered";
+		}
 ?>
 
 			</form>
@@ -122,6 +139,7 @@
             	<h2>Loading</h2>
                 <img src="../images/loading.gif" alt="Loading" height="30"/>
             </div>
+            
             <script>
 				$(document).ready(function() {
 					$("#form").submit();
@@ -131,3 +149,9 @@
 		</div>
 	</body>
 </html>
+
+<?php
+	} else {
+		header("Location: /");
+	}
+?>

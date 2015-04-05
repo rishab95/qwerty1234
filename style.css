@@ -176,6 +176,5 @@ form {
 }
 
 table {
-	table-layout: auto;
-	white-space: nowrap;
+	table-layout: auto;	
 }
