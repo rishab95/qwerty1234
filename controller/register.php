@@ -55,9 +55,9 @@
 			$pass = False;
 			$nameError = "Name is required";
 		} else {
-			$name = test_input($name);
+			#$name = test_input($name);
 			// check name only contains letters and whitespace
-			if (!preg_match("^[a-zA-Z][ a-zA-z]*$", $name)) {
+			if (!preg_match("/^[a-zA-Z][ a-zA-z]*$/", $name)) {
 				$nameError = "Only letters and white space allowed";
 			} else {
 				$pass = True;	
@@ -69,9 +69,9 @@
 			$emailError = "Email is required";
 			}
 		else {
-			$email = test_input($email);
+			#$email = test_input($email);
 			// check if e-mail address syntax is valid or not
-			if (!preg_match('^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$',$email)) {
+			if (!preg_match('/^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$/',$email)) {
 				$emailError = "Invalid email format";
 		}else {
 				$pass = True;
@@ -83,9 +83,9 @@
 			$usernameError = "Username is required";
 			}
 		else {
-			$username = test_input($username);
+			#$username = test_input($username);
 			// check name only contains letters and whitespace
-			if (!preg_match("^[0..9]{9}$",$name)) {
+			if (!preg_match("/^[0..9]{9}$/",$name)) {
 				$usernameError = "Only numbers allowed";
 		}else {
 				$pass = True;}
@@ -96,9 +96,9 @@
 			$passwordError = "Password is required";
 			}
 		else {
-			$password = test_input($password);
+			#$password = test_input($password);
 			// check name only contains letters and whitespace
-			if (!preg_match("^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$",$password)) {
+			if (!preg_match("/^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$/",$password)) {
 				$passwordError = "Only numbers,characters allowed";
 		}else {
 				$pass = True;
