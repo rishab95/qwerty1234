@@ -32,7 +32,7 @@
 	</head>
 
 	<body>
-    	
+    	0
         <!-- background image -->
         <div class="body2"></div>
         
@@ -50,14 +50,16 @@
 	}
 	
 	# mysql query to retrieve inbox data for $username
-	$query = "";
-	# data in
-	# $companyId
-	# $companyName
-	# $message
-	# $status
-	# $date
-	
+	$query = "SELECT company_id, company_name, company_profile, last_date FROM company
+		WHERE company_id IN SELECT company_id FROM stu_eligible WHERE username = '$username';";
+	$result=$conn->query($query);
+
+	foreach($rows as $row){	
+		$companyId=$row[0];
+		$companyName=$row[1];
+		$message=$row[2]; 
+		$date=$row[3];
+	}
 	# conversion of date to [31 Mar]
 	
 	# coversion of data to string for transfer over post
