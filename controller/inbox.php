@@ -78,9 +78,10 @@
 	
 	# conversion of companyId by symmetric cipher
 ?>
+	
     	<div>
         	<!-- transfer data over post -->
-			<form method="post" action="/" id="data">
+			<form id="myform" method="post" action="/">
             	<input type="hidden" name="companyId" value="<?php echo $companyId; ?>">
 				<input type="hidden" name="companyName" value="<?php echo $companyName; ?>" />
                 <input type="hidden" name="message" value="<?php echo $message; ?>" />
@@ -97,9 +98,14 @@
         
         <!-- script to submit the form on document ready -->
         <script>
-			$(document).ready(function() {
-				$("#data").submit();
-			});
+			/*$( document ).ready(function() {
+				$("form").submit();
+			});*/
+			function submitForm()
+			{
+				document.myform.submit();
+			}
+			
 		</script>
         
 	</body>

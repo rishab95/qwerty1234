@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2015 at 11:59 AM
+-- Generation Time: Apr 07, 2015 at 12:11 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `academic_btech` (
   `sixth_sem` float(2,2) NOT NULL,
   `seventh_sem` float(2,2) DEFAULT NULL,
   `eighth_sem` float(2,2) DEFAULT NULL,
+  `cgpa` float(2,2) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -108,17 +109,29 @@ CREATE TABLE IF NOT EXISTS `auth` (
   `user_type` varchar(10) NOT NULL,
   `name` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`username`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `auth`
+-- Table structure for table `company`
 --
 
-INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
-(0, '098f6bcd4621d373cade4e832627b4f6', 'student', 'Test', 'test@test'),
-(10203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta1995@gmai'),
-(101203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta1995@gmai');
+CREATE TABLE IF NOT EXISTS `company` (
+  `company_id` int(11) NOT NULL,
+  `company_name` varchar(20) DEFAULT NULL,
+  `dream_status` tinyint(1) DEFAULT NULL,
+  `package` int(11) DEFAULT NULL,
+  `cg_criteria` float(2,2) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
+  `other_criteria` varchar(30) DEFAULT NULL,
+  `company_link` varchar(30) DEFAULT NULL,
+  `company_profile` varchar(50) DEFAULT NULL,
+  `last_date` date DEFAULT NULL,
+  PRIMARY KEY (`company_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -164,6 +177,20 @@ CREATE TABLE IF NOT EXISTS `other_info` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `company_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `venue` varchar(40) DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `event_descp` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
@@ -171,6 +198,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `name` varchar(40) DEFAULT NULL,
   `username` int(11) NOT NULL DEFAULT '0',
   `year_of_pass` int(11) DEFAULT NULL,
+  `branch` varchar(50) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `citizenship` varchar(15) DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,
@@ -210,6 +238,30 @@ CREATE TABLE IF NOT EXISTS `student_telephone` (
   `username` int(11) NOT NULL DEFAULT '0',
   `phone_num` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`username`,`phone_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stu_eligible`
+--
+
+CREATE TABLE IF NOT EXISTS `stu_eligible` (
+  `company_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`company_id`,`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stu_interested`
+--
+
+CREATE TABLE IF NOT EXISTS `stu_interested` (
+  `company_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`company_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
