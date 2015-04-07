@@ -32,7 +32,7 @@
 	</head>
 
 	<body>
-    	
+    
         <!-- background image -->
         <div class="body2"></div>
         
@@ -49,22 +49,31 @@
 		#die("connection failed") mysql_error()
 	}
 	
-	# mysql query to retrieve inbox data for $username
-	$query = "";
-	# data in
-	# $companyId
-	# $companyName
-	# $message
-	# $status
-	# $date
+	$companyId=array();
+	$companyName=array();
+	$message=array();
+	$date=array();
 	
+	# mysql query to retrieve inbox data for $username
+	$query = "SELECT company_id, company_name, company_profile, last_date FROM company
+		WHERE company_id IN SELECT company_id FROM stu_eligible WHERE username = '$username';";
+	#$result=$conn->query($query);
+	
+	if ($result=mysqli_query($conn,$query)){
+		while($rows=mysqli_fetch_row($result)){	
+			$companyId=$row[0];
+			$companyName=$row[1];
+			$message=$row[2]; 
+			$date=$row[3];
+			}
+	}
 	# conversion of date to [31 Mar]
 	
 	# coversion of data to string for transfer over post
 	$companyId = implode("#-#", $companyId);
 	$companyName = implode("#-#", $companyName);
 	$message = implode("#-#", $message);
-	$status = implode("#-#", $status);
+	#$status = implode("#-#", $status);
 	$date = implode("#-#", $date);
 	
 	# conversion of companyId by symmetric cipher
@@ -75,7 +84,7 @@
             	<input type="hidden" name="companyId" value="<?php echo $companyId; ?>">
 				<input type="hidden" name="companyName" value="<?php echo $companyName; ?>" />
                 <input type="hidden" name="message" value="<?php echo $message; ?>" />
-                <input type="hidden" name="status" value="<?php echo $status; ?>" />
+                <!--<input type="hidden" name="status" value="<?php #echo $status; ?>" /> -->
                 <input type="hidden" name="date" value="<?php echo $date; ?>" />
 			</form>
             

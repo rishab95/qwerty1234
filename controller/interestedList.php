@@ -53,8 +53,7 @@
 	} else {
 		$query = "SELECT username, name, branch, cgpa FROM student WHERE username IN SELECT username FROM stu_interested WHERE company_id = '$username';";
 		$result = $conn->query($query);
-		$rows = $result->fetch_array(MYSQLI_NUM);
-		
+		$rows = $result->fetch_array(MYSQLI_NUM);		
 		$roll = array();
 		$name = array();
 		$branch = array();
