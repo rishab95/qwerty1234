@@ -126,7 +126,7 @@
 	
 		if($conn->query($query)==True) {
 			# registration successful
-			header("Location: /login=");
+			header("Location: /?regsuc=1");
 		} else {
 			# registration unsuccessful
 			# echo "Not Registered";

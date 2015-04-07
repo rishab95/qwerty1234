@@ -188,3 +188,17 @@ table {
 	box-shadow: 0px 1px 3px rgba(55, 59, 68, 0.05) inset, 0px 1px 0px rgba(222, 225, 182, 0.1);
 	overflow: auto;
 }
+
+.card {
+	margin: 3px;
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #373b44;	
+}
+
+.divider {
+	width: 100%;
+	border-bottom: 1px solid #373b44;
+	margin-bottom: 10px;
+}

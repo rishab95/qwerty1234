@@ -1,8 +1,8 @@
 <?php
-	if(!empty($_SESSION['username'])) {
-		if(empty($_POST)) {
-			header("Location: /controller/interestedList.php");
-		} else {
+#	if(!empty($_SESSION['username'])) {
+#		if(empty($_POST['roll']) && empty($_POST['name']) && empty($_POST['branch']) && empty($_POST['cgpa'])) {
+#			header("Location: /controller/interestedList.php");
+#		} else {
 ?>
 
 <!doctype html>
@@ -45,10 +45,71 @@
 		<div class="container">
         	<div class="row">
 
-                <div class="col-lg-6">
-	                <div class="well-lg well" id="detailsContainer">
-                    	Please click on a student entry to view details
-    	            </div>
+                <div class="col-lg-6" id="detailsContainer">
+                
+                	<div class="well well-lg">
+                    
+                    	<div>
+							<h4>Personal Information</h4>
+                        </div>
+                        
+                        <div class="divider"></div>
+                        
+                        <div class="col-md-6">
+                            <table class="table table-responsive">
+                            
+                                <tr>
+                                    <td>
+                                        <label>Full Name</label>
+                                    </td>
+                                    <td>Rohit Saluja</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <label>Date of Birth</label>
+                                    </td>
+                                    <td>4-8-1994</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><label>Age</label></td>
+                                    <td>21</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><label>Citizenship</label></td>
+                                    <td>Indian</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><label>Gender</label></td>
+                                    <td>Male</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="2"><label>Correspondence Address</label></td>
+                                </tr>
+                                
+                                
+                            </table>
+                        </div>
+                        
+                        <div class="col-md-6">
+                        	<img src="../images/logo.png" width="100%">
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="well well-lg">
+                    	<div>
+							<h4>Academic Records</h4>
+                        </div>
+                        <div class="divider"></div>
+                        <div>
+                        </div>
+                    </div>
+                    
                 </div>            	
 
             	<div class="col-lg-6">
@@ -66,13 +127,22 @@
 						</div>
                     
                     	<?php
-                        	# obtain data from post
+                        	# obtain data from post with conversion
+#							$rolls = explode("#-#", $_POST['roll']);
+#							$names = explode("#-#" , $_POST['name']);
+#							$branchs = explode("#-#", $_POST['branch']);
+#							$cgpas = explode("#-#", $_POST['cgpa']);
 						?>
                     
                         <table class="table table-hover" id="tblData">
                         
+                        	<colgroup>
+                            	<col width="10">
+                            </colgroup>
+                        
                             <thead>
                                 <tr>
+                                	<th></th>
                                     <th>Roll Number</th>
                                     <th>Full Name</th>
                                     <th>Branch</th>
@@ -82,15 +152,26 @@
                             
                             <!-- display all the interested students -->
                             <tbody>
-        
+                            
+                       	    <?php
+								# populating the table
+#								foreach($names as $name) {
+                            ?>
+							
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203053</td>
                                         <td>Preet Bandhan Kaur</td>
                                         <td>EIC</td>
                                         <td>6.98</td>
                                     </tr>
-
+                                    
+                             <?php
+#								}
+							 ?>
+                                    
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203081</td>
                                         <td>Rohit Saluja</td>
                                         <td>COE</td>
@@ -98,6 +179,7 @@
                                     </tr>
 
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203075</td>
                                         <td>Prisha Gupta</td>
                                         <td>COE</td>
@@ -163,8 +245,8 @@
 </html>
 
 <?php
-		}
-	} else {
-		header("Location: /");
-	}
+#		}
+#	} else {
+#		header("Location: /");
+#	}
 ?>
