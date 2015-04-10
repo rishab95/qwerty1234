@@ -51,34 +51,37 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-				<table class="table table-striped">
-                  
-                	<thead>
-                    	<tr>
-                            <th>Company Name</th>
-                            <th>Event</th>
-                            <th>Venue</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-				<?php
-					foreach (($company as $c) && ($venue as $v) && ($event as $e) && ($date as $d) && ($time as $t)) {
-                ?>
+            	<div class="well well-lg">
+                    <table class="table table-striped">
+                      
+                        <thead>
                             <tr>
-                                <td><?php echo $c; ?></td>
-                                <td><?php echo $e; ?></td>
-                                <td><?php echo $v; ?></td>
-                                <td><?php echo $d; ?></td>
-                                <td><?php echo $t; ?></td>
+                                <th>Company Name</th>
+                                <th>Event</th>
+                                <th>Venue</th>
+                                <th>Date</th>
+                                <th>Time</th>
                             </tr>
-				<?php
-					}
-                ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        
+                        <tbody>
+                    <?php
+						$c = count($company);
+						for ($i=0 ; $i<$c ; $i++) {
+                    ?>
+                                <tr>
+                                    <td><?php echo $company[$i]; ?></td>
+                                    <td><?php echo $event[$i]; ?></td>
+                                    <td><?php echo $venue[$i]; ?></td>
+                                    <td><?php echo $date[$i]; ?></td>
+                                    <td><?php echo $time[$i]; ?></td>
+                                </tr>
+                    <?php
+                        }
+                    ?>
+                        </tbody>
+                    </table>
+				</div>
 			</div>
 		</div>
 

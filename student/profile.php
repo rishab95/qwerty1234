@@ -1,43 +1,56 @@
+<?php
+#	session_start();
+#	if(!empty($_SESSION['username'])) {
+#		if(empty($_POST['roll']) && empty($_POST['name']) && empty($_POST['branch']) && empty($_POST['cgpa'])) {
+#			header("Location: /controller/interestedList.php");
+#		} else {
+?>
+
 <!doctype html>
 
 <html>
 	<head>
 
 		<meta charset="utf-8">
-		<title>PAP | Student | Build Resume</title>
+		<title>PAP | Company</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="../../bootstrap/js/bootstrap.min.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
         
         <!-- Latest complied and minified JQuery -->
-        <script src="../../bootstrap/jquery-2.1.3.min.js"></script>
+        <script src="../bootstrap/jquery-2.1.3.min.js"></script>
     
 	    <!-- Custom made CSS file -->
-    	<link rel="stylesheet" href="../../style.css">
+    	<link rel="stylesheet" href="../style.css">
             
 	</head>
 
 	<body>
-        
-        <?php
-        	include_once('head.php');
+    
+    	<?php
+   			include_once('head.php');
 		?>
-        
+
+
         <div class="body2"></div>
         
         <!-- space from header -->
         <div style="margin-top: 40px;"></div>
         
         <!-- main container for displaying mail -->
-        <form method="post" action="">
 		<div class="container">
-        	<div class="col-md-6">
+        
+        <?php
+#			$roll = $_SESSION['username'];
+        ?>
+        
+            <div class="col-md-6">
                 <div class="well well-lg">
                         
                     <div>
@@ -49,7 +62,7 @@
                     <div class="row">
                     
                         <div class="col-md-4">
-                            <img src="../../images/logo.png" width="100%">
+                            <img src="../images/logo.png" width="100%">
                         </div>
                                     
                         <div class="col-md-8 detailsData">
@@ -530,19 +543,10 @@
 			<div class="divider"></div>
 			
             <div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+                <ol type="1">
+                    <li></li>
+                </ol>
+            </div>
             
             <div class="divider"></div>
             
@@ -570,21 +574,11 @@
 			<h4>Summer Training/Projects Undertaken</h4>
                         
 			<div class="divider"></div>
-            
-            <div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+                        
+			<ol type="1">
+				<li>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</li>
+				<li>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -616,20 +610,11 @@
                         
 			<div class="divider"></div>
                         
-			<div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Publicity and Creative Coordinator of Microsoft Student Chapter - till Nov, 14</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+			<ol type="1">
+				<li>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</li>
+				<li>Publicity and Creative Coordinator of Microsoft Student Chapter - till Nov, 14</li>
+				<li>Member of Organinzing team of SUR 6.0</li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -661,16 +646,9 @@
                         
 			<div class="divider"></div>
                         
-			<div class="row">
-				<table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Microsot India</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+			<ol type="1">
+               	<li></li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -686,16 +664,15 @@
                 </div>
 			</form>
                         
-		</div>
-        
-        <div class="col-xs-5"></div>
-        <div class="col-xs-2">
-        	<input class="btn btn-group" type="submit" value="Apply" />
-        </div>
-        <div class="col-xs-5"></div>
-        
-		</div>
-        </form>
-        
+		</div>     
+	</div>
+    
 	</body>
 </html>
+
+<?php
+#		}
+#	} else {
+#		header("Location: /");
+#	}
+?>
