@@ -1,8 +1,8 @@
 <?php
-	if(!empty($_SESSION['username'])) {
-		if(empty($_POST)) {
-			header("Location: /controller/interestedList.php");
-		} else {
+#	if(!empty($_SESSION['username'])) {
+#		if(empty($_POST['roll']) && empty($_POST['name']) && empty($_POST['branch']) && empty($_POST['cgpa'])) {
+#			header("Location: /controller/interestedList.php");
+#		} else {
 ?>
 
 <!doctype html>
@@ -45,10 +45,8 @@
 		<div class="container">
         	<div class="row">
 
-                <div class="col-lg-6">
-	                <div class="well-lg well" id="detailsContainer">
-                    	Please click on a student entry to view details
-    	            </div>
+                <div class="col-lg-6" id="detailsContainer">
+                	<div class="well well-lg">Please click on student for details</div>
                 </div>            	
 
             	<div class="col-lg-6">
@@ -66,13 +64,22 @@
 						</div>
                     
                     	<?php
-                        	# obtain data from post
+                        	# obtain data from post with conversion
+#							$rolls = explode("#-#", $_POST['roll']);
+#							$names = explode("#-#" , $_POST['name']);
+#							$branchs = explode("#-#", $_POST['branch']);
+#							$cgpas = explode("#-#", $_POST['cgpa']);
 						?>
                     
                         <table class="table table-hover" id="tblData">
                         
+                        	<colgroup>
+                            	<col width="10">
+                            </colgroup>
+                        
                             <thead>
                                 <tr>
+                                	<th></th>
                                     <th>Roll Number</th>
                                     <th>Full Name</th>
                                     <th>Branch</th>
@@ -82,15 +89,26 @@
                             
                             <!-- display all the interested students -->
                             <tbody>
-        
+                            
+                       	    <?php
+								# populating the table
+#								foreach($names as $name) {
+                            ?>
+							
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203053</td>
                                         <td>Preet Bandhan Kaur</td>
                                         <td>EIC</td>
                                         <td>6.98</td>
                                     </tr>
-
+                                    
+                             <?php
+#								}
+							 ?>
+                                    
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203081</td>
                                         <td>Rohit Saluja</td>
                                         <td>COE</td>
@@ -98,6 +116,7 @@
                                     </tr>
 
                                     <tr onClick="loadDetails('101203081');">
+                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
                                         <td>101203075</td>
                                         <td>Prisha Gupta</td>
                                         <td>COE</td>
@@ -130,8 +149,9 @@
 					}
 				}
 				
-				xmlhttp.open("POST","/controller/studentDetails.php",false);
-				xmlhttp.send(concat("companyId=",roll));
+				xmlhttp.open("POST","/company/viewStuDetails.php",true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xmlhttp.send("ajax=1&roll="+roll);
 			}
 			
 			$(document).ready(function() {
@@ -163,8 +183,8 @@
 </html>
 
 <?php
-		}
-	} else {
-		header("Location: /");
-	}
+#		}
+#	} else {
+#		header("Location: /");
+#	}
 ?>

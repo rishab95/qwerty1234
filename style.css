@@ -121,6 +121,10 @@ header {
 	border-width: 1px
 }
 
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+	border: 1px solid #bcbf94 !important;
+}
+
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
 	border-top: none;	
 	border-bottom: 1px solid #bcbf94;
@@ -187,4 +191,23 @@ table {
 	border-color: #bbbe93;
 	box-shadow: 0px 1px 3px rgba(55, 59, 68, 0.05) inset, 0px 1px 0px rgba(222, 225, 182, 0.1);
 	overflow: auto;
+}
+
+.card {
+	margin: 3px;
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #373b44;	
+}
+
+.divider {
+	width: 100%;
+	border-bottom: 1px solid #373b44;
+	margin-bottom: 10px;
+}
+
+.detailsData {
+	padding: 2px 0px !important;
+	border-bottom: 1px solid #bcb494;
 }
