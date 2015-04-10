@@ -6,7 +6,7 @@
 			# check if the call to this page is ajax or not
 			if(!(!empty($_POST['ajax']) && $_POST['ajax']=='1')) {
         		include_once('head.php');
-		?>
+?>
 
 <!doctype html>
 

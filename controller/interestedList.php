@@ -51,20 +51,21 @@
 	if ($conn->connect_error) {
     	# die("Connection failed: " . $conn->connect_error);
 	} else {
-		$query = "SELECT username, name, branch, cgpa FROM student WHERE username IN SELECT username FROM stu_interested WHERE company_id = '$username';";
-		$result = $conn->query($query);
-		$rows = $result->fetch_array(MYSQLI_NUM);		
+		$query = "SELECT username, name, branch, cgpa FROM student WHERE username IN SELECT username FROM 				                    stu_interested WHERE company_id = '$username';";		
 		$roll = array();
 		$name = array();
 		$branch = array();
 		$cpga = array();
-		foreach ($rows as $row) {
+		
+		if ($result=mysqli_query($conn,$query)){
+		while($rows=mysqli_fetch_row($result))
+		 {
 			$roll->append($row[0]);
 			$name->append($row[1]);
 			$branch->append($row[2]);
 			$cgpa->append($row[3]);
+			}
 		}
-		
 		# convert data for sending
 		$roll = implode("#-#", $roll);
 		$name = implode("#-#", $name);
