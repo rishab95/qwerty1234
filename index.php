@@ -39,9 +39,9 @@
 			break;
 		case "register":
 			include_once('register.php');
+			break;
 		default:
 			include_once('login.php');
 			break;
 	}
 ?>
-		

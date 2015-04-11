@@ -1,7 +1,7 @@
 <?php
 	# check if the page is legitimately open
-	session_start();
-	if(!empty($_SESSION['username'])) {
+#	session_start();
+#	if(!empty($_SESSION['username'])) {
 
 		# obtaining any get values that exist
 		$page = 'inbox';
@@ -21,6 +21,9 @@
 							$page = 'schedule';
 						include_once('viewEvents.php'); 
 						break;
+					case 'viewCompanyDetails':
+						include_once('viewCompanyDetails.php');
+						break;
 					case 'profile':
 						include_once('profile.php');
 						break;
@@ -35,8 +38,8 @@
 				include_once('inbox.php');
 		}
 		
-	} else {
-		header("Location: /");
-	}
+#	} else {
+#		header("Location: /");
+#	}
 ?>
 		

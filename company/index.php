@@ -132,26 +132,13 @@
 		</div>
 
         <script>
-			// use ajax to populate the details well
-			function loadDetails(roll) {
-				var xmlhttp;
-				if (window.XMLHttpRequest) {
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				} else {
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				
-				xmlhttp.onreadystatechange=function() {
-					if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-						document.getElementById("detailsContainer").innerHTML = xmlhttp.responseText;
-					}
-				}
-				
-				xmlhttp.open("POST","/company/viewStuDetails.php",true);
-				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				xmlhttp.send("ajax=1&roll="+roll);
+			function loadDetails($roll) {
+				$.post("/company/viewStuDetails.php", {
+					ajax: '1',
+					roll: $roll,
+				}, function($response) {
+					$('#detailsContainer').html($response);
+				});
 			}
 			
 			$(document).ready(function() {

@@ -34,49 +34,20 @@
 		
         <!-- main body container -->
         <div class="container">
-        	<div class="row">
-            
-				<table class="table table-striped">
-                	<thead>
-	                	<tr>
-		                	<th>Sr. No.</th>
-        	                <th>Name</th>
-                            <th>E-mail</th>
-            	            <th>Branch</th>
-                	    </tr>
-                    </thead>
-                    
-                    <tbody>
-                    	<tr>
-                            <td>1</td>
-                            <td>Preet Bandhan</td>
-                            <td></td>
-                            <td>Electical and Instrumentation Control</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Prisha Gupta</td>
-                            <td></td>
-                            <td>Computer Engineering</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Rohit Saluja</td>
-                            <td>ruhi.saluja@gmail.com</td>
-                            <td>Computer Engineering</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Ruminder Singh</td>
-                            <td></td>
-                            <td>Computer Engineering</td>
-                        </tr>
-                    </tbody>
-                    
-                </table>
-                
+        	<div class="well well-lg">
+            	<!-- div to display the search results -->
+            	<div id="searchResult"></div>
         	</div>
         </div>
+        
+		<script>
+			// use ajax to populate the the search results
+			$(document).ready(function() {
+				$.get("searchResult.php?ajax=1&q=<?php echo $search ?>", function($response) {
+					$('#searchResult').html($response);
+				});
+			});
+		</script>
         
 	</body>
 </html>
