@@ -2,16 +2,12 @@
 	# check if the page is legitimately open
 	session_start();
 	if(!empty($_SESSION['username'])) {
-
 		# obtaining any get values that exist
-		$page = 'inbox';
 		if(!empty($_GET)) {
-			
 			# display corresponding pages as requested
 			if(!empty($_GET['p'])) {
 				switch($_GET['p']) {
 					case 'inbox':
-						$page = 'inbox';
 						include_once('inbox.php');
 						break;
 					case 'viewTimeline':
@@ -21,6 +17,9 @@
 							$page = 'schedule';
 						include_once('viewEvents.php'); 
 						break;
+					case 'viewCompanyDetails':
+						include_once('viewCompanyDetails.php');
+						break;
 					case 'profile':
 						include_once('profile.php');
 						break;
@@ -28,15 +27,10 @@
 						include_once('inbox.php');
 						break;
 				}
-			} else {
+			} else
 				include_once('inbox.php');
-			}
-		} else {
+		} else
 				include_once('inbox.php');
-		}
-		
-	} else {
+	} else
 		header("Location: /");
-	}
 ?>
-		

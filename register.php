@@ -22,7 +22,7 @@
         
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
-    
+        
 	</head>
 
 	<body>
@@ -38,115 +38,153 @@
         <!-- main body container -->
         <div class="container">
         	<div class="row">
-            
+            	<!-- column for left space -->
 				<div class="col-xs-4"></div>
                 
-                	<div class="col-md-4 col-xs-4">
-                    
-                    	<!-- login form -->
-                    	<form action="controller/register.php" method="post" class="register form-horizontal">
-                    
-                       		<div class="form-group">
-	                           	<h2>Register</h2>
-	                        </div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['name']) && ($_POST['name']=='error')) ?"has-error" : ""; ?>">
-                            	<div class="input-group">
-									<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-user"></span>
-                                    </span>
-									<input type="text" class="form-control" name="Name" placeholder="Full name" value="" required>
-								</div>
-                            </div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['email']) && ($_POST['email']=='error')) ?"has-error" : ""; ?>">
-                            	<div class="input-group">
-									<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-envelope"></span>
-                                    </span>
-									<input type="email" class="form-control" name="email" placeholder="E-mail" value="" required>
-								</div>
-                            </div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['usertype']) && ($_POST['usertype']=='error')) ?"has-error" : ""; ?>">
-                            	<div class="input-group">
-                                	<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-pencil"></span>
-                                    </span>
-                                    <select name="userType" class="form-control">
-	                                	<option value="student">Student</option>
-    	                                <option value="coordinator">Coordinator</option>
-        	                            <option value="company">Company</option>
-            	                        <option value="admin">Admin</option>
-                	                </select>
-                                </div>
-                            </div>
-                            
-                            <div class="clearfix hidden-xs"></div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['username']) && ($_POST['username']=='error')) ?"has-error" : ""; ?>">
-
-                            	<div class="input-group">
-									<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-user"></span>
-                                    </span>
-									<input type="text" class="form-control" name="username" placeholder="Roll number" value="" required>
-								</div>
-                            </div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['password']) && ($_POST['password']=='error')) ?"has-error" : ""; ?>">
-                            	<div class="input-group">
-                                	<span class="input-group-addon">
-	                                    <span class="glyphicon glyphicon-lock"></span>
-                                    </span>
-                                    <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
-                            	</div>
-                            </div>
-                            
-                            <div class="form-group <?php echo (!empty($_POST['password']) && ($_POST['email']=='password')) ?"has-error" : ""; ?>">
-                            	<div class="input-group">
-                                	<span class="input-group-addon">
-	                                    <span class="glyphicon glyphicon-lock"></span>
-                                    </span>
-                                    <input class="form-control" type="password" placeholder="Confirm Password" name="cpassword" value="" required />
-                            	</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-group">Log in</button>
-                            </div>
-                            
-                        </form>
+                <!-- central column for form -->
+                <div class="col-xs-4">
+					<!-- login form -->
+                    <form action="controller/register.php" method="post" class="register form-horizontal">
+                    	<!-- heading for form -->
+                    	<div class="form-group">
+							<h2>Register</h2>
+						</div>
                         
-                    </div>
-                    <div class="col-xs-4"></div>
-                    
-            	</div>
-        	</div>
+                        <!-- input field for name -->
+                        <div class="form-group <?php echo (isset($_POST['name'])) ?"has-error" : ""; ?>">
+							<div class="input-group">
+								<span class="input-group-addon">
+                                	<span class="glyphicon glyphicon-user"></span>
+								</span>
+								<input type="text" class="form-control" name="Name" placeholder="Full name" value="" required />
+                            <?php
+							 	if(isset($_POST['name'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['name']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+							</div>
+						</div>
+                        
+                        <!-- input field for email -->
+                        <div class="form-group <?php echo (isset($_POST['email'])) ?"has-error" : ""; ?>">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+								<input type="email" class="form-control" name="email" placeholder="E-mail" value="" required>
+                            <?php
+							 	if(isset($_POST['email'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['email']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+                            </div>
+                        </div>
+                        
+                        <!-- input field for user type -->
+                        <div class="form-group <?php echo (isset($_POST['usertype'])) ?"has-error" : ""; ?>">
+							<div class="input-group">
+                            	<span class="input-group-addon">
+                                	<span class="glyphicon glyphicon-pencil"></span>
+								</span>
+							    <select name="userType" class="form-control">
+									<option value="student">Student</option>
+									<option value="coordinator">Coordinator</option>
+        	                        <option value="company">Company</option>
+            	                    <option value="admin">Admin</option>
+                	            </select>
+                            <?php
+							 	if(isset($_POST['usertype'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['usertype']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+                            </div>
+                        </div>
+                        
+                        <!-- input field for username -->
+                        <div class="form-group <?php echo (!empty($_POST['username'])) ?"has-error" : ""; ?>">
+					    	<div class="input-group">
+								<span class="input-group-addon">
+                                	<span class="glyphicon glyphicon-user"></span>
+								</span>
+								<input type="text" class="form-control" name="username" placeholder="Roll number" value="" required />
+                            <?php
+							 	if(isset($_POST['username'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['name']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+							</div>
+						</div>
+						
+                        <!-- input field for password -->
+						<div class="form-group <?php echo (!empty($_POST['password']) && ($_POST['password']=='error')) ?"has-error" : ""; ?>">
+                        <div class="input-group">
+                        	<span class="input-group-addon">
+	                        	<span class="glyphicon glyphicon-lock"></span>
+							</span>
+                            <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
+                            <?php
+							 	if(isset($_POST['password'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['password']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+                            </div>
+						</div>
+                        
+                        <!-- input field to confirm password -->
+						<div class="form-group <?php echo (!empty($_POST['cpassword'])) ?"has-error" : ""; ?>">
+                        	<div class="input-group">
+		                        <span class="input-group-addon">
+	    	                        <span class="glyphicon glyphicon-lock"></span>
+            	                </span>
+                                <input class="form-control" type="password" placeholder="Confirm Password" name="cpassword" value="" required />
+                            <?php
+							 	if(isset($_POST['name'])) {
+							?>
+                                    <p class='help-block' style='color: #880000'>
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <?php echo $_POST['cpassword']; ?>
+                                    </p>
+							<?php	
+								}
+                             ?>
+                           	</div>
+                        </div>
+                        
+                        <!-- submit form button -->
+                        <div class="form-group">
+                        	<button type="submit" class="btn btn-group">Log in</button>
+                        </div>    
+					</form>
+				</div>
+                
+                <!-- right margin -->
+                <div class="col-xs-4"></div>
+			</div>
         </div>
-
-		<script>
-			$(document).ready(function() {
-			    $('#identicalForm').formValidation({
-			        framework: 'bootstrap',
-				        icon: {
-				            valid: 'glyphicon glyphicon-ok',
-				            invalid: 'glyphicon glyphicon-remove',
-				            validating: 'glyphicon glyphicon-refresh'
-				        },
-				        fields: {
-				            confirmPassword: {
-				                validators: {
-				                    identical: {
-				                        field: 'password',
-				                        message: 'The password and its confirm are not the same'
-                				    }
-				                }
-				            }
-				        }
-			    });
-			});
-		</script>
-
-</body>
+	</body>
 </html>

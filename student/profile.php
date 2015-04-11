@@ -1,201 +1,241 @@
+<?php
+	session_start();
+	# check if user logged in
+	if( !empty($_SESSION['username']) ) {
+		# check if data available to display
+		if( true /* condition */ ) {
+?>
+
 <!doctype html>
 
 <html>
 	<head>
 
 		<meta charset="utf-8">
-		<title>PAP | Student | Build Resume</title>
+		<title>PAP | Company</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="../../bootstrap/js/bootstrap.min.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
         
         <!-- Latest complied and minified JQuery -->
-        <script src="../../bootstrap/jquery-2.1.3.min.js"></script>
+        <script src="../bootstrap/jquery-2.1.3.min.js"></script>
     
 	    <!-- Custom made CSS file -->
-    	<link rel="stylesheet" href="../../style.css">
+    	<link rel="stylesheet" href="../style.css">
             
 	</head>
 
 	<body>
-        
-        <?php
-        	include_once('head.php');
+    
+    	<?php
+			# include the header of the page
+			include_once('head.php');
 		?>
-        
+
+
         <div class="body2"></div>
         
         <!-- space from header -->
         <div style="margin-top: 40px;"></div>
         
         <!-- main container for displaying mail -->
-        <form method="post" action="">
 		<div class="container">
-        	<div class="col-md-6">
+        
+        <?php
+			# obtain data of for display
+			$roll = $_SESSION['username'];
+			$name = $_POST['name'];
+			$dob = $_POST['dob'];
+			$age = $_POST['age'];
+			$citizenship = $_POST['citizenship'];
+			$sex = $_POST['sex'];
+			$currAddr = $_POST['currAddr'];
+			$currCity = $_POST['currCity'];
+			$currState = $_POST['currState'];
+			$currPin = $_POST['currPin'];
+			$currTele = $_POST['currTele'];
+			$perAdrr = $_POST['perAddr'];
+			$perCity = $_POST['perCity'];
+			$perState = $_POST['perState'];
+			$perPin = $_POST['perPin'];
+			$perTele = $_POST['perTele'];
+			$email = $_POST['email'];
+			$fname = $_POST['fname'];
+			$foccu = $_POST['foccu'];
+			$mname = $_POST['mname'];
+			$moccu = $_POST['moccu'];
+        ?>
+        
+            <div class="col-md-6">
                 <div class="well well-lg">
-                        
-                    <div>
-                        <h4>Personal Information</h4>
-                    </div>
-                            
-                    <div class="divider"></div>
-                            
-                    <div class="row">
+					<h4>Personal Information</h4>
                     
-                        <div class="col-md-4">
-                            <img src="../../images/logo.png" width="100%">
+                    <div class="divider"></div>
+                    
+                    <div class="row">
+                    	<!-- profile picture -->
+                    	<div class="col-md-4">
+                            <img src="images/<?php echo $roll; ?>.png" width="100%">
                         </div>
-                                    
+                        
+                        <!-- full name -->
                         <div class="col-md-8 detailsData">
                             <div class="col-xs-5">
                                 <label>Full Name</label>
                             </div>
-                            <div class="col-xs-7">Rohit Saluja</div>
+                            <div class="col-xs-7"><?php echo $name; ?></div>
                         </div>
-                                    
+                        
+                        <!-- date of birth -->
                         <div class="col-md-8 detailsData">
                             <div class="col-xs-5">
                                 <label>Date of Birth</label>
                             </div>
-                            <div class="col-xs-7">4-8-1994</div>
+                            <div class="col-xs-7"><?php echo $dob; ?></div>
                         </div>
-                                    
+                        
+                        <!-- age -->
                         <div class="col-md-8 detailsData">
                             <div class="col-xs-5">
                                 <label>Age</label>
                             </div>
-                            <div class="col-xs-7">21</div>
+                            <div class="col-xs-7"><?php echo $age; ?></div>
                         </div>
-                                    
+                        
+                        <!-- citizenship -->
                         <div class="col-md-8 detailsData">
                             <div class="col-xs-5">
                                 <label>Citizenship</label>
                             </div>
-                            <div class="col-xs-7">Indian</div>
+                            <div class="col-xs-7"><?php echo $citizenship; ?></div>
                         </div>
-                                    
+                        
+                        <!-- gender -->
                         <div class="col-md-8 detailsData">
                             <div class="col-xs-5">
                                 <label>Gender</label>
                             </div>
-                            <div class="col-xs-7">Male</div>
+                            <div class="col-xs-7"><?php echo $sex; ?></div>
                         </div>
-                        
                     </div>
-        
-                    <div class="detailsData">
-                                
+        			
+                    <!-- currect address -->
+                    <div class="detailsData">  
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>Corresponding Address</label>
                             </div>
-                            <div class="col-xs-7">WD-207, Hostel J, Thapar University</div>
+                            <div class="col-xs-7"><?php echo $currAddr; ?></div>
                         </div>
-                                    
+                        
+                        <!-- cite, state, pin -->
                         <div class="row">
                             <div class="col-xs-5">
-                                <label>City</label>: Patiala
+                                <label>City</label>: <?php echo $currCity; ?>
                             </div>
                             <div class="col-xs-4">
-                                <label>State</label>: Punjab
+                                <label>State</label>: <?php echo $currState; ?>
                             </div>
                             <div class="col-xs-3">
-                                <label>Pin</label>: 147001
+                                <label>Pin</label>: <?php echo $currPin; ?>
                             </div>
                         </div>
-                                    
                     </div>
-                            
+                    
+                    <!-- telephone numbers -->
                     <div class="detailsData">
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>Telephone Numbers</label>
                             </div>
-                            <div class="col-xs-7">+91-8437824996</div>
+                            <div class="col-xs-7"><?php echo $currTele; ?></div>
                         </div>
                     </div>                        
-                                
+                    
+                    <!-- permanent address -->
                     <div class="detailsData">    
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>Permanent Address</label>
                             </div>
-                            <div class="col-xs-7">C-275, Sector F, Jankipuram</div>
+                            <div class="col-xs-7"><?php echo $perAddr; ?></div>
                         </div>
-                                
+                        
+                        <!-- city, state, pin -->
                         <div class="row">
                             <div class="col-xs-5">
-                                <label>City</label>: Lucknow
+                                <label>City</label>: <?php echo $perCity; ?>
                             </div>
                             <div class="col-xs-4">
-                                <label>State</label>: Uttar Pradesh
+                                <label>State</label>: <?php echo $perState; ?>
                             </div>
                             <div class="col-xs-3">
-                                <label>Pin</label>: 52201
+                                <label>Pin</label>: <?php echo $perPin; ?>
                             </div>
                         </div>
                                 
                     </div>
-                            
+                    
+                    <!-- telephone numbers -->
                     <div class="detailsData">
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>Telephone Numbers</label>
                             </div>
-                            <div class="col-xs-7">+91-522-2730389</div>
+                            <div class="col-xs-7"><?php echo $perTele; ?></div>
                         </div>
                     </div>
-                                
+                    
+                    <!-- email Id -->
                     <div class="detailsData">
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>E-mail ID</label>
                             </div>
-                            <div class="col-xs-7">ruhi.saluja@gmail.com</div>
+                            <div class="col-xs-7"><?php echo $email; ?></div>
                         </div>
                     </div>
-                                
-                    <div class="detailsData">
-                                
+                    
+                    <!-- father/guardian details -->
+                    <div class="detailsData">            
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>Father's/Guardian's Name</label>
                             </div>
-                            <div class="col-xs-7">Gp Capt Yogesh Saluja</div>
+                            <div class="col-xs-7"><?php echo $fname; ?></div>
                         </div>
                                     
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>& Occupation</label>
                             </div>
-                            <div class="col-xs-7">Defence Services</div>
+                            <div class="col-xs-7"><?php echo $foccu; ?></div>
                         </div>
-                                    
                     </div>
-                                
+                    
+                    <!-- mother details -->  
                     <div class="detailsData">
-                                
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <label>Mother's Name</label>
-                        </div>
-                        <div class="col-xs-7">Mrs. Mitali Saluja</div>
-                    </div>
+	                    <div class="row">
+    	                    <div class="col-xs-5">
+        	                    <label>Mother's Name</label>
+            	            </div>
+                	        <div class="col-xs-7"><?php echo $mname; ?></div>
+                    	</div>
                                     
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <label>& Occupation</label>
-                        </div>
-                        <div class="col-xs-7">Home Maker</div>
-                    </div>
-                                    
-                </div>
+	                    <div class="row">
+    	                    <div class="col-xs-5">
+        	                    <label>& Occupation</label>
+            	            </div>
+                	        <div class="col-xs-7"><?php echo $moccu; ?></div>
+                    	</div>            
+                	</div>
+				</div>
                                 
                 <div class="row">
                     <table class="table table-bordered">
@@ -530,19 +570,10 @@
 			<div class="divider"></div>
 			
             <div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+                <ol type="1">
+                    <li></li>
+                </ol>
+            </div>
             
             <div class="divider"></div>
             
@@ -570,21 +601,11 @@
 			<h4>Summer Training/Projects Undertaken</h4>
                         
 			<div class="divider"></div>
-            
-            <div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+                        
+			<ol type="1">
+				<li>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</li>
+				<li>Certified Information Security Expert - Innobuzz | From 3 June, 2013 to 21 July, 2013</li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -616,20 +637,11 @@
                         
 			<div class="divider"></div>
                         
-			<div class="row">
-                <table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</td>
-                        </tr>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Publicity and Creative Coordinator of Microsoft Student Chapter - till Nov, 14</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+			<ol type="1">
+				<li>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</li>
+				<li>Publicity and Creative Coordinator of Microsoft Student Chapter - till Nov, 14</li>
+				<li>Member of Organinzing team of SUR 6.0</li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -661,16 +673,9 @@
                         
 			<div class="divider"></div>
                         
-			<div class="row">
-				<table class="wrap table table-hover col-lg-12">
-                	<tbody>
-                    	<tr>
-                        	<td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" value="" /></td>
-                            <td>Microsot India</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
+			<ol type="1">
+               	<li></li>
+			</ol>
             
             <div class="divider"></div>
             
@@ -686,16 +691,15 @@
                 </div>
 			</form>
                         
-		</div>
-        
-        <div class="col-xs-5"></div>
-        <div class="col-xs-2">
-        	<input class="btn btn-group" type="submit" value="Apply" />
-        </div>
-        <div class="col-xs-5"></div>
-        
-		</div>
-        </form>
-        
+		</div>     
+	</div>
+    
 	</body>
 </html>
+
+<?php
+		} else
+			header("Location: /controller/interestedList.php");
+	} else
+		header("Location: /");
+?>

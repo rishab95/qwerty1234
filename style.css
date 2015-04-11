@@ -13,6 +13,7 @@ body {
 	z-index: -1;
 	position: fixed;
 	top: 0px;
+	left: 0px;
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -21,11 +22,7 @@ body {
 .body2 {
 	background-image: url('images/bg1.png');
 	background-repeat: repeat;
-	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);
-	-o-filter: blur(5px);
-	-ms-filter: blur(5px);
-	filter: blur(5px);
+	background-size: 300px;
 }
 
 form.login {
@@ -158,7 +155,7 @@ input[type=checkbox] {
 	margin-right: 15px;
 }
 
-.navbar-brand:hover {
+.navbar-brand:hover, .navbar-brand:focus {
 	color: #dee1b6 !important;
 }
 
@@ -210,4 +207,9 @@ table {
 .detailsData {
 	padding: 2px 0px !important;
 	border-bottom: 1px solid #bcb494;
+}
+
+table.wrap {
+	word-wrap: break-word;
+	white-space: pre-wrap;	
 }

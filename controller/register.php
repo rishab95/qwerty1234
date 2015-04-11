@@ -1,8 +1,3 @@
-<?php
-	# is the user logged in?
-	session_start();
-	if(!empty($_SESSION['username'])) {
-?>
 <html>
 
 	<head>
@@ -149,9 +144,3 @@
 		</div>
 	</body>
 </html>
-
-<?php
-	} else {
-		header("Location: /");
-	}
-?>

@@ -38,76 +38,69 @@
         <!-- main body container -->
         <div class="container">
         	<div class="row">
-            
 				<div class="col-xs-4"></div>
-                
-                	<div class="col-md-4 col-xs-4">
-                    
-                    	<!-- login form -->
-                    	<form action="controller/login.php" method="post" class="login">
-                    
-                       		<div class="form-group">
-	                           	<h2>Log-in</h2>
-	                        </div>
-                            
-                        <?php 
-							if ($attempt) {
-						?>
-	                            <p class='help-block' style='color: #880000'>
-    	                        	<span class='glyphicon glyphicon-remove'></span>
-        	                        Username or Password incorrect.
-            	                </p>
-                        <?php
-							}
-						?>
-                            
-                            <div class="form-group">
-                            	<div class="input-group">
-                                	<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-pencil"></span>
-                                    </span>
-                                    <select name="userType" class="form-control">
-	                                	<option value="student">Student</option>
-    	                                <option value="coordinator">Coordinator</option>
-        	                            <option value="company">Company</option>
-            	                        <option value="admin">Administrator</option>
-                	                </select>
-                                </div>
+                <div class="col-md-4 col-xs-4">
+                   	<!-- login form -->
+                   	<form action="controller/login.php" method="post" class="login">
+                    	<!-- heading for the form -->
+                   		<div class="form-group">
+	                       	<h2>Log-in</h2>
+	                    </div>                            
+                    <?php 
+						if ($attempt) {
+					?>
+                    		<!-- incorrect login message -->
+	                        <p class='help-block' style='color: #880000'>
+    	                      	<span class='glyphicon glyphicon-remove'></span>
+        	                    User type or Username or Password incorrect.
+            	            </p>
+                    <?php
+						}
+					?>
+                        <!-- select the user type -->
+                        <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
+                          	<div class="input-group">
+                               	<span class="input-group-addon">
+                                   	<span class="glyphicon glyphicon-pencil"></span>
+                                </span>
+                                <select name="userType" class="form-control">
+	                              	<option value="student">Student</option>
+    	                            <option value="coordinator">Coordinator</option>
+        	                        <option value="company">Company</option>
+            	                    <option value="admin">Administrator</option>
+                	            </select>
                             </div>
-                            
-                            <div class="clearfix hidden-xs"></div>
-                            
-                            <div class="form-group">
-                            	<div class="input-group">
-									<span class="input-group-addon">
-                                    	<span class="glyphicon glyphicon-user"></span>
-                                    </span>
-									<input type="text" class="form-control" name="username" placeholder="Roll Number" value="" required>
-								</div>
-                            </div>
-                            
-                            <div class="clearfix hidden-xs"></div>
-                            
-                            <div class="form-group">
-                            	<div class="input-group">
-                                	<span class="input-group-addon">
-	                                    <span class="glyphicon glyphicon-lock"></span>
-                                    </span>
-                                    <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
-                            	</div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-group">Log in</button>
-                            </div>
-                            
-                        </form>
+                        </div>
                         
-                    </div>
-                    <div class="col-xs-4"></div>
-                    
-            	</div>
-        	</div>
-        </div>
-
-</body>
+                        <!-- input for username -->
+						<div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
+                        	<div class="input-group">
+								<span class="input-group-addon">
+                                	<span class="glyphicon glyphicon-user"></span>
+                                </span>
+								<input type="text" class="form-control" name="username" placeholder="Roll Number" value="" required />
+							</div>
+						</div>
+                        
+                        <!-- input for password -->
+                        <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
+                        	<div class="input-group">
+                        		<span class="input-group-addon">
+	                            	<span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
+							</div>
+						</div>
+                        
+                        <!-- submit button -->
+						<div class="form-group">
+                        	<button type="submit" class="btn btn-group">Log in</button>
+                        </div>
+					</form>
+				</div>
+                
+				<div class="col-xs-4"></div>
+			</div>
+		</div>
+	</body>
 </html>

@@ -3,32 +3,27 @@
 	$page = 'login';
 	$attempt = False;
 	if(!empty($_GET)) {
-		
 		# obtaining the page type
 		if(isset($_GET['search'])) {
 			$page = 'search';
-			if(!empty($_GET['search'])){
-				$search = $_GET['search'];	
-			}
-		} else {
-			$page = 'login';
+			$search = $_GET['search'];	
+			goto bottom;
 		}
 		
-		if(isset($_GET['register'])) {
-			if(!empty($_GET['register']))
-				$page = 'register';
+		if(isset($_GET['register']) && !empty($_GET['register'])) {
+			$page = 'register';
+			goto bottom;	
 		}
 
 		# obtaining if authentication has been attemted or not
 		if(!empty($_GET['auth']) && $_GET['auth']=='false') {
 			$attempt = True;
-			$page = 'login';
 		} else {
 			$attempt = False;
 		}
-				
 	}
 
+	bottom:
 	# display the corresponding page
 	switch($page) {
 		case 'login':
@@ -39,9 +34,9 @@
 			break;
 		case "register":
 			include_once('register.php');
+			break;
 		default:
 			include_once('login.php');
 			break;
 	}
 ?>
-		

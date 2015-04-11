@@ -16,13 +16,6 @@
             <div class="collapse navbar-collapse" id="header-nav">
             	<ul class="nav navbar-nav navbar-right">
                 
-                    <li>
-                    	<a href="/controller/logout.php">
-    		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-chevron-lefte"></span> Back
-               		        </button>
-   	            		</a>
-                    </li>
 
                 </ul>
             </div>

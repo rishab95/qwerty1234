@@ -1,8 +1,8 @@
 <?php
+	session_start();
 	if(!empty($_SESSION['username'])) {
-		if(!isset($_POST['company'])) {
-			header("Location: /controller/inbox.php");
-		} else {
+		# check if data to be displayed has been received
+		if(isset($_POST['companyId']) && isset($_POST['companyName']) && isset($_POST['message']) && isset($_POST['status']) && isset($_POST['date'])){
 			# retireve data from post
 			$companyId = explode("#-#", $_POST['companyId']);
 			$companyName = explode("#-#", $_POST['companyName']);
@@ -17,7 +17,9 @@
 	<head>
 
 		<meta charset="utf-8">
-		<title>PAP | Student | <?php echo $page; ?></title>
+        
+        <!-- title of the page -->
+		<title>PAP | Student | Inbox</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -39,9 +41,11 @@
 	<body>
         
         <?php
+			# include the header of the page
         	include_once('head.php');
 		?>
         
+        <!-- background of the page -->
         <div class="body2"></div>
         
         <!-- space from header -->
@@ -50,54 +54,53 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-				<table class="table table-hover">
-                
-                    <colgroup>
-                    	<col></col>
-                        <col></col>
-                        <col></col>
-                        <col></col>
-                        <col></col>
-                    </colgroup>
-                    
-                	<thead>
-                    	<tr>
-                        	<th colspan="4"></th>
-                            <th>
-                            	<span class="glyphicon glyphicon-time"></span>
-                            </th>
-                        </tr>
-                    </thead>
-                    
-                    <!-- display all the mail received -->
-                    <tbody>
-
-                            <tr onClick="document.location='/controller/viewCompanyDetails?id=';">
-                                <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
-                                <td>Microsot India</td>
-                                <td>Something related to whatever they have to say including their details and the packages offered</td>
-                                <td>29 Mar</td>
-                                <td>2 Apr</td>
+            	<div class="well well-lg">
+                	<!-- table to display the mail -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="3"></th>
+                                <th>
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </th>
                             </tr>
+                        </thead>
                         
-                    </tbody>
-                </table>
+                        <!-- display all the mail received -->
+                        <tbody>
+                        <?php
+							# loop to display all the data in post
+							$c = count($companyId);
+							if($c == 0) {
+						?>
+                        		<tr>
+                                	<td colspan="4">No mail for you</td>
+                                </tr>
+						<?php
+							} else {
+								for($i=0 ; $i<$c ; $i++) {
+                        ?>
+                                    <tr onClick="document.location='/student/?p=viewCompanyDetails&id=<?php echo $companyId; ?>';">
+                                        <td><?php echo $companyName; ?></td>
+                                        <td><?php echo $message; ?></td>
+                                        <td><?php echo $status; ?></td>
+                                        <td><?php echo $date; ?></td>
+                                    </tr>
+                        <?php
+								}
+							}
+                        ?>
+                        </tbody>
+                    </table>
+				</div>
 			</div>
 		</div>
-
-        <script>
-			$(document).ready(function() {
-			    $('.table tr').click(function(event) {
-			        // select value and forward to the mail mail page
-			    });
-			});
-		</script>
-
 	</body>
 </html>
 
 <?php
-		}
+		} else
+			header("Location: /controller/inbox.php");
 	} else {
 		header("Location: /");
 	}

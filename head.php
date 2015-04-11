@@ -1,4 +1,5 @@
 <?php
+	# link and link name for the button to be displayed
 	if($page == "register") {
 		$name = "Login";
 		$link = "/";
@@ -11,10 +12,10 @@
 <!-- header division -->
 <header class="page-header">
 	
+    <!-- main navigation container -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
     	<div class="container">
         	<div class="row">
-            
             	<!-- branding implementation -->
             	<div class="col-sm-3">
 		        	<div class="navbar-header">
@@ -24,7 +25,6 @@
             
             	<div class="col-sm-6" style="margin-top: 10px;">
                 
-                	<!-- dynamix nav bar to be implemented -->
                 	<!-- search form -->
                 	<form method="get" action="controller/search.php">
 	                	<div class="input-group">
@@ -52,7 +52,6 @@
 	   	           		</a>
                     </div>
                 </div>
-                
             </div>
         </div>
     </nav>
