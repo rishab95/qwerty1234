@@ -1,14 +1,14 @@
 <?php
-	if(!empty($_SESSION['username'])) {
-		if(!isset($_POST['company'])) {
-			header("Location: /controller/inbox.php");
-		} else {
+#	if(!empty($_SESSION['username'])) {
+#		if(!isset($_POST['company'])) {
+#			header("Location: /controller/inbox.php");
+#		} else {
 			# retireve data from post
-			$companyId = explode("#-#", $_POST['companyId']);
-			$companyName = explode("#-#", $_POST['companyName']);
-			$message = explode("#-#", $_POST['message']);
-			$status = explode("#-#", $_POST['status']);
-			$date = explode("#-#", $_POST['date']);
+#			$companyId = explode("#-#", $_POST['companyId']);
+#			$companyName = explode("#-#", $_POST['companyName']);
+#			$message = explode("#-#", $_POST['message']);
+#			$status = explode("#-#", $_POST['status']);
+#			$date = explode("#-#", $_POST['date']);
 ?>
 
 <!doctype html>
@@ -50,38 +50,40 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-				<table class="table table-hover">
-                
-                    <colgroup>
-                    	<col></col>
-                        <col></col>
-                        <col></col>
-                        <col></col>
-                        <col></col>
-                    </colgroup>
+            	<div class="well well-lg">
+                    <table class="table table-hover">
                     
-                	<thead>
-                    	<tr>
-                        	<th colspan="4"></th>
-                            <th>
-                            	<span class="glyphicon glyphicon-time"></span>
-                            </th>
-                        </tr>
-                    </thead>
-                    
-                    <!-- display all the mail received -->
-                    <tbody>
-
-                            <tr onClick="document.location='/controller/viewCompanyDetails?id=';">
-                                <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
-                                <td>Microsot India</td>
-                                <td>Something related to whatever they have to say including their details and the packages offered</td>
-                                <td>29 Mar</td>
-                                <td>2 Apr</td>
-                            </tr>
+                        <colgroup>
+                            <col></col>
+                            <col></col>
+                            <col></col>
+                            <col></col>
+                            <col></col>
+                        </colgroup>
                         
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th colspan="4"></th>
+                                <th>
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        
+                        <!-- display all the mail received -->
+                        <tbody>
+    
+                                <tr onClick="document.location='/student/?p=viewCompanyDetails&id=';">
+                                    <td><input type="checkbox" class="checkbox" name="companyId" role="checkbox" /></td>
+                                    <td>Microsot India</td>
+                                    <td>Something related to whatever they have to say including their details and the packages offered</td>
+                                    <td>29 Mar</td>
+                                    <td>2 Apr</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+				</div>
 			</div>
 		</div>
 
@@ -97,8 +99,8 @@
 </html>
 
 <?php
-		}
-	} else {
-		header("Location: /");
-	}
+#		}
+#	} else {
+#		header("Location: /");
+#	}
 ?>
