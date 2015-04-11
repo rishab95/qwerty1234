@@ -101,7 +101,6 @@
 <?php
 		} else
 			header("Location: /controller/inbox.php");
-	} else {
+	} else
 		header("Location: /");
-	}
 ?>

@@ -32,8 +32,8 @@
 
 		<!-- meta characters to be inserted to increase searching -->
 		<meta charset="utf-8">
-        
-        <!-- title of the page -->
+
+	      <!-- title of the page -->
 		<title>PAP | Search</title>
 
 		<!-- Latest compiled and minified CSS -->
