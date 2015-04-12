@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2015 at 12:11 PM
+-- Generation Time: Apr 12, 2015 at 02:11 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -113,6 +113,13 @@ CREATE TABLE IF NOT EXISTS `auth` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `auth`
+--
+
+INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
+(101203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta21@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -141,24 +148,11 @@ CREATE TABLE IF NOT EXISTS `company` (
 
 CREATE TABLE IF NOT EXISTS `curricular_activity` (
   `activity_id` varchar(20) NOT NULL,
-  `roll_num` int(11) DEFAULT NULL,
+  `username` int(11) DEFAULT NULL,
   `activity_description` varchar(40) DEFAULT NULL,
+  `activity_from` date DEFAULT NULL,
+  `activity_to` date DEFAULT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `language`
---
-
-CREATE TABLE IF NOT EXISTS `language` (
-  `lang_id` varchar(15) NOT NULL,
-  `lang` varchar(10) DEFAULT NULL,
-  `lang_read` tinyint(4) DEFAULT NULL,
-  `lang_write` tinyint(4) DEFAULT NULL,
-  `lang_speak` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`lang_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -177,6 +171,21 @@ CREATE TABLE IF NOT EXISTS `other_info` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project`
+--
+
+CREATE TABLE IF NOT EXISTS `project` (
+  `project_id` varchar(20) NOT NULL,
+  `username` int(11) DEFAULT NULL,
+  `project_description` varchar(40) DEFAULT NULL,
+  `project_from` date DEFAULT NULL,
+  `project_to` date DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schedule`
 --
 
@@ -187,6 +196,13 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `time` time DEFAULT NULL,
   `event_descp` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`company_id`, `date`, `venue`, `time`, `event_descp`) VALUES
+(100, '2031-01-15', 'ccct lab', '07:00:00', 'test');
 
 -- --------------------------------------------------------
 
@@ -223,9 +239,13 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 CREATE TABLE IF NOT EXISTS `student_language` (
-  `lang_id` varchar(15) NOT NULL DEFAULT '',
   `username` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`lang_id`,`username`)
+  `lang_name` varchar(10) NOT NULL DEFAULT '',
+  `lang_understand` tinyint(1) DEFAULT NULL,
+  `lang_read` tinyint(1) DEFAULT NULL,
+  `lang_write` tinyint(1) DEFAULT NULL,
+  `lang_speak` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`lang_name`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -249,32 +269,8 @@ CREATE TABLE IF NOT EXISTS `student_telephone` (
 CREATE TABLE IF NOT EXISTS `stu_eligible` (
   `company_id` int(11) NOT NULL DEFAULT '0',
   `username` int(11) NOT NULL DEFAULT '0',
+  `applied` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`company_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stu_interested`
---
-
-CREATE TABLE IF NOT EXISTS `stu_interested` (
-  `company_id` int(11) NOT NULL DEFAULT '0',
-  `username` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`company_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `summer_project`
---
-
-CREATE TABLE IF NOT EXISTS `summer_project` (
-  `project_id` varchar(20) NOT NULL,
-  `username` int(11) DEFAULT NULL,
-  `project_description` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
