@@ -12,22 +12,29 @@
 		<title>PAP | Login</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
         
         <!-- Latest complied and minified JQuery -->
-        <script src="bootstrap/jquery-2.1.3.min.js"></script>
+        <script src="../bootstrap/jquery-2.1.3.min.js"></script>
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="../images/logo.ico">
+        
+        <!-- script to submit the form on document ready -->
+        <script>
+			$(document).ready(function() {
+				$('#dataForm').submit();
+            });
+		</script>
     
 	</head>
 
@@ -86,11 +93,11 @@
 	
     	<div>
         	<!-- transfer data over post -->
-			<form id="myform" method="post" action="/">
+			<form id="dataForm" method="post" action="/">
             	<input type="hidden" name="companyId" value="<?php echo $companyId; ?>">
 				<input type="hidden" name="companyName" value="<?php echo $companyName; ?>" />
                 <input type="hidden" name="message" value="<?php echo $message; ?>" />
-                <!--<input type="hidden" name="status" value="<?php #echo $status; ?>" /> -->
+                <input type="hidden" name="status" value="<?php echo $status; ?>" />
                 <input type="hidden" name="date" value="<?php echo $date; ?>" />
 			</form>
             
@@ -100,14 +107,6 @@
                 <img src="../images/loading.gif" alt="Loading" height="30"/>
             </div>     
 		</div>
-        
-        <!-- script to submit the form on document ready -->
-        <script>
-			$( document ).ready(function() {
-				$("form").submit();
-			});
-		</script>
-        
 	</body>
 </html>
 
