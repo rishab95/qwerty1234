@@ -59,10 +59,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th colspan="3"></th>
-                                <th>
-                                    <span class="glyphicon glyphicon-time"></span>
-                                </th>
+                                <th>Company Name</th>
+                                <th>Message</th>
+                                <th>Applied?</th>
+                                <th>Last Date</th>
                             </tr>
                         </thead>
                         

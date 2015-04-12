@@ -57,16 +57,18 @@
 	$date = array();
 	
 	# mysql query to retrieve inbox data for $username
-	$query = "SELECT company_id, company_name, company_profile, last_date FROM company
-		WHERE company_id IN SELECT company_id FROM stu_eligible WHERE username = '$username';";
-	#$result=$conn->query($query);
+	$query = "SELECT c.company_id, c.company_name, c.company_profile, se.applied, c.last_date
+				FROM company c, stu_eligible se;
+				WHERE c.company_id IN SELECT company_id FROM stu_eligible WHERE username = '$username'
+				AND c.company_id = se.company_id;";
 	
 	if ($result=mysqli_query($conn,$query)) {
 		while($rows=mysqli_fetch_row($result)) {
 			$companyId.append($row[0]);
 			$companyName.append($row[1]);
 			$message.append($row[2]); 
-			$status.append($row[3]);
+			# convert status value to string
+			$status.append(($row[3]==1)?"Applied":"Not Applied");
 			# convert date in format and then attach to array [4 Aug]
 			$date.append(date("d M", strtotime($row[4])));
 		}
