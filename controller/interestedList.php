@@ -51,7 +51,8 @@
 	if ($conn->connect_error) {
     	# die("Connection failed: " . $conn->connect_error);
 	} else {
-		$query = "SELECT username, name, branch, cgpa FROM student WHERE username IN SELECT username FROM 				                    stu_interested WHERE company_id = '$username';";		
+		$query = "SELECT username, name, branch, cgpa FROM student WHERE username IN SELECT username FROM stu_eligible WHERE
+				'company_id'='$username' AND applied=1;";		
 		$roll = array();
 		$name = array();
 		$branch = array();
