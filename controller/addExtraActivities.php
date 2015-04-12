@@ -44,8 +44,8 @@
 		$username = $_SESSION['username'];
 		
 		# obtain form data
-		if(!empty($_POST['desc'])) {
-			$desc = $_POST['desc'];
+		if(!empty($_POST['descp'])) {
+			$desc = $_POST['descp'];
 		} else {
 			# form not filled correctly	
 			echo "<input type='hidden' name='descError' value='Description can not be empty'>";
@@ -64,7 +64,7 @@
 		}
 		
 		# perform validations
-		if (empty($_POST["desc"])) {
+		if (empty($_POST["descp"])) {
 			# invalid data
 		}
 		# validate date
@@ -80,7 +80,7 @@
 		}
 		
 		# mysql queries to check for registration in the database table
-		# $query = "";
+		 $query = "INSERT INTO curricular_activity VALUES ('',$username,'$desc','$from','$to');";
 	
 		if($conn->query($query)==True) {
 			# data successfully entered

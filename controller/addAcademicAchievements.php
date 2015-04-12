@@ -44,21 +44,21 @@
 		$username = $_SESSION['username'];
 		
 		# obtain form data
-		if(!empty($_POST['desc'])) {
-			$desc = $_POST['desc'];
+		if(!empty($_POST['descp'])) {
+			$desc = $_POST['descp'];
 		} else {
 			# form not filled correctly	
 			echo "<input type='hidden' name='descError' value='Description can not be empty'>";
 		}
-		if(!empty($_POST['date'])) {
+		/* if(!empty($_POST['date'])) {
 			$desc = $_POST['date'];
 		} else {
 			# form not filled correctly	
 			echo "<input type='hidden' name='dateError' value='Date can not be empty'>";
-		}
+		}*/
 		
 		# perform validations
-		if (empty($_POST["desc"])) {
+		if (empty($_POST["descp"])) {
 			# invalid data
 		}
 		# validate date
@@ -74,7 +74,7 @@
 		}
 		
 		# mysql queries to check for registration in the database table
-		# $query = "";
+		 $query = "INSERT INTO acad_achieve VALUES ('',$username,'$descp');";
 	
 		if($conn->query($query)==True) {
 			# data successfully entered

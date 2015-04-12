@@ -87,7 +87,7 @@
 			#die("connection failed") mysql_error()
 		}
 		
-		# $query = "";
+		$query = "INSERT INTO student_language VALUES ($username,'$language',$understand,$read,$write,$speak);";
 	
 		if($conn->query($query)==True) {
 			# data successfully entered

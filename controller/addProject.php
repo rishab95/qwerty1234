@@ -64,7 +64,7 @@
 		}
 		
 		# perform validations
-		if (empty($_POST["desc"])) {
+		if (empty($_POST["descp"])) {
 			# invalid data
 		}
 		# validate date
@@ -80,7 +80,7 @@
 		}
 		
 		# mysql queries to check for registration in the database table
-		# $query = "";
+		 $query = "INSERT INTO project VALUES ('',$username,'$descp','$from','$to');";
 	
 		if($conn->query($query)==True) {
 			# data successfully entered
