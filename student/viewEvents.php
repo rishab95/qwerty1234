@@ -1,7 +1,6 @@
 <?php
 	session_start();
-	if(!empty($_SESSION['username'])) {
-					
+	if(!empty($_SESSION['username'])) {					
 		# process data before display
 		if(!empty($_POST)) {
 			if(isset($_POST['company']) && isset($_POST['event']) && isset($_POST['venue']) && isset($_POST['date']) && isset($_POST['time']) ) {
@@ -52,6 +51,7 @@
 		<div class="container">
         	<div class="row">
             	<div class="well well-lg">
+                	<!-- table to display all the schedule/timeline -->
                     <table class="table table-striped">
                       
                         <thead>

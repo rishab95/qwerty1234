@@ -49,31 +49,34 @@
 		#die("connection failed") mysql_error()
 	}
 	
-	$companyId=array();
-	$companyName=array();
-	$message=array();
-	$date=array();
+	# initialize the output variables
+	$companyId = array();
+	$companyName = array();
+	$message = array();
+	$status = array();
+	$date = array();
 	
 	# mysql query to retrieve inbox data for $username
 	$query = "SELECT company_id, company_name, company_profile, last_date FROM company
 		WHERE company_id IN SELECT company_id FROM stu_eligible WHERE username = '$username';";
 	#$result=$conn->query($query);
 	
-	if ($result=mysqli_query($conn,$query)){
-		while($rows=mysqli_fetch_row($result)){	
-			$companyId=$row[0];
-			$companyName=$row[1];
-			$message=$row[2]; 
-			$date=$row[3];
-			}
+	if ($result=mysqli_query($conn,$query)) {
+		while($rows=mysqli_fetch_row($result)) {
+			$companyId.append($row[0]);
+			$companyName.append($row[1]);
+			$message.append($row[2]); 
+			$status.append($row[3]);
+			# convert date in format and then attach to array [4 Aug]
+			$date.append(date("d M", strtotime($row[4])));
+		}
 	}
-	# conversion of date to [31 Mar]
 	
 	# coversion of data to string for transfer over post
 	$companyId = implode("#-#", $companyId);
 	$companyName = implode("#-#", $companyName);
 	$message = implode("#-#", $message);
-	#$status = implode("#-#", $status);
+	$status = implode("#-#", $status);
 	$date = implode("#-#", $date);
 	
 	# conversion of companyId by symmetric cipher
@@ -98,14 +101,9 @@
         
         <!-- script to submit the form on document ready -->
         <script>
-			/*$( document ).ready(function() {
+			$( document ).ready(function() {
 				$("form").submit();
-			});*/
-			function submitForm()
-			{
-				document.myform.submit();
-			}
-			
+			});
 		</script>
         
 	</body>

@@ -22,7 +22,9 @@
         
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
-    
+        
+        <!-- link to the effects JQuery file -->
+        <script src="js/effects.js"></script>
 	</head>
 
 	<body>

@@ -3,9 +3,12 @@
 	if($page == "register") {
 		$name = "Login";
 		$link = "/";
-	} else {
+	} else if($page == 'login'){
 		$name = "Register";
 		$link = "/?register=1";
+	} else {
+		$name = "Login";
+		$link = "/";
 	}
 ?>
 
@@ -46,7 +49,7 @@
                 	<div class="pull-right" style="margin-top: 10px;">
                        	<a href="<?php echo $link; ?>">
 
-    			           	<button class="btn btn-primary navbar-btn pull-right" type="button">
+    			           	<button class="btn btn-primary navbar-btn pull-right" type="button" id="mainHeadToggleButton">
         	   		           	<span class="glyphicon glyphicon-user"></span> <?php echo $name; ?>
     	           	        </button>
 	   	           		</a>

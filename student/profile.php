@@ -1,9 +1,9 @@
 <?php
-	session_start();
+#	session_start();
 	# check if user logged in
-	if( !empty($_SESSION['username']) ) {
+#	if( !empty($_SESSION['username']) ) {
 		# check if data available to display
-		if( true /* condition */ ) {
+#		if( true /* condition */ ) {
 ?>
 
 <!doctype html>
@@ -35,7 +35,7 @@
     
     	<?php
 			# include the header of the page
-			include_once('head.php');
+#			include_once('head.php');
 		?>
 
 
@@ -49,80 +49,77 @@
         
         <?php
 			# obtain data of for display
-			$roll = $_SESSION['username'];
-			$name = $_POST['name'];
-			$dob = $_POST['dob'];
-			$age = $_POST['age'];
-			$citizenship = $_POST['citizenship'];
-			$sex = $_POST['sex'];
-			$currAddr = $_POST['currAddr'];
-			$currCity = $_POST['currCity'];
-			$currState = $_POST['currState'];
-			$currPin = $_POST['currPin'];
-			$currTele = $_POST['currTele'];
-			$perAdrr = $_POST['perAddr'];
-			$perCity = $_POST['perCity'];
-			$perState = $_POST['perState'];
-			$perPin = $_POST['perPin'];
-			$perTele = $_POST['perTele'];
-			$email = $_POST['email'];
-			$fname = $_POST['fname'];
-			$foccu = $_POST['foccu'];
-			$mname = $_POST['mname'];
-			$moccu = $_POST['moccu'];
+#			$roll = $_SESSION['username'];
+#			$name = $_POST['name'];
+#			$dob = $_POST['dob'];
+#			$age = $_POST['age'];
+#			$citizenship = $_POST['citizenship'];
+#			$sex = $_POST['sex'];
+#			$currAddr = $_POST['currAddr'];
+#			$currCity = $_POST['currCity'];
+#			$currState = $_POST['currState'];
+#			$currPin = $_POST['currPin'];
+#			$currTele = $_POST['currTele'];
+#			$perAdrr = $_POST['perAddr'];
+#			$perCity = $_POST['perCity'];
+#			$perState = $_POST['perState'];
+#			$perPin = $_POST['perPin'];
+#			$perTele = $_POST['perTele'];
+#			$email = $_POST['email'];
+#			$fname = $_POST['fname'];
+#			$foccu = $_POST['foccu'];
+#			$mname = $_POST['mname'];
+#			$moccu = $_POST['moccu'];
         ?>
         
-            <div class="col-md-6">
-                <div class="well well-lg">
-					<h4>Personal Information</h4>
-                    
-                    <div class="divider"></div>
-                    
-                    <div class="row">
-                    	<!-- profile picture -->
-                    	<div class="col-md-4">
-                            <img src="images/<?php echo $roll; ?>.png" width="100%">
-                        </div>
+        <div class="col-md-6">
+        	<div class="well well-lg">
+				<h4>Personal Information</h4>
+                <div class="divider"></div>
+                <div class="row">
+                  	<!-- profile picture -->
+                   	<div class="col-md-4">
+                	    <img src="images/<?php #echo $roll; ?>.png" width="100%">
+                    </div>
                         
-                        <!-- full name -->
-                        <div class="col-md-8 detailsData">
-                            <div class="col-xs-5">
-                                <label>Full Name</label>
-                            </div>
-                            <div class="col-xs-7"><?php echo $name; ?></div>
-                        </div>
+					<!-- full name -->
+					<div class="col-md-8 detailsData">
+						<div class="col-xs-5">
+							<label>Full Name</label>
+						</div>
+						<div class="col-xs-7"><?php #echo $name; ?></div>
+					</div>
                         
-                        <!-- date of birth -->
-                        <div class="col-md-8 detailsData">
-                            <div class="col-xs-5">
-                                <label>Date of Birth</label>
-                            </div>
-                            <div class="col-xs-7"><?php echo $dob; ?></div>
+					<!-- date of birth -->
+					<div class="col-md-8 detailsData">
+						<div class="col-xs-5">
+                        	<label>Date of Birth</label>
                         </div>
+                    	<div class="col-xs-7"><?php #echo $dob; ?></div>
+                    </div>
                         
-                        <!-- age -->
-                        <div class="col-md-8 detailsData">
-                            <div class="col-xs-5">
-                                <label>Age</label>
-                            </div>
-                            <div class="col-xs-7"><?php echo $age; ?></div>
+                    <!-- age -->
+                    <div class="col-md-8 detailsData">
+                    	<div class="col-xs-5">
+                        	<label>Age</label>
                         </div>
+                        <div class="col-xs-7"><?php #echo $age; ?></div>
+                    </div>
                         
-                        <!-- citizenship -->
-                        <div class="col-md-8 detailsData">
-                            <div class="col-xs-5">
-                                <label>Citizenship</label>
-                            </div>
-                            <div class="col-xs-7"><?php echo $citizenship; ?></div>
+                    <!-- citizenship -->
+                    <div class="col-md-8 detailsData">
+                    	<div class="col-xs-5">
+                        	<label>Citizenship</label>
                         </div>
+                        <div class="col-xs-7"><?php #echo $citizenship; ?></div>
+                    </div>
                         
-                        <!-- gender -->
-                        <div class="col-md-8 detailsData">
-                            <div class="col-xs-5">
-                                <label>Gender</label>
-                            </div>
-                            <div class="col-xs-7"><?php echo $sex; ?></div>
+                    <!-- gender -->
+                    <div class="col-md-8 detailsData">
+                    	<div class="col-xs-5">
+                        	<label>Gender</label>
                         </div>
+                        <div class="col-xs-7"><?php #echo $sex; ?></div>
                     </div>
         			
                     <!-- currect address -->
@@ -131,19 +128,19 @@
                             <div class="col-xs-5">
                                 <label>Corresponding Address</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $currAddr; ?></div>
+                            <div class="col-xs-7"><?php #echo $currAddr; ?></div>
                         </div>
                         
                         <!-- cite, state, pin -->
                         <div class="row">
                             <div class="col-xs-5">
-                                <label>City</label>: <?php echo $currCity; ?>
+                                <label>City</label>: <?php #echo $currCity; ?>
                             </div>
                             <div class="col-xs-4">
-                                <label>State</label>: <?php echo $currState; ?>
+                                <label>State</label>: <?php #echo $currState; ?>
                             </div>
                             <div class="col-xs-3">
-                                <label>Pin</label>: <?php echo $currPin; ?>
+                                <label>Pin</label>: <?php #echo $currPin; ?>
                             </div>
                         </div>
                     </div>
@@ -154,7 +151,7 @@
                             <div class="col-xs-5">
                                 <label>Telephone Numbers</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $currTele; ?></div>
+                            <div class="col-xs-7"><?php #echo $currTele; ?></div>
                         </div>
                     </div>                        
                     
@@ -164,19 +161,19 @@
                             <div class="col-xs-5">
                                 <label>Permanent Address</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $perAddr; ?></div>
+                            <div class="col-xs-7"><?php #echo $perAddr; ?></div>
                         </div>
                         
                         <!-- city, state, pin -->
                         <div class="row">
                             <div class="col-xs-5">
-                                <label>City</label>: <?php echo $perCity; ?>
+                                <label>City</label>: <?php #echo $perCity; ?>
                             </div>
                             <div class="col-xs-4">
-                                <label>State</label>: <?php echo $perState; ?>
+                                <label>State</label>: <?php #echo $perState; ?>
                             </div>
                             <div class="col-xs-3">
-                                <label>Pin</label>: <?php echo $perPin; ?>
+                                <label>Pin</label>: <?php #echo $perPin; ?>
                             </div>
                         </div>
                                 
@@ -188,7 +185,7 @@
                             <div class="col-xs-5">
                                 <label>Telephone Numbers</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $perTele; ?></div>
+                            <div class="col-xs-7"><?php #echo $perTele; ?></div>
                         </div>
                     </div>
                     
@@ -198,7 +195,7 @@
                             <div class="col-xs-5">
                                 <label>E-mail ID</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $email; ?></div>
+                            <div class="col-xs-7"><?php #echo $email; ?></div>
                         </div>
                     </div>
                     
@@ -208,14 +205,14 @@
                             <div class="col-xs-5">
                                 <label>Father's/Guardian's Name</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $fname; ?></div>
+                            <div class="col-xs-7"><?php #echo $fname; ?></div>
                         </div>
                                     
                         <div class="row">
                             <div class="col-xs-5">
                                 <label>& Occupation</label>
                             </div>
-                            <div class="col-xs-7"><?php echo $foccu; ?></div>
+                            <div class="col-xs-7"><?php #echo $foccu; ?></div>
                         </div>
                     </div>
                     
@@ -225,14 +222,14 @@
     	                    <div class="col-xs-5">
         	                    <label>Mother's Name</label>
             	            </div>
-                	        <div class="col-xs-7"><?php echo $mname; ?></div>
+                	        <div class="col-xs-7"><?php #echo $mname; ?></div>
                     	</div>
                                     
 	                    <div class="row">
     	                    <div class="col-xs-5">
         	                    <label>& Occupation</label>
             	            </div>
-                	        <div class="col-xs-7"><?php echo $moccu; ?></div>
+                	        <div class="col-xs-7"><?php #echo $moccu; ?></div>
                     	</div>            
                 	</div>
 				</div>
@@ -303,9 +300,7 @@
                         </tbody>
                                             
                     </table>
-                    
-                </div>
-                            
+                </div>         
             </div>
 	    </div>
     
@@ -372,87 +367,82 @@
                     
     <div class="col-md-6">
     	<div class="well well-lg">
-                    
-                    	<div>
-							<h4>Bachelor of Engineering (B.E/B.Tech), Graduation:</h4>
-                        </div>
-                        
-                        <div class="divider"></div>
-                        
-                        <table class="table table-bordered">
-                        
-                        	<thead>
-                            	<tr>
-	                            	<th>Examination<br>Passed</th>
-    	                            <th>Univ./Board</th>
-        	                        <th>Year of<br>Passing</th>
-                                    <th>Maximum<br>Marks/CGPA</th>
-                                    <th>Marks/CGPA<br>Obtained</th>
-                                    <th>%age/CGPA</th>
-                                    <th>Division</th>
-                                </tr>
-                            </thead>
+			<h4>Bachelor of Engineering (B.E/B.Tech), Graduation:</h4>
+            
+            <div class="divider"></div>
+            
+            <table class="table table-bordered">
+            	<thead>
+                	<tr>
+                    	<th>Examination<br>Passed</th>
+						<th>Univ./Board</th>
+        	            <th>Year of<br>Passing</th>
+                        <th>Maximum<br>Marks/CGPA</th>
+                        <th>Marks/CGPA<br>Obtained</th>
+                        <th>%age/CGPA</th>
+                        <th>Division</th>
+                    </tr>
+				</thead>
                             
-                            <tbody>
-                            
-                            	<tr>
-                                	<td>1st Semester</td>
-                                    <td rowspan="8"></td>
-                                    <td>2013</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                <tbody>
+                	<tr>
+                    	<td>1st Semester</td>
+                        <td rowspan="8"></td>
+                        <td>2013</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+					</tr>
                                 
-                                <tr>
-                                	<td>2nd Semester</td>
-                                    <td>2013</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                    <tr>
+                    	<td>2nd Semester</td>
+                        <td>2013</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+					</tr>
                                 
-                                <tr>
-                                	<td>3rd Semester</td>
-                                    <td>2014</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                    <tr>
+                    	<td>3rd Semester</td>
+                        <td>2014</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+                    </tr>
                                 
-                                <tr>
-                                	<td>4th Semester</td>
-                                    <td>2014</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                    <tr>
+                    	<td>4th Semester</td>
+                        <td>2014</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+					</tr>
                                 
-                                <tr>
-                                	<td>5th Semester</td>
-                                    <td>2015</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                    <tr>
+                    	<td>5th Semester</td>
+                        <td>2015</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+                    </tr>
                                 
-                                <tr>
-                                	<td>6th Semester</td>
-                                    <td>2015</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td>7.73</td>
-                                    <td></td>
-                                </tr>
+                    <tr>
+                    	<td>6th Semester</td>
+                        <td>2015</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td>7.73</td>
+                        <td></td>
+                    </tr>
                                 
-                                <tr>
-                                	<td>7th Semester</td>
-                                    <td>2016</td>
+                    <tr>
+                    	<td>7th Semester</td>
+                        <td>2016</td>
                                     <td>7.73</td>
                                     <td>7.73</td>
                                     <td>7.73</td>
@@ -502,7 +492,7 @@
                             
                             	<tr>
                                 	<td>1st Semester</td>
-                                    <td rowspan="4"></td>
+                                    <td rowspan="6"></td>
                                     <td>2013</td>
                                     <td>7.73</td>
                                     <td>7.73</td>
@@ -698,8 +688,8 @@
 </html>
 
 <?php
-		} else
-			header("Location: /controller/interestedList.php");
-	} else
-		header("Location: /");
+#		} else
+#			header("Location: /controller/interestedList.php");
+#	} else
+#		header("Location: /");
 ?>
