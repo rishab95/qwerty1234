@@ -13,10 +13,12 @@
 				case 'timeline':
 					# return timeline operation
 					$link = "viewTimeline";
+					$username = "0 or 1=1";
 					break;
 				default:
 					# retrun timeline operation
 					$link = "viewTimeline";
+					$username = "0 or 1=1";
 					break;
 			}
 		}
@@ -39,12 +41,11 @@
 			
 			# mysql query to retrieve inbox data for $username
 			$query = "SELECT cd.company_name, s.event_descp, s.venue, s.date, s.time
-					FROM schedule s, company cd
-					WHERE s.company_id IN SELECT company_id FROM stu_interested WHERE username = '$username'
-					AND cd.company_id = s.company_id;";
-					
-			if ($result=mysqli_query($conn,$query)){
-				while($rows=mysqli_fetch_row($result)) {
+					FROM stu_schedule s, company cd, stu_eligible se
+					WHERE se.company_id = s.company_id AND se.applied=1 AND se.username = $username;";
+					 
+			if ($result = mysqli_query($conn,$query)){
+				while($row = mysqli_fetch_row($result)) {
 					array_push($out,
 						array(
 							'company' => $row[0],
