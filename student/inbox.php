@@ -29,7 +29,7 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
-        <!-- script to use JSON to view output -->
+        <!-- script to use JSON and ajax to view output -->
     	<script>
 			// ajax call
 			var xmlhttp;
@@ -76,7 +76,7 @@
 					html_out += "</tbody>"+
 						"</table>";
 				} else {
-					html_out += "<tr><td></td><td colspan='2'>No mail for you</td><td></td></tr>";
+					html_out += "<div style='text-align: center;'>No mail for you</div>";
 				}
 				$("#inboxDiv").html(html_out);
 			}

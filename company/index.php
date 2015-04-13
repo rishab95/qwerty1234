@@ -27,111 +27,65 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
-            
-	</head>
-
-	<body>
         
-        <?php
-        	include_once('head.php');
-		?>
-        
-        <div class="body2"></div>
-        
-        <!-- space from header -->
-        <div style="margin-top: 40px;"></div>
-        
-        <!-- main container for displaying mail -->
-		<div class="container">
-        	<div class="row">
-
-                <div class="col-lg-6" id="detailsContainer">
-                	<div class="well well-lg">Please click on student for details</div>
-                </div>            	
-
-            	<div class="col-lg-6">
-	                <div class="well-lg well">
-                    
-                       	<div class="form-group">
-       			        	<div class="input-group">
-                   				<input type="search" class="form-control" placeholder="Search" id="search" />
-	                            <span class="input-group-btn">
-      			                	<button class="btn btn-group" type="submit">
-                   		        		<span class="glyphicon glyphicon-search"></span>
-                           			</button>
-                       			</span>
-                    		</div>
-						</div>
-                    
-                    	<?php
-                        	# obtain data from post with conversion
-#							$rolls = explode("#-#", $_POST['roll']);
-#							$names = explode("#-#" , $_POST['name']);
-#							$branchs = explode("#-#", $_POST['branch']);
-#							$cgpas = explode("#-#", $_POST['cgpa']);
-						?>
-                    
-                        <table class="table table-hover" id="tblData">
-                        
-                        	<colgroup>
-                            	<col width="10">
-                            </colgroup>
-                        
-                            <thead>
-                                <tr>
-                                	<th></th>
-                                    <th>Roll Number</th>
-                                    <th>Full Name</th>
-                                    <th>Branch</th>
-                                    <th>CGPA</th>
-                                </tr>
-                            </thead>
-                            
-                            <!-- display all the interested students -->
-                            <tbody>
-                            
-                       	    <?php
-								# populating the table
-#								foreach($names as $name) {
-                            ?>
-							
-                                    <tr onClick="loadDetails('101203081');">
-                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
-                                        <td>101203053</td>
-                                        <td>Preet Bandhan Kaur</td>
-                                        <td>EIC</td>
-                                        <td>6.98</td>
-                                    </tr>
-                                    
-                             <?php
-#								}
-							 ?>
-                                    
-                                    <tr onClick="loadDetails('101203081');">
-                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
-                                        <td>101203081</td>
-                                        <td>Rohit Saluja</td>
-                                        <td>COE</td>
-                                        <td>6.98</td>
-                                    </tr>
-
-                                    <tr onClick="loadDetails('101203081');">
-                                    	<td><span class="glyphicon glyphicon-chevron-left"></span></td>
-                                        <td>101203075</td>
-                                        <td>Prisha Gupta</td>
-                                        <td>COE</td>
-                                        <td>7.0</td>
-                                    </tr>
-                                
-                            </tbody>
-                        </table>
-	                </div>
-                </div>
-                
-			</div>
-		</div>
-
+        <!-- script to use JSON and ajax to view output -->
         <script>
+			// ajax call to display the interested student list
+			var xmlhttp1;
+			if (window.XMLHttpRequest)
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp1 = new XMLHttpRequest();
+			else
+				// code for IE6, IE5
+				xmlhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
+			xmlhttp1.onreadystatechange = function() {
+				if (xmlhttp1.readyState==4 && xmlhttp1.status==200)
+					var arr1 = JSON.parse(xmlhttp1.responseText);
+					interestedStudentDisplay(arr1);
+			}
+			xmlhttp.open("POST", "/controller/interestedList.php", true);
+			xmlhttp.send();	
+
+			// function for html output
+			function interestedStudentDisplay(arr) {
+				var html_out = "";
+				if(arr.length>0) {
+					html_out += "<!-- table to display the mail -->";
+					html_out += "<table class='table table-striped'>"+
+					        "<colgroup>"+
+								"<col width='10'>"+
+                            "</colgroup>"+
+							"<thead>"+
+								"<tr>"+
+									"<th></th>"+
+									"<th>Roll Number</th>"+
+									"<th>Name</th>"+
+									"<th>Branch</th>"+
+									"<th>CGPA</th>"+
+								"</tr>"+
+							"</thead>"+
+								
+							"<!-- display all the schedule -->"+
+							"<tbody>";
+					var i;
+					for(i=0; i<arr.length; i++) {
+						html_out += "<tr onClick=\"loadDetails("+arr[i].roll+")\">";
+						html_out += "<td><span class='glyphicon glyphicon-chevron-left'></span></td>";
+						html_out += "<td>"+arr[i].roll+"</td>";
+						html_out += "<td>"+arr[i].name+"</td>";
+						html_out += "<td>"+arr[i].branch+"</td>";
+						html_out += "<td>"+arr[i].cgpa+"</td>";
+						html_out += "</tr>";
+					}
+					html_out += "</tbody>"+
+						"</table>";
+				} else {
+					html_out += "<div style='text-align: center;'>No on has applied</div>";
+				}
+				$("#interestedStudentListDiv").html(html_out);
+			}
+			
+			// function to load deatils of the selected student
 			function loadDetails($roll) {
 				$.post("/company/viewStuDetails.php", {
 					ajax: '1',
@@ -140,7 +94,8 @@
 					$('#detailsContainer').html($response);
 				});
 			}
-			
+        
+			// script to search in table load details using ajax
 			$(document).ready(function() {
 				$('#search').keyup(function() {
 					searchTable($(this).val());
@@ -160,12 +115,61 @@
 								return false;
 							}
 						});
-						if(found == true)$(row).show();else $(row).hide();
+						if(found == true)
+							$(row).show();
+						else
+							$(row).hide();
 					}
 				});
 			}
 		</script>
 
+            
+	</head>
+
+	<body>
+        
+        <?php
+        	include_once('head.php');
+		?>
+        
+        <div class="body2"></div>
+        
+        <!-- space from header -->
+        <div style="margin-top: 40px;"></div>
+        
+        <!-- main container for displaying mail -->
+		<div class="container">
+        	<div class="row">
+
+                <div class="col-lg-6" id="detailsContainer">
+                	<div class="well well-lg">
+                    	Please click on student for details
+                    </div>
+                </div>            	
+
+            	<div class="col-lg-6">
+	                <div class="well-lg well">
+                       	<div class="form-group">
+       			        	<div class="input-group">
+                   				<input type="search" class="form-control" placeholder="Search" id="search" />
+	                            <span class="input-group-btn">
+      			                	<button class="btn btn-group" type="submit">
+                   		        		<span class="glyphicon glyphicon-search"></span>
+                           			</button>
+                       			</span>
+                    		</div>
+						</div>
+                    
+                    	<div id="interestedStudentListDiv">
+							<h2>Loading</h2>
+		           		    <img src="../images/loading.gif" alt="Loading" height="30"/>
+						</div>
+	                </div>
+                </div>
+                
+			</div>
+		</div>
 	</body>
 </html>
 
