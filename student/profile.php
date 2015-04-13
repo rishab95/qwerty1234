@@ -1,9 +1,8 @@
 <?php
-#	session_start();
+#	if(session_status() == PHP_SESSION_NONE)
+#		session_start();
 	# check if user logged in
 #	if( !empty($_SESSION['username']) ) {
-		# check if data available to display
-#		if( true /* condition */ ) {
 ?>
 
 <!doctype html>
@@ -35,7 +34,7 @@
     
     	<?php
 			# include the header of the page
-#			include_once('head.php');
+			include_once('head.php');
 		?>
 
 

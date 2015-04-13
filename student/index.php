@@ -9,15 +9,11 @@
 			# display corresponding pages as requested
 			if(!empty($_GET['p'])) {
 				switch($_GET['p']) {
-					case 'inbox':
-						include_once('inbox.php');
+					case 'home':
+						include_once('home.php');
 						break;
 					case 'viewTimeline':
-						$page = 'timeline';
-					case 'viewSchedule':
-						if($page != 'timeline')
-							$page = 'schedule';
-						include_once('viewEvents.php'); 
+						include_once('viewTimeline.php'); 
 						break;
 					case 'viewCompanyDetails':
 						include_once('viewCompanyDetails.php');
@@ -26,13 +22,13 @@
 						include_once('profile.php');
 						break;
 					default:
-						include_once('inbox.php');
+						include_once('home.php');
 						break;
 				}
 			} else
-				include_once('inbox.php');
+				include_once('home.php');
 		} else
-				include_once('inbox.php');
+				include_once('home.php');
 	} else
 		header("Location: /");
 ?>

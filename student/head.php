@@ -45,17 +45,9 @@
                     </li>
                     
                     <li>
-                    	<a href="/student/?p=viewSchedule">
+                    	<a href="/student/">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-calendar"></span> Schedule
-               		        </button>
-   	            		</a>
-                    </li>
-                    
-                    <li>
-                    	<a href="/student/?p=inbox">
-    		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-inbox"></span> Inbox
+           		            	<span class="glyphicon glyphicon-home"></span> Home
                		        </button>
    	            		</a>
                     </li>

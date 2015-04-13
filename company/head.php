@@ -26,7 +26,7 @@
                             </span>
                         </div>
                     </li>
-                    
+					
                     <li>
                     	<a href="/controller/logout.php">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">

@@ -31,16 +31,16 @@
         <!-- script to use JSON and ajax to view output -->
         <script>
 			// ajax call to display the interested student list
-			var xmlhttp1;
+			var xmlhttp;
 			if (window.XMLHttpRequest)
 				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp1 = new XMLHttpRequest();
+				xmlhttp = new XMLHttpRequest();
 			else
 				// code for IE6, IE5
-				xmlhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			xmlhttp1.onreadystatechange = function() {
-				if (xmlhttp1.readyState==4 && xmlhttp1.status==200)
-					var arr1 = JSON.parse(xmlhttp1.responseText);
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					var arr1 = JSON.parse(xmlhttp.responseText);
 					interestedStudentDisplay(arr1);
 			}
 			xmlhttp.open("POST", "/controller/interestedList.php", true);
@@ -86,10 +86,9 @@
 			}
 			
 			// function to load deatils of the selected student
-			function loadDetails($roll) {
+			function loadDetails(roll) {
 				$.post("/company/viewStuDetails.php", {
-					ajax: '1',
-					roll: $roll,
+					'roll': roll,
 				}, function($response) {
 					$('#detailsContainer').html($response);
 				});
