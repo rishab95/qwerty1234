@@ -1,6 +1,7 @@
 <?php
 	# check if the page is legitimately open
-	session_start();
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
 	if(!empty($_SESSION['username'])) {
 		# obtaining any get values that exist
 		if(!empty($_GET)) {

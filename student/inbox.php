@@ -1,14 +1,7 @@
 <?php
-	session_start();
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
 	if(!empty($_SESSION['username'])) {
-		# check if data to be displayed has been received
-		if(isset($_POST['companyId']) && isset($_POST['companyName']) && isset($_POST['message']) && isset($_POST['status']) && isset($_POST['date'])){
-			# retireve data from post
-			$companyId = explode("#-#", $_POST['companyId']);
-			$companyName = explode("#-#", $_POST['companyName']);
-			$message = explode("#-#", $_POST['message']);
-			$status = explode("#-#", $_POST['status']);
-			$date = explode("#-#", $_POST['date']);
 ?>
 
 <!doctype html>
@@ -35,6 +28,63 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
+        
+        <!-- script to use JSON to view output -->
+    	<script>
+			// ajax call
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			else
+				// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					var arr = JSON.parse(xmlhttp.responseText);
+					display(arr);
+			}
+			xmlhttp.open("POST", "/controller/inbox.php", true);
+			xmlhttp.send();
+			
+			// function for html output
+			function display(arr) {
+				var html_out = "";
+				if(arr.lenght>0) {
+					html_out += "<!-- table to display the mail -->";
+					html_out += "<table class='table table-hover'>"+
+							"<thead>"+
+								"<tr>"+
+									"<th>Company Name</th>"+
+									"<th>Message</th>"+
+									"<th>Applied?</th>"+
+									"<th>Last Date</th>"+
+								"</tr>"+
+							"</thead>"+
+								
+							"<!-- display all the mail received -->"+
+							"<tbody>";
+					var i;
+					for(i=0; i<arr.length; i++) {
+						html_out += "<tr onClick='redirect("+arr.companyId+")';>";
+						html_out += "<td>"+arr.companyName+"</td>";
+						html_out += "<td>"+arr.message+"</td>";
+						html_out += "<td>"+arr.status+"</td>";
+						html_out += "<td>"+arr.date+"</td>";
+						html_out += "</tr>";
+					}
+					html_out += "</tbody>"+
+						"</table>";
+				} else {
+					html_out += "<tr><td></td><td colspan='2'>No mail for you</td><td></td></tr>";
+				}
+				document.getElementById("inboxDiv").innerHTML(html_out);
+			}
+			
+			function redirect(id) {
+				document.location = "/student/?p=viewCompanyDetails&id="+id;
+			}
+		</script>
             
 	</head>
 
@@ -54,44 +104,9 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-            	<div class="well well-lg">
-                	<!-- table to display the mail -->
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Company Name</th>
-                                <th>Message</th>
-                                <th>Applied?</th>
-                                <th>Last Date</th>
-                            </tr>
-                        </thead>
-                        
-                        <!-- display all the mail received -->
-                        <tbody>
-                        <?php
-							# loop to display all the data in post
-							$c = count($companyId);
-							if($c == 0) {
-						?>
-                        		<tr>
-                                	<td colspan="4">No mail for you</td>
-                                </tr>
-						<?php
-							} else {
-								for($i=0 ; $i<$c ; $i++) {
-                        ?>
-                                    <tr onClick="document.location='/student/?p=viewCompanyDetails&id=<?php echo $companyId; ?>';">
-                                        <td><?php echo $companyName; ?></td>
-                                        <td><?php echo $message; ?></td>
-                                        <td><?php echo $status; ?></td>
-                                        <td><?php echo $date; ?></td>
-                                    </tr>
-                        <?php
-								}
-							}
-                        ?>
-                        </tbody>
-                    </table>
+            	<div class="well well-lg" id="inboxDiv">
+   		        	<h2>Loading</h2>
+           		    <img src="../images/loading.gif" alt="Loading" height="30"/>
 				</div>
 			</div>
 		</div>
@@ -99,8 +114,6 @@
 </html>
 
 <?php
-		} else
-			header("Location: /controller/inbox.php");
 	} else
 		header("Location: /");
 ?>
