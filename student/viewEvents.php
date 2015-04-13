@@ -1,14 +1,7 @@
 <?php
-	session_start();
-	if(!empty($_SESSION['username'])) {					
-		# process data before display
-		if(!empty($_POST)) {
-			if(isset($_POST['company']) && isset($_POST['event']) && isset($_POST['venue']) && isset($_POST['date']) && isset($_POST['time']) ) {
-				$company = explode("#-#", $_POST['company']);
-				$event = explode("#-#", $_POST['event']);
-				$venue = explode("#-#", $_POST['venue']);
-				$date = explode("#-#", $_POST['date']);
-				$time = explode("#-#", $_POST['time']);
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
+	if(!empty($_SESSION['username'])) {			
 ?>
 <!doctype html>
 
@@ -32,6 +25,61 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
+        
+        <!-- script to use JSON and ajax to view output -->
+        <script>
+			// ajax call
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			else
+				// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					var arr = JSON.parse(xmlhttp.responseText);
+					display(arr);
+			}
+			xmlhttp.open("GET", "/controller/inbox.php", true);
+			xmlhttp.send();	
+
+			// function for html output
+			function display(arr) {
+				var html_out = "";
+				if(arr.length>0) {
+					html_out += "<!-- table to display the mail -->";
+					html_out += "<table class='table table-striped'>"+
+							"<thead>"+
+								"<tr>"+
+									"<th>Company Name</th>"+
+									"<th>Event</th>"+
+									"<th>Venue</th>"+
+									"<th>Date</th>"+
+									"<th>Time</th>"+
+								"</tr>"+
+							"</thead>"+
+								
+							"<!-- display all the schedule -->"+
+							"<tbody>";
+					var i;
+					for(i=0; i<arr.length; i++) {
+						html_out += "<tr>";
+						html_out += "<td>"+arr[i].company+"</td>";
+						html_out += "<td>"+arr[i].eve+"</td>";
+						html_out += "<td>"+arr[i].venue+"</td>";
+						html_out += "<td>"+arr[i].date+"</td>";
+						html_out += "<td>"+arr[i].time+"</td>";
+						html_out += "</tr>";
+					}
+					html_out += "</tbody>"+
+						"</table>";
+				} else {
+					html_out += "<div style='text-align: center;'>Nothing on your calendar</div>";
+				}
+				$("#eventDiv").html(html_out);
+			}
+		</script>
             
 	</head>
 
@@ -50,7 +98,7 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-            	<div class="well well-lg">
+            	<div class="well well-lg" id="eventDiv">
                 	<!-- table to display all the schedule/timeline -->
                     <table class="table table-striped">
                       
