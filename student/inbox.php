@@ -45,12 +45,12 @@
 					display(arr);
 			}
 			xmlhttp.open("POST", "/controller/inbox.php", true);
-			xmlhttp.send();
-			
+			xmlhttp.send();	
+
 			// function for html output
 			function display(arr) {
 				var html_out = "";
-				if(arr.lenght>0) {
+				if(arr.length>0) {
 					html_out += "<!-- table to display the mail -->";
 					html_out += "<table class='table table-hover'>"+
 							"<thead>"+
@@ -66,11 +66,11 @@
 							"<tbody>";
 					var i;
 					for(i=0; i<arr.length; i++) {
-						html_out += "<tr onClick='redirect("+arr.companyId+")';>";
-						html_out += "<td>"+arr.companyName+"</td>";
-						html_out += "<td>"+arr.message+"</td>";
-						html_out += "<td>"+arr.status+"</td>";
-						html_out += "<td>"+arr.date+"</td>";
+						html_out += "<tr onClick='redirect("+arr[i].companyId+")';>";
+						html_out += "<td>"+arr[i].companyName+"</td>";
+						html_out += "<td>"+arr[i].message+"</td>";
+						html_out += "<td>"+arr[i].status+"</td>";
+						html_out += "<td>"+arr[i].date+"</td>";
 						html_out += "</tr>";
 					}
 					html_out += "</tbody>"+
@@ -78,7 +78,7 @@
 				} else {
 					html_out += "<tr><td></td><td colspan='2'>No mail for you</td><td></td></tr>";
 				}
-				document.getElementById("inboxDiv").innerHTML(html_out);
+				$("#inboxDiv").html(html_out);
 			}
 			
 			function redirect(id) {
