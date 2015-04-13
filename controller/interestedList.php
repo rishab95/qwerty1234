@@ -56,7 +56,7 @@
 		$roll = array();
 		$name = array();
 		$branch = array();
-		$cpga = array();
+		$cgpa = array();
 		
 		if ($result=mysqli_query($conn,$query)){
 		while($rows=mysqli_fetch_row($result))
