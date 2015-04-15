@@ -15,12 +15,16 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			$query = "SELECT description FROM curricular_activity where username = $username;";
+			$query = "SELECT activity_description,activity_from,activity_to FROM curricular_activity WHERE username =                         $username;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {
 				while($row = mysqli_fetch_row($result)) {
-					 array_push($out, array('description' => $row[0]));
+					 array_push($out, array('description' => $row[0],
+					 					'from' => $row[1],
+										'to' => $row[2],
+					 	)
+					 );
 				}
 			}
 		}

@@ -15,7 +15,7 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			$query = "SELECT description FROM acad_achieve where username = $username;";
+			$query = "SELECT achievement_description FROM acad_achieve where username = $username;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {

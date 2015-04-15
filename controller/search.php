@@ -24,7 +24,7 @@
 		$out = array();
 		
 		# query to seach in the data base
-		$query = "";
+		$query = "SELECT username,name,email,branch FROM student WHERE username=$username;";
 		
 		# extract data from sql
 		if ($result = mysqli_query($conn,$query)){
