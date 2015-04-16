@@ -29,7 +29,7 @@
                     </li>
 
                     <li>
-                    	<a href="/student/?p=profile">
+                    	<a href="/student/profile">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-user"></span> Profile
                		        </button>
@@ -37,7 +37,7 @@
                     </li>
 
                     <li>
-                    	<a href="/student/?p=viewTimeline">
+                    	<a href="/student/timeline">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-list"></span> Timeline
                		        </button>
@@ -45,23 +45,15 @@
                     </li>
                     
                     <li>
-                    	<a href="/student/?p=viewSchedule">
+                    	<a href="/student/home">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-calendar"></span> Schedule
+           		            	<span class="glyphicon glyphicon-home"></span> Home
                		        </button>
    	            		</a>
                     </li>
                     
                     <li>
-                    	<a href="/student/?p=inbox">
-    		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-inbox"></span> Inbox
-               		        </button>
-   	            		</a>
-                    </li>
-                    
-                    <li>
-                    	<a href="/controller/logout.php">
+                    	<a href="/logout">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-log-out"></span> Logout
                		        </button>
@@ -71,5 +63,4 @@
             </div>
         </div>
     </nav>
-    
 </header>

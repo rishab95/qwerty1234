@@ -1,3 +1,11 @@
+<?php
+	# define what page it is
+	$page = "search";
+	
+	# define the query for search
+	isset($_GET['q']) ? $q=$_GET['q']:header("Location: /search?q=");
+?>
+
 <html>
 	<head>
 
@@ -21,7 +29,41 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
-    
+    	
+        <script>
+			// call function to populate the data in the search table
+			window.onload = function() {
+				Search();
+			}
+			
+			// function to return value in the database corresponding to the search value inputted
+			function Search() {
+				var q = $('#searchInput').val();
+				var getLink = "/controller/search.php?q="+q;
+				$.get(getLink, function(data, success) {
+					var arr = JSON.parse(data);
+					searchDisplay(JSON.parse(data));
+				});
+			}
+			
+			// function for html output
+			function searchDisplay(arr) {
+				var html_out = "";
+				if(arr.length>0) {
+					var i;
+					for(i=0; i<arr.length; i++) {
+						html_out += "<tr>";
+						html_out += "<td>"+arr[i].roll+"</td>";
+						html_out += "<td>"+arr[i].name+"</td>";
+						html_out += "<td>"+arr[i].email+"</td>";
+						html_out += "</tr>";
+					}
+				} else {
+					html_out += "<tr><td colspan='3'>No results Found</td></td>";
+				}
+				$("#searchResult").html(html_out);
+			}
+		</script>
 	</head>
 
 	<body>
@@ -36,20 +78,23 @@
 		
         <!-- main body container -->
         <div class="container">
-        	<div class="well well-lg">
-            	<!-- div to display the search results -->
-            	<div id="searchResult"></div>
-        	</div>
+        	<div class="col-lg-12">
+            	<div class="well well-lg">
+                    <!-- table to display the search results -->
+					<table class='table table-striped'>
+						<thead>
+							<tr>
+								<th>Roll Number</th>
+		        	            <th>Name</th>
+		                    	<th>E-mail</th>
+							</tr>
+						</thead>
+                        
+                        <tbody id="searchResult">
+                    	</tbody>
+					</table>
+                </div>
+            </div>
         </div>
-        
-		<script>
-			// use ajax to populate the the search results
-			$(document).ready(function() {
-				$.get("searchResult.php?ajax=1&q=<?php echo $search ?>", function($response) {
-					$('#searchResult').html($response);
-				});
-			});
-		</script>
-        
 	</body>
 </html>

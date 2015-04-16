@@ -40,7 +40,8 @@ header {
 }
 
 .page-header {
-	border-bottom-width: 0px;	
+	border-bottom-width: 0px;
+	display: list-item;
 }
 
 .image-container {
@@ -212,4 +213,14 @@ table {
 table.wrap {
 	word-wrap: break-word;
 	white-space: pre-wrap;	
+}
+
+.heading {
+	text-align: center;	
+}
+
+.container {
+	margin-left: 1%;
+	margin-right: 1%;
+	width: 98%;
 }

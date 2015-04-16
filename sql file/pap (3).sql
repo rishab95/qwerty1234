@@ -20,6 +20,10 @@ SET time_zone = "+00:00";
 -- Database: `pap`
 --
 
+CREATE DATABASE pap;
+
+USE pap;
+
 -- --------------------------------------------------------
 
 --

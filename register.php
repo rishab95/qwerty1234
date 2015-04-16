@@ -1,3 +1,8 @@
+<?php
+	# type of the page
+	$page = "register";
+?>
+
 <html>
 	<head>
 

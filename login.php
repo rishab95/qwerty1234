@@ -1,3 +1,16 @@
+<?php
+	$page = "login";
+	if(!empty($_GET['auth']) && $_GET['auth']=='false') {
+		$attempt = True;
+	} else {
+		$attempt = False;
+	}
+	
+	# check if user has sent credentials to log in
+	if(!empty($_POST['username']) && !empty($_POST['password']))
+		include_once("controller/login.php");
+	else {
+?>
 <html>
 	<head>
 
@@ -43,7 +56,7 @@
 				<div class="col-xs-4"></div>
                 <div class="col-md-4 col-xs-4">
                    	<!-- login form -->
-                   	<form action="controller/login.php" method="post" class="login">
+                   	<form action="/login" method="post" class="login">
                     	<!-- heading for the form -->
                    		<div class="form-group">
 	                       	<h2>Log-in</h2>
@@ -59,21 +72,6 @@
                     <?php
 						}
 					?>
-                        <!-- select the user type -->
-                        <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
-                          	<div class="input-group">
-                               	<span class="input-group-addon">
-                                   	<span class="glyphicon glyphicon-pencil"></span>
-                                </span>
-                                <select name="userType" class="form-control">
-	                              	<option value="student">Student</option>
-    	                            <option value="coordinator">Coordinator</option>
-        	                        <option value="company">Company</option>
-            	                    <option value="admin">Administrator</option>
-                	            </select>
-                            </div>
-                        </div>
-                        
                         <!-- input for username -->
 						<div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
                         	<div class="input-group">
@@ -106,3 +104,6 @@
 		</div>
 	</body>
 </html>
+<?php
+	}
+?>

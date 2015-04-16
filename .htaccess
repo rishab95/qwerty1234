@@ -1,7 +1,16 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteBase /
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond %{REQUEST_FILENAME}\.php -f
-	RewriteRule ^([^\.]+)/$ $1.php
-</IfModule>
+# code to protect the root folder using password and .htaccess
+AuthUserFile C:/wamp/www/.htpasswd
+AuthType Basic
+AuthName "Please Login to continue"
+Require valid-user
+
+#<FilesMatch "register.php|login.php">
+#	Order Allow,Deny
+#	Deny from all
+#</FilesMatch>
+
+# code to hide the extension '.php'
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php

@@ -1,16 +1,15 @@
 <?php
-#	if(session_status() == PHP_SESSION_NONE)
-#		session_start();
-#	if(!empty($_SESSION['username'])) {
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
+	if(!empty($_SESSION['username'])) {			
 ?>
-
 <!doctype html>
 
 <html>
 	<head>
 
 		<meta charset="utf-8">
-		<title>PAP | Student | Company Details</title>
+		<title>PAP | Student | Timeline</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -27,6 +26,7 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
+        <!-- script to use JSON and ajax to view output -->
         <script>
 			// ajax call
 			var xmlhttp;
@@ -41,7 +41,7 @@
 					var arr = JSON.parse(xmlhttp.responseText);
 					display(arr);
 			}
-			xmlhttp.open("POST", "/controller/viewCompanyDetails.php", true);
+			xmlhttp.open("GET", "/controller/inbox.php", true);
 			xmlhttp.send();	
 
 			// function for html output
@@ -49,33 +49,35 @@
 				var html_out = "";
 				if(arr.length>0) {
 					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-hover'>"+
+					html_out += "<table class='table table-striped'>"+
 							"<thead>"+
 								"<tr>"+
 									"<th>Company Name</th>"+
-									"<th>Message</th>"+
-									"<th>Applied?</th>"+
-									"<th>Last Date</th>"+
+									"<th>Event</th>"+
+									"<th>Venue</th>"+
+									"<th>Date</th>"+
+									"<th>Time</th>"+
 								"</tr>"+
 							"</thead>"+
 								
-							"<!-- display all the mail received -->"+
+							"<!-- display all the schedule -->"+
 							"<tbody>";
 					var i;
 					for(i=0; i<arr.length; i++) {
-						html_out += "<tr onClick='redirect("+arr[i].companyId+")';>";
-						html_out += "<td>"+arr[i].companyName+"</td>";
-						html_out += "<td>"+arr[i].message+"</td>";
-						html_out += "<td>"+arr[i].status+"</td>";
+						html_out += "<tr>";
+						html_out += "<td>"+arr[i].company+"</td>";
+						html_out += "<td>"+arr[i].eve+"</td>";
+						html_out += "<td>"+arr[i].venue+"</td>";
 						html_out += "<td>"+arr[i].date+"</td>";
+						html_out += "<td>"+arr[i].time+"</td>";
 						html_out += "</tr>";
 					}
 					html_out += "</tbody>"+
 						"</table>";
 				} else {
-					html_out += "<div style='text-align: center;'>No mail for you</div>";
+					html_out += "<div style='text-align: center;'>Nothing on <?php echo ($page=="Timeline")?'the':'your';?> calendar</div>";
 				}
-//				$("#companyDetailsDiv").html(html_out);
+				$("#eventDiv").html(html_out);
 			}
 		</script>
             
@@ -84,6 +86,7 @@
 	<body>
         
         <?php
+			# include the header file for interface
         	include_once('head.php');
 		?>
         
@@ -94,29 +97,16 @@
         
         <!-- main container for displaying mail -->
 		<div class="container">
-        	<div class="well well-lg">
-                <div class="row">
-                    <div class="col-md-10">
-                        <h3>Microsoft</h3>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="resume/">
-                            <button class="btn btn-group">Apply | View</button>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <div class="row" id="companyDetailsDiv">
-					<!-- design of the company profile -->
-                </div>
+        	<div class="row">
+            	<div class="well well-lg" id="eventDiv">
+                	<h2>Loading</h2>
+           		    <img src="../images/loading.gif" alt="Loading" height="30"/>
+  				</div>
 			</div>
 		</div>
 	</body>
 </html>
-
 <?php
-#	} else
-#		header("Location: /");
+	} else
+		header("Location: /login");
 ?>
