@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2015 at 02:11 PM
+-- Generation Time: Apr 15, 2015 at 07:41 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `company_name` varchar(20) DEFAULT NULL,
   `dream_status` tinyint(1) DEFAULT NULL,
   `package` int(11) DEFAULT NULL,
-  `cg_criteria` float(2,2) DEFAULT NULL,
+  `cg_criteria` float DEFAULT NULL,
   `password` char(32) DEFAULT NULL,
   `other_criteria` varchar(30) DEFAULT NULL,
   `company_link` varchar(30) DEFAULT NULL,
@@ -143,6 +143,13 @@ CREATE TABLE IF NOT EXISTS `company` (
   `last_date` date DEFAULT NULL,
   PRIMARY KEY (`company_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, `cg_criteria`, `password`, `other_criteria`, `company_link`, `company_profile`, `last_date`) VALUES
+(100, 'Microsoft', 1, 18, 7, 'test', NULL, NULL, NULL, '2016-08-04');
 
 -- --------------------------------------------------------
 
@@ -190,27 +197,6 @@ CREATE TABLE IF NOT EXISTS `project` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule`
---
-
-CREATE TABLE IF NOT EXISTS `schedule` (
-  `company_id` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `venue` varchar(40) DEFAULT NULL,
-  `time` time DEFAULT NULL,
-  `event_descp` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `schedule`
---
-
-INSERT INTO `schedule` (`company_id`, `date`, `venue`, `time`, `event_descp`) VALUES
-(100, '2031-01-15', 'ccct lab', '07:00:00', 'test');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `student`
 --
 
@@ -225,9 +211,11 @@ CREATE TABLE IF NOT EXISTS `student` (
   `temp_address` varchar(100) DEFAULT NULL,
   `temp_city` varchar(25) DEFAULT NULL,
   `temp_state` varchar(25) DEFAULT NULL,
+  `temp_pin` int(6) DEFAULT NULL,
   `permanent_address` varchar(100) DEFAULT NULL,
   `permanent_city` varchar(25) DEFAULT NULL,
   `permanent_state` varchar(25) DEFAULT NULL,
+  `permanent_pin` int(6) DEFAULT NULL,
   `email` varchar(40) DEFAULT NULL,
   `father_name` varchar(50) DEFAULT NULL,
   `father_occupation` varchar(20) DEFAULT NULL,
@@ -276,6 +264,34 @@ CREATE TABLE IF NOT EXISTS `stu_eligible` (
   `applied` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`company_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stu_eligible`
+--
+
+INSERT INTO `stu_eligible` (`company_id`, `username`, `applied`) VALUES
+(100, 101203075, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stu_schedule`
+--
+
+CREATE TABLE IF NOT EXISTS `stu_schedule` (
+  `company_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `venue` varchar(40) DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `event_descp` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stu_schedule`
+--
+
+INSERT INTO `stu_schedule` (`company_id`, `date`, `venue`, `time`, `event_descp`) VALUES
+(100, '2031-01-15', 'ccct lab', '07:00:00', 'test');
 
 --
 -- Constraints for dumped tables

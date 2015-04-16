@@ -15,7 +15,7 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			$query = "SELECT description FROM other_info where username = $username;";
+			$query = "SELECT info_description FROM other_info where username = $username;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {
