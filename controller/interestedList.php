@@ -8,11 +8,11 @@
 		$username = $_SESSION['username'];
 		
 		# establish connection to MySQL
-			$servername = "localhost";
-			$dbname = "pap";
+		$servername = "localhost";
+		$dbname = "pap";
 	
 		// Create connection
-			$conn = new mysqli($servername, "root", "", $dbname);
+		$conn = new mysqli($servername, "root", "", $dbname);
 		// Check connection
 		if ($conn->connect_error) {
 			# die("Connection failed: " . $conn->connect_error);

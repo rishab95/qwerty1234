@@ -5,16 +5,11 @@
 	# check if user logged in
 	if(!empty($_SESSION['username'])) {
 		# obtain the username
-		if(!empty($_GET['t'])) {
-			if($_GET['t']=="post") {
-				if(!empty($_POST['username']))
-					$username = $_POST['username'];
-				else
-					; # illegal request
-			} else if($_GET['t']=='session')
-				$username = $_POST['username'];
+		if(!empty($_POST['username'])) {
+			$username = $_POST['username'];
 		} else {
 			# illegal request
+			header("Location: ".$_SERVER['REQUEST_URI']);
 		}
 		
 		# initialize MySQL connection
@@ -45,14 +40,14 @@
 							'age' => $row[3],
 							'citizenship' => $row[4],
 							'gender' => $row[5],
-							'temp_address' => $row[6],
-							'temp_city' => $row[7],
-							'temp_state' => $row[8],
-							'temp_pin' => $row[9],
-							'permanent_address' => $row[10],
-							'permanent_city' => $row[11],
-							'permanent_state' => $row[12],
-							'permanent_pin' => $row[13],
+							'currAddr' => $row[6],
+							'currCity' => $row[7],
+							'currState' => $row[8],
+							'currPin' => $row[9],
+							'perAddr' => $row[10],
+							'perCity' => $row[11],
+							'perState' => $row[12],
+							'perPin' => $row[13],
 							'phone_num' => $row[14],
 							'email' => $row[15],
 							'father_name' => $row[16],

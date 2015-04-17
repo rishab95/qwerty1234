@@ -3,7 +3,15 @@
 	if(session_status() == PHP_SESSION_NONE)
 		session_start();
 	# check if user logged in
-	if(!empty($_SESSION['username'])) {
+	if(!empty($_SESSION['type'])) {
+		if($_SESSION['type']=='student') {
+			if(!empty($_SESSION['username'])) {
+				# authenticate user
+				ob_start();
+				include_once("../controller/auth.php");
+				$out = ob_get_clean();
+				$outArr = json_decode($out, true);
+				if($outArr['auth']=="true") {
 ?>
 
 <!doctype html>
@@ -28,21 +36,43 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
+        
+        <!-- script to populate the page -->
+        <script>
+			// ajax for retrieving data for personal info
+			$.post("/controller/view/personalInfo", {username: <?php echo $_SESSION['username']; ?>}, function(data) {
+				personalInfoDisplay(JSON.parse(data));
+			});
+
+			// function for html output
+			function personalInfoDisplay(input) {
+				$("#profilePic").attr("src", "images/"+input.picName);
+				$("#fullName").html(input.fullName);
+				$("#dob").html(input.dob);
+				$("#age").html(input.age);
+				$("#citizen").html(input.citizenship);
+				$("#gender").html(input.gender);
+				$("#currAddr").html(input.currAddr);
+				$("#currCity").html("<label>City</label>: "+input.currCity);
+				$("#currState").html("<label>State</label>: "+input.currState);
+				$("#currPin").html("<label>Pin</label>: "+input.currPin);
+				$("#perAddr").html(input.perAddr);
+				$("#perCity").html("<label>City</label>: "+input.perCity);
+				$("#perState").html("<label>State</label>: "+input.perState);
+				$("#perPin").html("<label>Pin</label>: "+input.perPin);
+			}
+			
+		</script>
             
 	</head>
 
 	<body>
-    
    	<?php
 		# include the header of the page
 		include_once('head.php');
 	?>
-
 		<!-- background of the page -->
         <div class="body2"></div>
-        
-        <!-- space from header -->
-        <div style="margin-top: 40px;"></div>
         
         <!-- main container for displaying personal information -->
 		<div class="container">
@@ -55,7 +85,7 @@
                     <div class="row">
                         <!-- profile picture -->
                         <div class="col-md-4">
-                            <img src="images/101203081.png" width="100%">
+                            <img id="profilePic" src="images/101203081.png" width="100%">
                         </div>
                             
                         <!-- full name -->
@@ -63,7 +93,7 @@
                             <div class="col-xs-5">
                                 <label>Full Name</label>
                             </div>
-                            <div class="col-xs-7">Rohit Saluja</div>
+                            <div class="col-xs-7" id="fullName">Rohit Saluja</div>
                         </div>
                             
                         <!-- date of birth -->
@@ -71,7 +101,7 @@
                             <div class="col-xs-5">
                                 <label>Date of Birth</label>
                             </div>
-                            <div class="col-xs-7">4th August, 1994</div>
+                            <div class="col-xs-7" id="dob">4th August, 1994</div>
                         </div>
                             
                         <!-- age -->
@@ -79,7 +109,7 @@
                             <div class="col-xs-5">
                                 <label>Age</label>
                             </div>
-                            <div class="col-xs-7">20</div>
+                            <div class="col-xs-7" id="age">20</div>
                         </div>
                             
                         <!-- citizenship -->
@@ -87,7 +117,7 @@
                             <div class="col-xs-5">
                                 <label>Citizenship</label>
                             </div>
-                            <div class="col-xs-7">Indian</div>
+                            <div class="col-xs-7" id="citizen">Indian</div>
                         </div>
                             
                         <!-- gender -->
@@ -95,7 +125,7 @@
                             <div class="col-xs-5">
                                 <label>Gender</label>
                             </div>
-                            <div class="col-xs-7">Male</div>
+                            <div class="col-xs-7" id="gender">Male</div>
                         </div>
                         
                         <!-- currect address -->
@@ -104,18 +134,18 @@
                                 <div class="col-xs-5">
                                     <label>Corresponding Address</label>
                                 </div>
-                                <div class="col-xs-7">WD-207, Hostel J, Thapar University</div>
+                                <div class="col-xs-7" id="currAddr">WD-207, Hostel J, Thapar University</div>
                             </div>
                             
                             <!-- cite, state, pin -->
                             <div class="row">
-                                <div class="col-xs-5">
+                                <div class="col-xs-5" id="currCity">
                                     <label>City</label>: Patiala
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-4" id="currState">
                                     <label>State</label>: Punjab
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-3" id="currPin">
                                     <label>Pin</label>: 147001
                                 </div>
                             </div>
@@ -137,18 +167,18 @@
                                 <div class="col-xs-5">
                                     <label>Permanent Address</label>
                                 </div>
-                                <div class="col-xs-7">C-275, Sector F, Jankipuram</div>
+                                <div class="col-xs-7" id="perAddr">C-275, Sector F, Jankipuram</div>
                             </div>
                             
                             <!-- city, state, pin -->
                             <div class="row">
-                                <div class="col-xs-5">
+                                <div class="col-xs-5" id="perCity">
                                     <label>City</label>: Lucknow
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-4" id="perState">
                                     <label>State</label>: Uttar Pradesh
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-3" id="perPin">
                                     <label>Pin</label>: 
                                 </div>
                             </div>
@@ -617,6 +647,27 @@
 </html>
 
 <?php
+				} else
+					header("Location: /login");
+			} else {
+				# user trying to access other folders
+				switch($_SESSION['type']) {
+					# user is coordinator
+					case 'coordinator':
+						header("Location: /coordinator/");
+						break;
+					case 'company':
+						header("Location: /company/");
+						break;
+					case 'admin':
+						header("Location: /admin/");
+						break;
+					default: 
+						; # someone trying to play with session variables
+				}
+			}
+		} else
+			header("Location: /login");
 	} else
 		header("Location: /login");
 ?>

@@ -6,10 +6,24 @@
 		$attempt = False;
 	}
 	
-	# check if user has sent credentials to log in
-	if(!empty($_POST['username']) && !empty($_POST['password']))
-		include_once("controller/login.php");
-	else {
+	# check if data credentials are sent
+	if(!empty($_POST['username']) && !empty($_POST['password'])) {
+		# obtain output form the login file
+		ob_start();
+		include_once("/controller/login.php");
+		$out = ob_get_clean();
+		# convert output from json to array
+		$outArr = json_decode($out, true);
+		# check for credentials
+		if($outArr['auth']=="True") {
+			session_start();
+			$_SESSION['username'] = $outArr['username'];
+			$_SESSION['type'] = $outArr['type'];
+			$redirectLink = "/$type/";
+			header("Location: ".$redirectLink);
+		} else
+			header("Location: /login?auth=false");
+	} else {
 ?>
 <html>
 	<head>

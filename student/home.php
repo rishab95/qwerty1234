@@ -1,7 +1,17 @@
 <?php
+	# check if session is already started
 	if(session_status() == PHP_SESSION_NONE)
 		session_start();
-	if(!empty($_SESSION['username'])) {			
+	# authenticate the user to user the page
+	if(!empty($_SESSION['type'])) {
+		if($_SESSION['type']=='student') {
+			if(!empty($_SESSION['username'])) {
+				# authenticate user
+				ob_start();
+				include_once("../controller/auth.php");
+				$out = ob_get_clean();
+				$outArr = json_decode($out, true);
+				if($outArr['auth']=="true") {
 ?>
 <!doctype html>
 
@@ -123,10 +133,8 @@
         	include_once('head.php');
 		?>
         
+        <!-- background for the page -->
         <div class="body2"></div>
-        
-        <!-- space from header -->
-        <div style="margin-top: 40px;"></div>
 
 		<!-- main body container -->
         <div class="container">        
@@ -157,6 +165,27 @@
 	</body>
 </html>
 <?php
+				} else
+					header("Location: /login");
+			} else {
+				# user trying to access other folders
+				switch($_SESSION['type']) {
+					# user is coordinator
+					case 'coordinator':
+						header("Location: /coordinator/");
+						break;
+					case 'company':
+						header("Location: /company/");
+						break;
+					case 'admin':
+						header("Location: /admin/");
+						break;
+					default: 
+						; # someone trying to play with session variables
+				}
+			}
+		} else
+			header("Location: /login");
 	} else
-		header("Location: /");
+		header("Location: /login");
 ?>

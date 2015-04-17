@@ -1,5 +1,4 @@
 <?php
-	echo "here";
 	if(!empty($_POST['username']) && !empty($_POST['password'])) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
@@ -17,7 +16,7 @@
 			$auth = False;
 			
 			# initialize query
-			$query = "select password from auth where username = $username;";
+			$query = "select password, user_type from auth where username = $username;";
 			$result = $conn->query($query);
 			
 			# check result
@@ -25,6 +24,7 @@
 				$row = $result->fetch_assoc();
 				if($row['password'] == $password) {
 					$auth = True;
+					$type = $row['user_type'];
 				} else
 					# password does not match
 					$auth = False;
@@ -36,16 +36,13 @@
 					# code injection has occured
 				}
 			}
-					
-			if($auth == True) {
-				# create session and redirect to user's home page
-				session_start();
-				$_SESSION['username'] = $username;
-				header('Location: /student/');
-			} else if($auth == False) {
-				# redirect to login interface
-				header('Location: /login?auth=false');
-			}
+			# oupt the authentication status	
+			$out = array(
+				"auth" => $auth,
+				"type" => $type,
+				"username" => $username
+			);
+			echo json_encode($out);
 		}
 	} else {
 		# direct access attempted

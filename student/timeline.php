@@ -1,7 +1,8 @@
 <?php
 	if(session_status() == PHP_SESSION_NONE)
 		session_start();
-	if(!empty($_SESSION['username'])) {			
+	# authenticate the user to user the page
+	if(!empty($_SESSION['username'])) {
 ?>
 <!doctype html>
 
@@ -29,27 +30,16 @@
         <!-- script to use JSON and ajax to view output -->
         <script>
 			// ajax call
-			var xmlhttp;
-			if (window.XMLHttpRequest)
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp=new XMLHttpRequest();
-			else
-				// code for IE6, IE5
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState==4 && xmlhttp.status==200)
-					var arr = JSON.parse(xmlhttp.responseText);
-					display(arr);
-			}
-			xmlhttp.open("GET", "/controller/inbox.php", true);
-			xmlhttp.send();	
+			$.get("/controller/viewEvent.php?t=timeline", function(data) {
+				timelineDisplay(JSON.parse(data));
+			});
 
 			// function for html output
-			function display(arr) {
+			function timelineDisplay(arr) {
 				var html_out = "";
 				if(arr.length>0) {
-					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-striped'>"+
+					html_out += "<!-- table to display the timeline -->"+
+						"<table class='table table-striped'>"+
 							"<thead>"+
 								"<tr>"+
 									"<th>Company Name</th>"+
@@ -75,7 +65,7 @@
 					html_out += "</tbody>"+
 						"</table>";
 				} else {
-					html_out += "<div style='text-align: center;'>Nothing on <?php echo ($page=="Timeline")?'the':'your';?> calendar</div>";
+					html_out += "<div style='text-align: center;'>Nothing on the calendar</div>";
 				}
 				$("#eventDiv").html(html_out);
 			}

@@ -35,10 +35,6 @@ form.register {
 	margin-top: 150px;
 }
 
-header {
-	background-image: url('images/bg2.png');
-}
-
 .page-header {
 	border-bottom-width: 0px;
 	display: list-item;
@@ -47,10 +43,6 @@ header {
 .image-container {
 	padding-left: auto;
 	padding-right: auto;	
-}
-
-.page-header {
-	margin-top: 10px;
 }
 
 #search-button-head {

@@ -4,11 +4,6 @@ AuthType Basic
 AuthName "Please Login to continue"
 Require valid-user
 
-#<FilesMatch "register.php|login.php">
-#	Order Allow,Deny
-#	Deny from all
-#</FilesMatch>
-
 # code to hide the extension '.php'
 RewriteEngine on 
 RewriteCond %{REQUEST_FILENAME} !-d 

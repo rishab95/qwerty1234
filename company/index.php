@@ -1,8 +1,15 @@
 <?php
-#	if(!empty($_SESSION['username'])) {
-#		if(empty($_POST['roll']) && empty($_POST['name']) && empty($_POST['branch']) && empty($_POST['cgpa'])) {
-#			header("Location: /controller/interestedList.php");
-#		} else {
+	#check if session already started
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
+	#check if user logged in correctly
+	if(!empty($_SESSION['type'])) {
+		if($_SESSION['type'] == 'company') {
+				if(!empty($_SESSION['username'])) {
+					ob_start();
+					include_once("/controller/login.php");
+					$out = ob_get_clean();
+					ob_end_clean();
 ?>
 
 <!doctype html>
@@ -31,27 +38,16 @@
         <!-- script to use JSON and ajax to view output -->
         <script>
 			// ajax call to display the interested student list
-			var xmlhttp;
-			if (window.XMLHttpRequest)
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			else
-				// code for IE6, IE5
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			xmlhttp1.onreadystatechange = function() {
-				if (xmlhttp.readyState==4 && xmlhttp.status==200)
-					var arr1 = JSON.parse(xmlhttp.responseText);
-					interestedStudentDisplay(arr1);
-			}
-			xmlhttp.open("POST", "/controller/interestedList.php", true);
-			xmlhttp.send();	
-
+			$.post("/controller/interestedList.php", {}, function(data) {
+				interestedStudentDisplay(JSON.parse(data));
+			});
+			
 			// function for html output
 			function interestedStudentDisplay(arr) {
 				var html_out = "";
 				if(arr.length>0) {
-					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-striped'>"+
+					html_out += "<!-- table to display the list of interested students -->"+
+						"<table class='table table-striped table-hover'>"+
 					        "<colgroup>"+
 								"<col width='10'>"+
                             "</colgroup>"+
@@ -64,8 +60,7 @@
 									"<th>CGPA</th>"+
 								"</tr>"+
 							"</thead>"+
-								
-							"<!-- display all the schedule -->"+
+							
 							"<tbody>";
 					var i;
 					for(i=0; i<arr.length; i++) {
@@ -80,7 +75,7 @@
 					html_out += "</tbody>"+
 						"</table>";
 				} else {
-					html_out += "<div style='text-align: center;'>No on has applied</div>";
+					html_out += "<div style='text-align: center;'>No one has applied yet</div>";
 				}
 				$("#interestedStudentListDiv").html(html_out);
 			}
@@ -173,8 +168,25 @@
 </html>
 
 <?php
-#		}
-#	} else {
-#		header("Location: /");
-#	}
+			} else
+				header("Location: /login");
+		} else {
+			# user trying to access other folders
+			switch($_SESSION['type']) {
+				# user is coordinator
+				case 'student':
+					header("Location: /student/");
+					break;
+				case 'coordinator':
+					header("Location: /coordinator/");
+					break;
+				case 'admin':
+					header("Location: /admin/");
+					break;
+				default: 
+					; # someone trying to play with session variables
+			}
+		}
+	} else
+		header("Location: /controller/logout");
 ?>

@@ -1,4 +1,4 @@
-<!-- header section of the page -->>
+<!-- header section of the page -->
 <header class="page-header">
 	
     <!-- nav bar contrainer -->
