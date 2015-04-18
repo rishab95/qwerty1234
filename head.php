@@ -41,11 +41,11 @@
                         <?php
 							if($page!="search") {
                         ?>
-                            onChange="document.location='search?q='+document.getElementById('searchInput').value;"
+                            onInput="document.location='search?q='+document.getElementById('searchInput').value;"
                         <?php
 							} else {
 						?>
-							onChnage="Search()"
+							onInput="Search()"
 						<?php
 							}
 						?>
@@ -73,5 +73,24 @@
             </div>
         </div>
     </nav>
-
+    
+    <script>
+		window.onload = function() {
+			if(window.location.pathname == "/search")
+				Search();
+		};
+		
+		// function to retrieve values from database
+		function Search() {
+			var q = $('#searchInput').val();
+			if(window.location.pathname == "/search") {
+				var getLink = "/controller/search.php?q="+q;
+				$.get(getLink, function(data, success) {
+					searchDisplay(JSON.parse(data));
+				});
+			} else {
+				window.location = "/search?q="+q;
+			}
+		}
+	</script>
 </header>

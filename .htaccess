@@ -9,3 +9,12 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME}\.php -f 
 RewriteRule ^(.*)$ $1.php
+
+# customized page not found (404)
+ErrorDocument 404 /notFound.html
+
+# customized forbidden page (403)
+ErrorDocument 403 /forbidden.html
+
+# disable directory listing
+Options -Indexes

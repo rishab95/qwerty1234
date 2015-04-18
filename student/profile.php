@@ -40,11 +40,20 @@
         <!-- script to populate the page -->
         <script>
 			// ajax for retrieving data for personal info
-			$.post("/controller/view/personalInfo", {username: <?php echo $_SESSION['username']; ?>}, function(data) {
+			var user = <?php echo $_SESSION['username']; ?>;
+			$.post("/controller/view/personalInfo", {username: user}, function(data) {
 				personalInfoDisplay(JSON.parse(data));
 			});
+			// ajax for retrieving data for academic records
+			$.post("/controller/view/academicRecords", {username: user}, function(data){
+				academicRecordDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for be record
+			$.post("/controller/view/BE", {username: user}, function(data){
+				beDisplay(JSON.parse(data));
+			});
 
-			// function for html output
+			// function for html output for personal info
 			function personalInfoDisplay(input) {
 				$("#profilePic").attr("src", "images/"+input.picName);
 				$("#fullName").html(input.fullName);
@@ -56,12 +65,38 @@
 				$("#currCity").html("<label>City</label>: "+input.currCity);
 				$("#currState").html("<label>State</label>: "+input.currState);
 				$("#currPin").html("<label>Pin</label>: "+input.currPin);
+				$("#currTele").html(input.currTele);
 				$("#perAddr").html(input.perAddr);
 				$("#perCity").html("<label>City</label>: "+input.perCity);
 				$("#perState").html("<label>State</label>: "+input.perState);
 				$("#perPin").html("<label>Pin</label>: "+input.perPin);
+				$("#perTele").html(input.perTele);
+				$("#email").html(input.email);
+				$("#fname").html(input.fname);
+				$("#foccu").html(input.foccu);
+				$("#mname").html(input.mname);
+				$("#moccu").html(input.moccu);
+				var i, out="";
+				for(i=0 ; i<input.lang.length ; i++)
+					out += "<tr><td>"+input.lang[i].name+"</td><td>"+input.lang[i].understand+"</td><td>"+input.lang[i].speak+"</td><td>"+input.lang[i].read+"</td><td>"+input.lang[i].writ+"</td></tr>";
+				$("#lang").html(out);
 			}
 			
+			// function for html output for academic record
+			function academicRecordDisplay(input) {
+				var out = "", i;
+				for(i=0 ; i<input.length ; i++)
+					out += "<tr><td>"+input[i].name+"</td><td>"+input[i].board+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
+				$("#academicRecord").html(out);
+			}
+			
+			// function for html output for be record
+			function beDisplay(input) {
+				var out = "", i;
+				for(i=0 ; i<input.length ; i++)
+					out += "<tr><td>"+input[i].sem+"</td><td>"+input[i].uni+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
+				$("#be").html(out);
+			}
 		</script>
             
 	</head>
@@ -157,7 +192,7 @@
                                 <div class="col-xs-5">
                                     <label>Telephone Numbers</label>
                                 </div>
-                                <div class="col-xs-7">+91-8437824996</div>
+                                <div class="col-xs-7" id="currTele">+91-8437824996</div>
                             </div>
                         </div>                        
                         
@@ -190,7 +225,7 @@
                                 <div class="col-xs-5">
                                     <label>Telephone Numbers</label>
                                 </div>
-                                <div class="col-xs-7">+91-522-2730389</div>
+                                <div class="col-xs-7" id="perTele">+91-522-2730389</div>
                             </div>
                         </div>
                         
@@ -200,7 +235,7 @@
                                 <div class="col-xs-5">
                                     <label>E-mail ID</label>
                                 </div>
-                                <div class="col-xs-7">ruhi.saluja@gmail.com</div>
+                                <div class="col-xs-7" id="email">ruhi.saluja@gmail.com</div>
                             </div>
                         </div>
                         
@@ -210,14 +245,14 @@
                                 <div class="col-xs-5">
                                     <label>Father's/Guardian's Name</label>
                                 </div>
-                                <div class="col-xs-7">Gp Capt Yogesh Saluja</div>
+                                <div class="col-xs-7" id="fname">Gp Capt Yogesh Saluja</div>
                             </div>
                                         
                             <div class="row">
                                 <div class="col-xs-5">
                                     <label>& Occupation</label>
                                 </div>
-                                <div class="col-xs-7">Defence Service</div>
+                                <div class="col-xs-7" id="foccu">Defence Service</div>
                             </div>
                         </div>
                         
@@ -227,14 +262,14 @@
                                 <div class="col-xs-5">
                                     <label>Mother's Name</label>
                                 </div>
-                                <div class="col-xs-7">Mitali Saluja</div>
+                                <div class="col-xs-7" id="mname">Mrs Mitali Saluja</div>
                             </div>
                                         
                             <div class="row">
                                 <div class="col-xs-5">
                                     <label>& Occupation</label>
                                 </div>
-                                <div class="col-xs-7">Home Maker</div>
+                                <div class="col-xs-7" id="moccu">Home Maker</div>
                             </div>            
                         </div>
                     
@@ -252,22 +287,23 @@
                                 </thead>
                                                     
                                 <tbody>
-                                                    
-                                    <tr>
-                                        <td>English</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                                        
-                                    <tr>
-                                        <td>Hindi</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                    </tr>
+	                                <div id="lang">
+        	                            <tr>
+		                                    <td>English</td>
+            	                            <td>Yes</td>
+                                        	<td>Yes</td>
+                                    	    <td>Yes</td>
+                                	        <td>Yes</td>
+                            	        </tr>
+                        	                                
+                    	                <tr>
+                	                        <td>Hindi</td>
+            	                            <td>Yes</td>
+        	                                <td>Yes</td>
+    	                                    <td>Yes</td>
+	                                        <td>Yes</td>
+                                    	</tr>
+                                	</div>
                                 <form method="post" action="/controller/addLanguage.php">
                                     <tr>
                                         <td colspan="4">
@@ -326,7 +362,7 @@
                             </tr>
                         </thead>
                             
-                        <tbody>    
+                        <tbody id="academicRecord">
                         	<tr>
                               	<td>Class X</td>
                                 <td>CBSE</td>
@@ -380,7 +416,7 @@
 		                    </tr>
 						</thead>
                             
-        		        <tbody>
+        		        <tbody id="be">
 		                	<tr>
 		                    	<td>1st Semester</td>
 		                        <td rowspan="8"></td>

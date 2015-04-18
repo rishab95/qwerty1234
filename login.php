@@ -1,10 +1,14 @@
 <?php
 	$page = "login";
-	if(!empty($_GET['auth']) && $_GET['auth']=='false') {
-		$attempt = True;
-	} else {
-		$attempt = False;
-	}
+	if(!empty($_GET['auth']) && $_GET['auth']=='false')
+		$attempt = true;
+	else
+		$attempt = false;
+	
+	if(!empty($_GET['regSuc']) && $_GET['regSuc']=='1')
+		$regSuc = true;
+	else
+		$regSuc = false;
 	
 	# check if data credentials are sent
 	if(!empty($_POST['username']) && !empty($_POST['password'])) {
@@ -50,8 +54,13 @@
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
         
-        <!-- link to the effects JQuery file -->
-        <script src="js/effects.js"></script>
+        <!-- custom java script for page -->
+        <script>
+			// focus on the username field
+			$(document).ready(function() {
+				$("input[name~='username']").focus();
+			});
+		</script>
 	</head>
 
 	<body>
@@ -83,6 +92,15 @@
     	                      	<span class='glyphicon glyphicon-remove'></span>
         	                    User type or Username or Password incorrect.
             	            </p>
+                    <?php
+						}
+						if ($regSuc) {
+					?>
+							<!-- registration successfull -->
+                            <p class="help-block" style="color: #006600";>
+                            	<span class="glyphicon glyphicon-ok"></span>
+                                You have successfully registered.
+                            </p>
                     <?php
 						}
 					?>

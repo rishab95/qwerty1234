@@ -31,21 +31,15 @@
     	<link rel="stylesheet" href="style.css">
     	
         <script>
+			// foucs on the search input field
+			$(document).ready(function() {
+				$("#searchInput").focus();
+            });
 			// call function to populate the data in the search table
 			window.onload = function() {
 				Search();
 			}
-			
-			// function to return value in the database corresponding to the search value inputted
-			function Search() {
-				var q = $('#searchInput').val();
-				var getLink = "/controller/search.php?q="+q;
-				$.get(getLink, function(data, success) {
-					var arr = JSON.parse(data);
-					searchDisplay(JSON.parse(data));
-				});
-			}
-			
+						
 			// function for html output
 			function searchDisplay(arr) {
 				var html_out = "";

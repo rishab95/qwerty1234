@@ -1,110 +1,106 @@
-<html>
-
-	<head>
-
-		<!-- meta characters to be inserted to increase searching -->
-		<meta charset="utf-8">
-		<title>PAP | Login</title>
-
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-        
-        <!-- Latest complied and minified JQuery -->
-        <script src="bootstrap/jquery-2.1.3.min.js"></script>
-    
-	    <!-- Custom made CSS file -->
-    	<link rel="stylesheet" href="../style.css">
-        
-        <!-- link icon file to html page -->
-        <link rel="shortcut icon" href="../images/logo.ico">
-    
-	</head>
-
-	<body>
-    	
-        <!-- background image -->
-        <div class="body2"></div>
-        
-    	<div>
-			<form method="post" action="/" id="error">
-
 <?php
-		$pass = True;
+	# initialize all variables
+	$pass = True;
+	$name = "";
+	$nameError = "";
+	$email = "";
+	$emailError = "";
+	$userType = "";
+	$userTypeError = "";
+	$username = "";
+	$usernameError = "";
+	$password = "";
+	$passwordError = "";
+	$cpass = "";
+	$cpassError = "";
 	
-		# obtain form data
+	# perform validations and obtain data
+	# Name
+	if(!isset($_POST["Name"]) && empty($_POST["Name"])) {
+		$pass = False;
+		$nameError = "Name is required";
+	} else {
 		$name = $_POST['Name'];
-		$email = $_POST['email'];
-		$userType = $_POST['userType'];
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$cpass = $_POST['cpassword'];
-		
-		# perform validations
-		if (empty($_POST["name"])) {
+		# check name only contains letters and whitespace
+		if (!preg_match("/^[a-zA-Z][ a-zA-z]*$/", $name)) {
 			$pass = False;
-			$nameError = "Name is required";
-		} else {
-			#$name = test_input($name);
-			// check name only contains letters and whitespace
-			if (!preg_match("/^[a-zA-Z][ a-zA-z]*$/", $name)) {
-				$nameError = "Only letters and white space allowed";
-			} else {
-				$pass = True;	
-			}
-		}
-			
-		if (empty($_POST["email"])) {
-			$pass = False;
-			$emailError = "Email is required";
-			}
-		else {
-			#$email = test_input($email);
-			// check if e-mail address syntax is valid or not
-			if (!preg_match('/^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$/',$email)) {
-				$emailError = "Invalid email format";
-		}else {
-				$pass = True;
-			}
-		}
-		
-		if (empty($_POST["username"])) {
-			$pass = False;
-			$usernameError = "Username is required";
-			}
-		else {
-			#$username = test_input($username);
-			// check name only contains letters and whitespace
-			if (!preg_match("/^[0..9]{9}$/",$name)) {
-				$usernameError = "Only numbers allowed";
-		}else {
-				$pass = True;}
-		}
+			$nameError = "Only letters and white space allowed";
+		} else
+			$pass &= True;
+	}
 	
-		if (empty($_POST["password"])) {
+	# email
+	if(!isset($_POST['email']) && empty($_POST["email"])) {
+		$pass = False;
+		$emailError = "Email is required";
+	} else {
+		$email = $_POST['email'];
+		# check if e-mail address syntax is valid
+		if (!preg_match('/^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$/', $email)) {
 			$pass = False;
-			$passwordError = "Password is required";
-			}
-		else {
-			#$password = test_input($password);
-			// check name only contains letters and whitespace
-			if (!preg_match("/^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$/",$password)) {
-				$passwordError = "Only numbers,characters allowed";
-		}else {
-				$pass = True;
-			}
-		}
-			
+			$emailError = "Invalid email format, Example: name@service.dom";
+		} else
+			$pass &= True;
+	}
+	
+	# validate user type
+	if(!isset($_POST['userType']) && empty($_POST['userType'])) {
+		$pass = False;
+		$userTypeError = "User type is required";
+	} else {
+		$userType = $_POST['userType'];
+		# check if the value of user type is from list
+		if(!preg_match('/student|coordinator/', $userType)) {
+			$pass = False;
+			$userTypeError = "Value not from the list";
+		} else
+			$pass &= True;
+	}
+	
+	# validate username
+	if (!isset($_POST['username']) && empty($_POST["username"])) {
+		$pass = False;
+		$usernameError = "Username is required";
+	} else {
+		$username = $_POST['username'];
+		# check name only contains letters and whitespace
+		if (!preg_match("/^[0..9]{9}$/",$name)) {
+			$pass &= False;
+			$usernameError = "Only numbers allowed";
+		} else
+			$pass &= True;
+	}
+	
+	# validate password
+	if (empty($_POST["password"])) {
+		$pass = False;
+		$passwordError = "Password is required";
+	} else {
+		$password = $_POST['password'];
+		# check name only contains letters and whitespace
+		if (!preg_match("/^(?=.*\d)[0-9A-Za-z!@#$%*]{8,}$/",$password)) {
+			$pass = False;
+			$passwordError = "Only numbers, characters allowed";
+		} else
+			$pass &= True;
+	}
+	
+	# validate the confirm password	
+	if(!isset($_POST['cpassword']) && empty($_POST['cpassword'])) {
+		$pass = False;
+		$cpassError = "Confirm Password is required";
+	} else {
+		$cpass = $_POST['cpassword'];
+		# check if both passwords match
 		if($cpass != $password) {
-				echo "<input type='hidden' name='password' value='error' />";
-				$pass = False;
-		}
-		
+			$pass = False;
+			$cpassError = "Password and Confirm Password do not match";
+		} else
+			$pass &= True;
+	}
+	
+	# check if all data is valid to input
+	if($pass) {
 		# password conversion
 		$password = md5($password);
 		
@@ -118,29 +114,26 @@
 		
 		# mysql queries to check for registration in the database table
 		$query = "INSERT INTO auth(username, password, user_type, name, email) VALUES ($username, '$password', '$userType', '$name', '$email');";
-	
+		
 		if($conn->query($query)==True) {
 			# registration successful
-			header("Location: /?regsuc=1");
+			echo json_encode(array("auth"=>"true"));
 		} else {
 			# registration unsuccessful
 			# echo "Not Registered";
 		}
+	} else {
+		# oupt the error in json format
+		echo json_encode(
+			array(
+				"auth" => "false",
+				"name" => $nameError,
+				"email" => $emailError,
+				"userType" => $userTypeError,
+				"username" => $usernameError,
+				"password" => $passwordError,
+				"cpassword" => $cpassError
+			)
+		);
+	}
 ?>
-
-			</form>
-            
-            <div style="margin: 100px auto; text-align: center;">
-            	<h2>Loading</h2>
-                <img src="../images/loading.gif" alt="Loading" height="30"/>
-            </div>
-            
-            <script>
-				$(document).ready(function() {
-					$("#form").submit();
-				});
-            </script>
-            
-		</div>
-	</body>
-</html>
