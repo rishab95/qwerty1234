@@ -20,9 +20,7 @@
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {
 				while($row = mysqli_fetch_row($result)) {
-					 array_push($out, array('description' => $row[0],
-					 			'project_from' => $row[1],
-								'project_to' => $row[2]
+					 array_push($out, array('description' => $row[0]
 					 	)
 					 );
 				}
