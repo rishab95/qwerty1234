@@ -15,7 +15,7 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			$query = "SELECT activity_description FROM curricular_activity WHERE username =                         $username;";
+			$query = "SELECT activity_description FROM curricular_activity WHERE username =                         				                       $username;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {
@@ -23,6 +23,7 @@
 					 array_push($out, array('description' => $row[0]));
 				}
 			}
+			echo json_encode($out);
 		}
 	} else
 		header("Location: /");

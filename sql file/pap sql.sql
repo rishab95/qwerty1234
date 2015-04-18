@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2015 at 07:41 PM
+-- Generation Time: Apr 18, 2015 at 01:32 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,10 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pap`
 --
-
-CREATE DATABASE pap;
-
-USE pap;
 
 -- --------------------------------------------------------
 
@@ -95,11 +91,20 @@ CREATE TABLE IF NOT EXISTS `academic_mtech` (
 --
 
 CREATE TABLE IF NOT EXISTS `acad_achieve` (
-  `achieve_id` varchar(20) NOT NULL,
-  `username` int(11) DEFAULT NULL,
+  `achieve_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
   `achievement_description` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`achieve_id`)
+  PRIMARY KEY (`achieve_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `acad_achieve`
+--
+
+INSERT INTO `acad_achieve` (`achieve_id`, `username`, `achievement_description`) VALUES
+(1, 101203075, ''),
+(2, 101203075, ''),
+(3, 101203075, 'hello');
 
 -- --------------------------------------------------------
 
@@ -158,13 +163,18 @@ INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, 
 --
 
 CREATE TABLE IF NOT EXISTS `curricular_activity` (
-  `activity_id` varchar(20) NOT NULL,
-  `username` int(11) DEFAULT NULL,
+  `activity_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
   `activity_description` varchar(40) DEFAULT NULL,
-  `activity_from` date DEFAULT NULL,
-  `activity_to` date DEFAULT NULL,
-  PRIMARY KEY (`activity_id`)
+  PRIMARY KEY (`activity_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `curricular_activity`
+--
+
+INSERT INTO `curricular_activity` (`activity_id`, `username`, `activity_description`) VALUES
+(1, 101203075, 'hello');
 
 -- --------------------------------------------------------
 
@@ -173,11 +183,19 @@ CREATE TABLE IF NOT EXISTS `curricular_activity` (
 --
 
 CREATE TABLE IF NOT EXISTS `other_info` (
-  `info_id` varchar(20) NOT NULL,
-  `username` int(11) DEFAULT NULL,
+  `info_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
   `info_description` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`info_id`)
+  PRIMARY KEY (`info_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `other_info`
+--
+
+INSERT INTO `other_info` (`info_id`, `username`, `info_description`) VALUES
+(1, 101203075, 'hello'),
+(2, 101203075, 'helloooo');
 
 -- --------------------------------------------------------
 
@@ -186,13 +204,19 @@ CREATE TABLE IF NOT EXISTS `other_info` (
 --
 
 CREATE TABLE IF NOT EXISTS `project` (
-  `project_id` varchar(20) NOT NULL,
-  `username` int(11) DEFAULT NULL,
+  `project_id` int(11) NOT NULL DEFAULT '0',
+  `username` int(11) NOT NULL DEFAULT '0',
   `project_description` varchar(40) DEFAULT NULL,
-  `project_from` date DEFAULT NULL,
-  `project_to` date DEFAULT NULL,
-  PRIMARY KEY (`project_id`)
+  PRIMARY KEY (`project_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`project_id`, `username`, `project_description`) VALUES
+(1, 101203075, 'hiiiiiiiiii'),
+(2, 101203075, 'hi');
 
 -- --------------------------------------------------------
 

@@ -77,21 +77,67 @@
 		$passwordError = "Password is required";
 	} else {
 		$password = $_POST['password'];
-		# check name only contains letters and whitespace
-		if (!preg_match("/^(?=.*\d)[0-9A-Za-z!@#$%*]{8,}$/",$password)) {
-			$pass = False;
-			$passwordError = "Only numbers, characters allowed";
-		} else
-			$pass &= True;
-	}
-	
-	# validate the confirm password	
-	if(!isset($_POST['cpassword']) && empty($_POST['cpassword'])) {
-		$pass = False;
-		$cpassError = "Confirm Password is required";
-	} else {
 		$cpass = $_POST['cpassword'];
-		# check if both passwords match
+		
+		# perform validations
+		if (empty($_POST["name"])) {
+			$pass = False;
+			$nameError = "Name is required";
+		} else {
+			#$name = test_input($name);
+			// check name only contains letters and whitespace
+			if (!preg_match("/^[a-zA-Z][ a-zA-z]*$/", $name)) {
+				$pass=False;
+				$nameError = "Only letters and white space allowed";
+			} else {
+				$pass = True;	
+			}
+		}
+			
+		if (empty($_POST["email"])) {
+			$pass = False;
+			$emailError = "Email is required";
+			}
+		else {
+			#$email = test_input($email);
+			// check if e-mail address syntax is valid or not
+			if (!preg_match('/^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}$/',$email)) {
+				$pass=False;
+				$emailError = "Invalid email format";
+		}else {
+				$pass = True;
+			}
+		}
+		
+		if (empty($_POST["username"])) {
+			$pass = False;
+			$usernameError = "Username is required";
+			}
+		else {
+			#$username = test_input($username);
+			// check name only contains letters and whitespace
+			if (!preg_match("/^[0..9]{9}$/",$name)) {
+				$pass=False;
+				$usernameError = "Only numbers allowed";
+		}else {
+				$pass = True;}
+		}
+	
+		if (empty($_POST["password"])) {
+			$pass = False;
+			$passwordError = "Password is required";
+			}
+		else {
+			#$password = test_input($password);
+			// check name only contains letters and whitespace
+			if (!preg_match("/^(?=.*\d)[0-9A-Za-z!@#$%*]{6,}$/",$password)) {
+				$pass=False;
+				$passwordError = "Only numbers,characters allowed";
+		}else {
+				$pass = True;
+			}
+		}
+			
 		if($cpass != $password) {
 			$pass = False;
 			$cpassError = "Password and Confirm Password do not match";
