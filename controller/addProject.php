@@ -11,7 +11,8 @@
 		if(!empty($_POST['desc']))
 			$description = $_POST['desc'];
 		else
-			; # form not filled correctly	
+			{$description="";}
+			 # form not filled correctly	
 		
 		# perform validations
 		
@@ -25,12 +26,20 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# generate project id
-			$projectId = NULL;
+			$query1="SELECT COUNT(project_id) FROM project WHERE username=$username;";
+			 
+			 if ($result = mysqli_query($conn,$query1)){
+				while($row = mysqli_fetch_row($result))
+				{
+				$projectId=$row[0]+1;
+			 	}
+			 }
 			
 			# mysql query to insert the new project
 			 $query = "INSERT INTO project VALUES ($projectId, $username, '$description');";
 		
-			if($conn->query($query)==True) {
+			$retval = mysqli_query( $conn, $query );
+			if($retval) {
 				# data successfully entered
 				header("Location: /student/?p=profile");
 			} else {

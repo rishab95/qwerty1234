@@ -11,6 +11,7 @@
 		if(!empty($_POST['desc'])) {
 			$description = $_POST['desc'];
 		} else {
+			$description="";
 			# form not filled correctly	
 		}
 		
@@ -19,7 +20,7 @@
 		# data conversion because of quotes in description
 		
 		# generate achievement id
-		$aaId = NULL;
+		
 		
 		# initialize MySQL connection
 		$servername="localhost";
@@ -28,10 +29,22 @@
 		if(!$conn){
 			#die("connection failed") mysql_error()
 		} else {
+			
+			# generate achievement id
+			$query1="SELECT COUNT(achieve_id) FROM acad_achieve WHERE username=$username;";
+			 
+			 if ($result = mysqli_query($conn,$query1)){
+				while($row = mysqli_fetch_row($result))
+				{
+				$aaId=$row[0]+1;
+			 	}
+			 }
 			# mysql queries to insert the academic achievements in sql
-			$query = "INSERT INTO acad_achieve VALUES ($aaId, $username, '$desc');";
+			$query = "INSERT INTO acad_achieve VALUES ($aaId, $username, '$description');";
 		
-			if($conn->query($query)==True) {
+			$retval = mysqli_query( $conn, $query );
+			
+			if($retval) {
 				# data successfully entered
 				header("Location: /student/?p=profile");
 			} else {

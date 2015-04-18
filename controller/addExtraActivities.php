@@ -11,6 +11,7 @@
 		if(!empty($_POST['desc'])) {
 			$description = $_POST['desc'];
 		} else {
+			$description="";
 			# form not filled correctly	
 		}
 		
@@ -18,8 +19,8 @@
 		
 		# data conversion because of quotes in description
 		
-		# generate unique id
-		$eaId = NULL;
+		
+		
 		
 		# initialize MySQL connection
 		$servername="localhost";
@@ -27,12 +28,24 @@
 		$conn = mysqli_connect($servername , "root" , "" , $dbname);
 		if(!$conn){
 			#die("connection failed") mysql_error()
-		} else {			
+		} else {	
+				# generate unique id
+				$query1="SELECT COUNT(activity_id) FROM curricular_activity WHERE username=$username;";
+				
+				
+				if ($result = mysqli_query($conn,$query1)){
+				while($row = mysqli_fetch_row($result))
+				{
+				$eaId=$row[0]+1;
+			 	}
+			 }		
 			# mysql queries to check for registration in the database table
 			$query = "INSERT INTO curricular_activity VALUES ($eaId, $username, '$description');";
 			
 			# execute query
-			if($conn->query($query)==True) {
+			
+			$retval = mysqli_query( $conn, $query );
+			if($retval) {
 				# data successfully entered
 				header("Location: /student/?p=profile");
 			} else {
