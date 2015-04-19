@@ -49,8 +49,28 @@
 				academicRecordDisplay(JSON.parse(data));
 			});
 			// ajax for retrieving data for be record
-			$.post("/controller/view/BE", {username: user}, function(data){
+			$.post("/controller/view/be", {username: user}, function(data){
 				beDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for me record
+			$.post("/controller/view/me", {username: user}, function(data){
+				meDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for academic achievement record
+			$.post("/controller/view/academicAchievements", {username: user}, function(data){
+				acadAcheDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for project record
+			$.post("/controller/view/project", {username: user}, function(data){
+				projDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for extra curricular record
+			$.post("/controller/view/extraActivities", {username: user}, function(data){
+				extraCurrDisplay(JSON.parse(data));
+			});
+			// ajax for retrieving data for other information record
+			$.post("/controller/view/otherInfo", {username: user}, function(data){
+				otherInfoDisplay(JSON.parse(data));
 			});
 
 			// function for html output for personal info
@@ -96,6 +116,67 @@
 				for(i=0 ; i<input.length ; i++)
 					out += "<tr><td>"+input[i].sem+"</td><td>"+input[i].uni+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
 				$("#be").html(out);
+			}
+			
+			// function for html output for me record
+			function meDisplay(input) {
+				var out = "", i;
+				if(input.length = 0) {
+					$("#meContainer").css("visibility", "hidden");
+				} else {
+					for(i=0 ; i<input.length ; i++)
+						out += "<tr><td>"+input[i].sem+"</td><td>"+input[i].uni+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
+				$("#me").html(out);
+				}
+			}
+
+			// function for html output for academic achievement record
+			function acadAchDisplay(input) {
+				var out = "<ol type='1'>", i;
+				if(input.length > 0)
+					for(i=0 ; i<input.length ; i++)
+						out += "<li>"+input.desc+"</li>";
+				else
+					out += "Nothing Found";
+				out += "</ol>";
+				$("#acadAch").html(out);
+			}
+			
+			// function for html output for project record
+			function projDisplay(input) {
+				var out = "<ol type='1'>", i;
+				if(input.length > 0)
+					for(i=0 ; i<input.length ; i++)
+						out += "<li>"+input.desc+"</li>";
+				else
+					out += "nohting found";
+				out += "</ol>";
+				$("#proj").html(out);
+			}
+			
+			// function for html output for extra curricular record
+			function extraCurrDisplay(input) {
+				var out = "<ol type='1'>", i;
+				if(input.length > 0)
+					for(i=0 ; i<input.length ; i++)
+						out += "<li>"+input.desc+"</li>";
+				else
+					out += "Nothing found";
+				out += "</ol>";
+				$("#extraCurr").html(out);
+			}
+			
+			// function for html output for other information record
+			function otherInfoDisplay(input) {
+				var out = "<ol type='1'>", i;
+				if(input.length > 0) {
+					for(i=0 ; i<input.length ; i++)
+						out += "<li>"+input.desc+"</li>";
+				} else {
+					out += "Nothing found";
+				}
+				out += "</ol>";
+				$("#otherInfo").html(out);
 			}
 		</script>
             
@@ -343,7 +424,7 @@
 	            </div>
 			</div>
     		
-    		<div class="col-md-6">
+    		<div class="col-md-6" id="acadAchContainer">
 		    	<div class="well well-lg">
 					<h4>Academic Records</h4>
                     
@@ -513,7 +594,7 @@
                             </tr>
                         </thead>
                             
-                        <tbody>   
+                        <tbody id="me">
                         	<tr>
                               	<td>1st Semester</td>
                                 <td rowspan="6"></td>
@@ -579,7 +660,7 @@
                         
 					<div class="divider"></div>
 			
-		            <div class="row">
+		            <div class="row" id="acadAch">
         		        <ol type="1">
                 		    <li></li>
 		                </ol>
@@ -606,10 +687,12 @@
 					<h4>Summer Training/Projects Undertaken</h4>
                         
 					<div class="divider"></div>
-                        
-					<ol type="1">
-						<li>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</li>
-					</ol>
+                    
+                    <div class="row" id="proj">
+						<ol type="1">
+							<li>Advanced Java - NIIT Bhuj | From 3 June, 2013 to 21 July, 2013</li>
+						</ol>
+                    </div>
             
         		    <div class="divider"></div>
             
@@ -632,10 +715,12 @@
 					<h4>Extra Curricular Activities</h4>
                         
 					<div class="divider"></div>
-                        
-					<ol type="1">
-						<li>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</li>
-					</ol>
+                    
+                    <div class="row" id="extraCurr">
+						<ol type="1">
+							<li>General Secretary and Chapter Leader of OWASP Thapar Student Chapter</li>
+						</ol>
+                    </div>
 		            
 		            <div class="divider"></div>
             
@@ -658,10 +743,12 @@
 					<h4>Other Information</h4>
                         
 					<div class="divider"></div>
-                        
-					<ol type="1">
-               			<li></li>
-					</ol>
+                    
+                    <div class="row" id="otherInfo">
+                        <ol type="1">
+                            <li></li>
+                        </ol>
+                    </div>
             
 		            <div class="divider"></div>
         	    	

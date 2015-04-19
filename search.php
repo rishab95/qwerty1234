@@ -30,6 +30,9 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
     	
+        <!-- essential js file line -->
+        <script src="ess.js"></script>
+        
         <script>
 			// foucs on the search input field
 			$(document).ready(function() {

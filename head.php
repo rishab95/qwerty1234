@@ -49,7 +49,7 @@
 						<?php
 							}
 						?>
-                            value="<?php echo $qVal; ?>" />
+                            value="<?php echo $qVal; ?>" onfocus="this.value = this.value;"/>
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
