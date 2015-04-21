@@ -30,6 +30,9 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
     	
+        <!-- essential js file line -->
+        <script src="ess.js"></script>
+        
         <script>
 			// foucs on the search input field
 			$(document).ready(function() {
@@ -72,8 +75,8 @@
 		
         <!-- main body container -->
         <div class="container">
-        	<div class="col-lg-12">
-            	<div class="well well-lg">
+           	<div class="well well-lg">
+            	<div class="col-md-6">
                     <!-- table to display the search results -->
 					<table class='table table-striped'>
 						<thead>

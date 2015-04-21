@@ -2,7 +2,6 @@
 	# initialize all error message variables
 	$nameError = "";
 	$emailError = "";
-	$userTypeError = "";
 	$usernameError = "";
 	$passwordError = "";
 	$cpassError= "";
@@ -25,7 +24,6 @@
 			# get data in the error message variables
 			$nameError = $input['name'];
 			$emailError = $input['email'];
-			$userTypeError = $input['userType'];
 			$usernameError = $input['username'];
 			$passwordError = $input['password'];
 			$cpassError = $input['cpassword'];
@@ -128,29 +126,6 @@
                                     <p class='help-block' style='color: #880000'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $emailError; ?>
-                                    </p>
-							<?php	
-								}
-                             ?>
-                        </div>
-                        
-                        <!-- input field for user type -->
-                        <div class="form-group <?php echo (!empty($userTypeError)) ?"has-error" : ""; ?>">
-							<div class="input-group">
-                            	<span class="input-group-addon">
-                                	<span class="glyphicon glyphicon-pencil"></span>
-								</span>
-							    <select name="userType" class="form-control">
-									<option value="student">Student</option>
-									<option value="coordinator">Coordinator</option>
-        	    	            </select>
-                            </div>
-                            <?php
-							 	if(!empty($userTypeError)) {
-							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $userTypeError; ?>
                                     </p>
 							<?php	
 								}
