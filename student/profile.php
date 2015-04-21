@@ -76,26 +76,26 @@
 			// function for html output for personal info
 			function personalInfoDisplay(input) {
 				$("#profilePic").attr("src", "images/"+input.picName);
-				$("#fullName").html(input.fullName);
-				$("#dob").html(input.dob);
-				$("#age").html(input.age);
-				$("#citizen").html(input.citizenship);
-				$("#gender").html(input.gender);
-				$("#currAddr").html(input.currAddr);
-				$("#currCity").html("<label>City</label>: "+input.currCity);
-				$("#currState").html("<label>State</label>: "+input.currState);
-				$("#currPin").html("<label>Pin</label>: "+input.currPin);
-				$("#currTele").html(input.currTele);
-				$("#perAddr").html(input.perAddr);
-				$("#perCity").html("<label>City</label>: "+input.perCity);
-				$("#perState").html("<label>State</label>: "+input.perState);
-				$("#perPin").html("<label>Pin</label>: "+input.perPin);
-				$("#perTele").html(input.perTele);
-				$("#email").html(input.email);
-				$("#fname").html(input.fname);
-				$("#foccu").html(input.foccu);
-				$("#mname").html(input.mname);
-				$("#moccu").html(input.moccu);
+				$("#fullName").html(input[0].fullName);
+				$("#dob").html(input[0].dob);
+				$("#age").html(input[0].age);
+				$("#citizen").html(input[0].citizenship);
+				$("#gender").html(input[0].gender);
+				$("#currAddr").html(input[0].currAddr);
+				$("#currCity").html("<label>City</label>: "+input[0].currCity);
+				$("#currState").html("<label>State</label>: "+input[0].currState);
+				$("#currPin").html("<label>Pin</label>: "+input[0].currPin);
+				$("#currTele").html(input[0].currTele);
+				$("#perAddr").html(input[0].perAddr);
+				$("#perCity").html("<label>City</label>: "+input[0].perCity);
+				$("#perState").html("<label>State</label>: "+input[0].perState);
+				$("#perPin").html("<label>Pin</label>: "+input[0].perPin);
+				$("#perTele").html(input[0].perTele);
+				$("#email").html(input[0].email);
+				$("#fname").html(input[0].fname);
+				$("#foccu").html(input[0].foccu);
+				$("#mname").html(input[0].mname);
+				$("#moccu").html(input[0].moccu);
 				var i, out="";
 				for(i=0 ; i<input.lang.length ; i++)
 					out += "<tr><td>"+input.lang[i].name+"</td><td>"+input.lang[i].understand+"</td><td>"+input.lang[i].speak+"</td><td>"+input.lang[i].read+"</td><td>"+input.lang[i].writ+"</td></tr>";

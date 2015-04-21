@@ -120,8 +120,7 @@
                 <div class="col-lg-5">
                 	<div class="well well-lg">
                     	<div class="form-group">
-       			        	<div class="input-group">
-                   				<input type="search" class="form-control" placeholder="Search" oninput="searchTable(this.value, $('#tblTimeline'))" />
+       			        	<div class="input-group">                   				<input type="search" class="form-control" placeholder="Search" oninput="searchTable(this.value, $('#tblTimeline'))" />
 	                            <span class="input-group-btn">
       			                	<button class="btn btn-group" type="submit">
                    		        		<span class="glyphicon glyphicon-search"></span>
