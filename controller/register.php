@@ -5,8 +5,6 @@
 	$nameError = "";
 	$email = "";
 	$emailError = "";
-	$userType = "";
-	$userTypeError = "";
 	$username = "";
 	$usernameError = "";
 	$password = "";
@@ -42,21 +40,7 @@
 		} else
 			$pass &= True;
 	}
-	
-	# validate user type
-	if(!isset($_POST['userType']) && empty($_POST['userType'])) {
-		$pass = False;
-		$userTypeError = "User type is required";
-	} else {
-		$userType = $_POST['userType'];
-		# check if the value of user type is from list
-		if(!preg_match('/student|coordinator/', $userType)) {
-			$pass = False;
-			$userTypeError = "Value not from the list";
-		} else
-			$pass &= True;
-	}
-	
+		
 	# validate username
 	if (!isset($_POST['username']) && empty($_POST["username"])) {
 		$pass = False;
@@ -159,7 +143,7 @@
 		}
 		
 		# mysql queries to check for registration in the database table
-		$query = "INSERT INTO auth(username, password, user_type, name, email) VALUES ($username, '$password', '$userType', '$name', '$email');";
+		$query = "INSERT INTO auth(username, password, user_type, name, email) VALUES ($username, '$password', 'student', '$name', '$email');";
 		
 		if($conn->query($query)==True) {
 			# registration successful
@@ -175,7 +159,6 @@
 				"auth" => "false",
 				"name" => $nameError,
 				"email" => $emailError,
-				"userType" => $userTypeError,
 				"username" => $usernameError,
 				"password" => $passwordError,
 				"cpassword" => $cpassError

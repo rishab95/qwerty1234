@@ -119,7 +119,7 @@ form.register {
 }
 
 .table-hover > tbody > tr:hover {
-	background-color: #d0d3a8;	
+	background-color: #d0d3a8;
 	cursor: pointer;
 }
 
