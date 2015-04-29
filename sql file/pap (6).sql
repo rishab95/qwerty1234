@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2015 at 01:32 PM
+-- Generation Time: Apr 29, 2015 at 10:59 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,30 +23,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `academic_10`
+-- Table structure for table `academic`
 --
 
-CREATE TABLE IF NOT EXISTS `academic_10` (
+CREATE TABLE IF NOT EXISTS `academic` (
   `username` int(11) NOT NULL DEFAULT '0',
-  `board` varchar(5) DEFAULT NULL,
-  `marks` int(11) DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `class` varchar(7) NOT NULL DEFAULT '',
+  `year` int(4) DEFAULT NULL,
+  `univ_diploma` varchar(20) DEFAULT NULL,
+  `marks` float DEFAULT NULL,
+  `max_marks` float DEFAULT NULL,
+  `board` varchar(5) NOT NULL DEFAULT '',
+  `division` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`username`,`class`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `academic_12`
+-- Dumping data for table `academic`
 --
 
-CREATE TABLE IF NOT EXISTS `academic_12` (
-  `username` int(11) NOT NULL DEFAULT '0',
-  `univ` varchar(20) DEFAULT NULL,
-  `marks_diploma` int(11) DEFAULT NULL,
-  `board` varchar(5) DEFAULT NULL,
-  `marks_12` int(11) DEFAULT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `academic` (`username`, `class`, `year`, `univ_diploma`, `marks`, `max_marks`, `board`, `division`) VALUES
+(101203072, '10', 2007, NULL, 90, 100, 'cbse', 'first'),
+(101203072, '12', 2009, NULL, 95, 100, 'cbse', 'first'),
+(101203075, '10', 2010, NULL, 85.5, 100, 'CBSE', 'first'),
+(101203075, '12', 2012, NULL, 83, 100, 'CBSE', 'first'),
+(101203081, '10', 2012, NULL, 90, 100, 'cbse', 'first'),
+(101203081, '12', 2012, NULL, 90, 100, 'cbse', 'first');
 
 -- --------------------------------------------------------
 
@@ -56,17 +58,31 @@ CREATE TABLE IF NOT EXISTS `academic_12` (
 
 CREATE TABLE IF NOT EXISTS `academic_btech` (
   `username` int(11) NOT NULL DEFAULT '0',
-  `first_sem` float(2,2) DEFAULT NULL,
-  `second_sem` float(2,2) DEFAULT NULL,
-  `third_sem` float(2,2) NOT NULL,
-  `fourth_sem` float(2,2) NOT NULL,
-  `fifth_sem` float(2,2) NOT NULL,
-  `sixth_sem` float(2,2) NOT NULL,
-  `seventh_sem` float(2,2) DEFAULT NULL,
-  `eighth_sem` float(2,2) DEFAULT NULL,
-  `cgpa` float(2,2) DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `year` int(4) DEFAULT NULL,
+  `semester` varchar(10) NOT NULL DEFAULT '',
+  `cgpa` float DEFAULT NULL,
+  `max_cgpa` float DEFAULT NULL,
+  `division` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`username`,`semester`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `academic_btech`
+--
+
+INSERT INTO `academic_btech` (`username`, `year`, `semester`, `cgpa`, `max_cgpa`, `division`) VALUES
+(101203075, 2014, 'fifth', 7.2, 10, NULL),
+(101203075, 2012, 'first', 7.2, 10, NULL),
+(101203075, 2014, 'fourth', 7.2, 10, NULL),
+(101203075, 2013, 'second', 7.2, 10, NULL),
+(101203075, 2015, 'sixth', 7.2, 10, NULL),
+(101203075, 2013, 'third', 7.2, 10, NULL),
+(101203081, 2014, 'fifth', 8, 10, 'first'),
+(101203081, 2012, 'first', 8, 10, 'first'),
+(101203081, 2014, 'fourth', 8, 10, 'first'),
+(101203081, 2013, 'second', 8, 10, 'first'),
+(101203081, 2015, 'sixth', 8, 10, 'first'),
+(101203081, 2013, 'third', 8, 10, 'first');
 
 -- --------------------------------------------------------
 
@@ -76,12 +92,12 @@ CREATE TABLE IF NOT EXISTS `academic_btech` (
 
 CREATE TABLE IF NOT EXISTS `academic_mtech` (
   `username` int(11) NOT NULL DEFAULT '0',
-  `univ_btech` varchar(30) DEFAULT NULL,
-  `first_sem` float(2,2) NOT NULL,
-  `second_sem` float(2,2) NOT NULL,
-  `third_sem` float(2,2) NOT NULL,
-  `fourth_sem` float(2,2) DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `year` int(4) DEFAULT NULL,
+  `semester` varchar(10) NOT NULL DEFAULT '',
+  `cgpa` float DEFAULT NULL,
+  `max_cgpa` float DEFAULT NULL,
+  `division` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`username`,`semester`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -127,7 +143,9 @@ CREATE TABLE IF NOT EXISTS `auth` (
 --
 
 INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
-(101203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta21@gmail.com');
+(101203072, 'e8d3d3ecac9dd3f1dffd3fc964fb3760', 'student', 'Tanushree Gupta', 'tanushree@gmail.com'),
+(101203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta21@gmail.com'),
+(101203081, 'cc03e747a6afbbcbf8be7668acfebee5', 'student', 'Rohit Saluja', 'ruhi.saluja@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -154,7 +172,9 @@ CREATE TABLE IF NOT EXISTS `company` (
 --
 
 INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, `cg_criteria`, `password`, `other_criteria`, `company_link`, `company_profile`, `last_date`) VALUES
-(100, 'Microsoft', 1, 18, 7, 'test', NULL, NULL, NULL, '2016-08-04');
+(100, 'Microsoft', 1, 18, 7, 'test', NULL, NULL, NULL, '2016-08-04'),
+(101, 'google', 1, 100000, 7, 'test123', NULL, NULL, NULL, '2015-04-30'),
+(102, 'facebook', 0, 90000, 7.5, 'test12345', NULL, NULL, NULL, '2015-07-30');
 
 -- --------------------------------------------------------
 
@@ -248,6 +268,15 @@ CREATE TABLE IF NOT EXISTS `student` (
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`name`, `username`, `year_of_pass`, `branch`, `dob`, `citizenship`, `gender`, `temp_address`, `temp_city`, `temp_state`, `temp_pin`, `permanent_address`, `permanent_city`, `permanent_state`, `permanent_pin`, `email`, `father_name`, `father_occupation`, `mother_name`, `mother_occupation`) VALUES
+('Tanushree Gupta', 101203072, 2016, 'cse', '1990-04-14', 'indian', 'f', 'power colony no.2', 'patiala', 'punjab', 147001, 'power colony no.2', 'patiala', 'punjab', 147001, 'tanushree@gmail.com', 'sham Gupta', 'Dy. CAO', 'Samita Gupta', 'lecturer'),
+('Prisha Gupta', 101203075, 2016, 'coe', '1995-01-21', 'Indian', 'F', 'power colony no.2', 'Patiala', 'Punjab', 147001, 'power colony no.2', 'Patiala', 'Punjab', 147001, 'prishagupta@gmail.com', 'Sham Gupta', 'Dy. CAO', 'Samita Gupta', 'Lecturer'),
+('Rohit saluja', 101203081, 2016, 'cse', '1994-08-15', 'indian', 'm', 'thapar university', 'patiala', 'punjab', 147001, 'ekta colony', 'bhuj', 'gujrat', 123456, 'ruhi.saluja@gmail.com', 'uncle ji', 'army', 'aunty ji', 'housewife');
+
 -- --------------------------------------------------------
 
 --
@@ -264,6 +293,16 @@ CREATE TABLE IF NOT EXISTS `student_language` (
   PRIMARY KEY (`lang_name`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `student_language`
+--
+
+INSERT INTO `student_language` (`username`, `lang_name`, `lang_understand`, `lang_read`, `lang_write`, `lang_speak`) VALUES
+(101203075, 'english', 1, 1, 1, 1),
+(101203081, 'enlish', 1, 1, 1, 1),
+(101203081, 'hindi', 1, 1, 1, 1),
+(101203072, 'punjabi', 0, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -271,10 +310,19 @@ CREATE TABLE IF NOT EXISTS `student_language` (
 --
 
 CREATE TABLE IF NOT EXISTS `student_telephone` (
-  `username` int(11) NOT NULL DEFAULT '0',
-  `phone_num` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`username`,`phone_num`)
+  `username` int(10) NOT NULL DEFAULT '0',
+  `phone_num` bigint(10) NOT NULL DEFAULT '0',
+  `permanent_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_telephone`
+--
+
+INSERT INTO `student_telephone` (`username`, `phone_num`, `permanent_number`) VALUES
+(101203075, 9417232343, 1203948),
+(101203081, 1234567890, 1234567890),
+(101203072, 12345689, 124659236);
 
 -- --------------------------------------------------------
 
@@ -294,7 +342,10 @@ CREATE TABLE IF NOT EXISTS `stu_eligible` (
 --
 
 INSERT INTO `stu_eligible` (`company_id`, `username`, `applied`) VALUES
-(100, 101203075, 1);
+(100, 101203075, 1),
+(101, 101203072, 0),
+(101, 101203081, 0),
+(102, 101203081, 1);
 
 -- --------------------------------------------------------
 
@@ -315,7 +366,9 @@ CREATE TABLE IF NOT EXISTS `stu_schedule` (
 --
 
 INSERT INTO `stu_schedule` (`company_id`, `date`, `venue`, `time`, `event_descp`) VALUES
-(100, '2031-01-15', 'ccct lab', '07:00:00', 'test');
+(100, '2031-01-15', 'ccct lab', '07:00:00', 'test'),
+(101, '2015-04-07', 'citm', '03:00:00', 'test'),
+(102, '2015-04-15', 'pg lab', '03:00:00', 'test');
 
 --
 -- Constraints for dumped tables
