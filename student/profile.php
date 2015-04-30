@@ -20,7 +20,7 @@
 	<head>
 
 		<meta charset="utf-8">
-		<title>PAP | Company</title>
+		<title>PAP | Student | Profile</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -58,7 +58,7 @@
 			});
 			// ajax for retrieving data for academic achievement record
 			$.post("/controller/view/academicAchievements", {username: user}, function(data){
-				acadAcheDisplay(JSON.parse(data));
+				acadAchDisplay(JSON.parse(data));
 			});
 			// ajax for retrieving data for project record
 			$.post("/controller/view/project", {username: user}, function(data){
@@ -75,31 +75,35 @@
 
 			// function for html output for personal info
 			function personalInfoDisplay(input) {
-				$("#profilePic").attr("src", "images/"+input.picName);
-				$("#fullName").html(input[0].fullName);
-				$("#dob").html(input[0].dob);
-				$("#age").html(input[0].age);
-				$("#citizen").html(input[0].citizenship);
-				$("#gender").html(input[0].gender);
-				$("#currAddr").html(input[0].currAddr);
-				$("#currCity").html("<label>City</label>: "+input[0].currCity);
-				$("#currState").html("<label>State</label>: "+input[0].currState);
-				$("#currPin").html("<label>Pin</label>: "+input[0].currPin);
-				$("#currTele").html(input[0].currTele);
-				$("#perAddr").html(input[0].perAddr);
-				$("#perCity").html("<label>City</label>: "+input[0].perCity);
-				$("#perState").html("<label>State</label>: "+input[0].perState);
-				$("#perPin").html("<label>Pin</label>: "+input[0].perPin);
-				$("#perTele").html(input[0].perTele);
-				$("#email").html(input[0].email);
-				$("#fname").html(input[0].fname);
-				$("#foccu").html(input[0].foccu);
-				$("#mname").html(input[0].mname);
-				$("#moccu").html(input[0].moccu);
-				var i, out="";
-				for(i=0 ; i<input.lang.length ; i++)
-					out += "<tr><td>"+input.lang[i].name+"</td><td>"+input.lang[i].understand+"</td><td>"+input.lang[i].speak+"</td><td>"+input.lang[i].read+"</td><td>"+input.lang[i].writ+"</td></tr>";
-				$("#lang").html(out);
+				if(input[0].data == "true") {
+					$("#profilePic").attr("src", "images/"+input[0].picName);
+					$("#fullName").html(input[0].fullName);
+					$("#dob").html(input[0].dob);
+					$("#age").html(input[0].age);
+					$("#citizen").html(input[0].citizenship);
+					$("#gender").html(input[0].gender);
+					$("#currAddr").html(input[0].currAddr);
+					$("#currCity").html("<label>City</label>: "+input[0].currCity);
+					$("#currState").html("<label>State</label>: "+input[0].currState);
+					$("#currPin").html("<label>Pin</label>: "+input[0].currPin);
+					$("#currTele").html(input[0].currTele);
+					$("#perAddr").html(input[0].perAddr);
+					$("#perCity").html("<label>City</label>: "+input[0].perCity);
+					$("#perState").html("<label>State</label>: "+input[0].perState);
+					$("#perPin").html("<label>Pin</label>: "+input[0].perPin);
+					$("#perTele").html(input[0].perTele);
+					$("#email").html(input[0].email);
+					$("#fname").html(input[0].fname);
+					$("#foccu").html(input[0].foccu);
+					$("#mname").html(input[0].mname);
+					$("#moccu").html(input[0].moccu);
+					var i, out="";
+					for(i=0 ; i<input.lang.length ; i++)
+						out += "<tr><td>"+input.lang[i].name+"</td><td>"+input.lang[i].understand+"</td><td>"+input.lang[i].speak+"</td><td>"+input.lang[i].read+"</td><td>"+input.lang[i].writ+"</td></tr>";
+					$("#lang").html(out);
+				} else {
+					// some error in the data
+				}
 			}
 			
 			// function for html output for academic record
@@ -201,7 +205,7 @@
                     <div class="row">
                         <!-- profile picture -->
                         <div class="col-md-4">
-                            <img id="profilePic" src="images/101203081.png" width="100%">
+                            <img id="profilePic" src="" width="100%">
                         </div>
                             
                         <!-- full name -->
@@ -209,7 +213,7 @@
                             <div class="col-xs-5">
                                 <label>Full Name</label>
                             </div>
-                            <div class="col-xs-7" id="fullName">Rohit Saluja</div>
+                            <div class="col-xs-7" id="fullName"></div>
                         </div>
                             
                         <!-- date of birth -->
@@ -217,7 +221,7 @@
                             <div class="col-xs-5">
                                 <label>Date of Birth</label>
                             </div>
-                            <div class="col-xs-7" id="dob">4th August, 1994</div>
+                            <div class="col-xs-7" id="dob"></div>
                         </div>
                             
                         <!-- age -->

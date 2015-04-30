@@ -1,16 +1,16 @@
 <?php
-	# link and link name for the button to be displayed
+	# link and link pageName for the button to be displayed
 	switch($page) {
 		case "register":
-			$name = "Login";
+			$pageName = "Login";
 			$link = "/";
 			break;
 		case "login":
-			$name = "Register";
+			$pageName = "Register";
 			$link = "/register";
 			break;
 		default:
-			$name = "Login";
+			$pageName = "Login";
 			$link = "/";
 			break;
 	}
@@ -37,7 +37,7 @@
                 	<!-- search form -->
                     	<form action="<?php echo $page!="search"?"search":""?>" method="get">
                         <div class="input-group">
-                            <input type="search" id="searchInput" class="form-control head-item" placeholder="Search" name="q"
+                            <input type="search" id="searchInput" class="form-control head-item" placeholder="Search" pageName="q"
                         <?php
 							if($page!="search") {
                         ?>
@@ -65,7 +65,7 @@
                        	<a href="<?php echo $link; ?>">
 
     			           	<button class="btn btn-primary navbar-btn pull-right" type="button" id="mainHeadToggleButton">
-        	   		           	<span class="glyphicon glyphicon-user"></span> <?php echo $name; ?>
+        	   		           	<span class="glyphicon glyphicon-user"></span> <?php echo $pageName; ?>
     	           	        </button>
 	   	           		</a>
                     </div>
@@ -76,14 +76,14 @@
     
     <script>
 		window.onload = function() {
-			if(window.location.pathname == "/search")
+			if(window.location.pathpageName == "/search")
 				Search();
 		};
 		
 		// function to retrieve values from database
 		function Search() {
 			var q = $('#searchInput').val();
-			if(window.location.pathname == "/search") {
+			if(window.location.pathpageName == "/search") {
 				var getLink = "/controller/search.php?q="+q;
 				$.get(getLink, function(data, success) {
 					searchDisplay(JSON.parse(data));

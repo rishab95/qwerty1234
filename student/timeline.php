@@ -88,10 +88,13 @@
         <!-- main container for displaying mail -->
 		<div class="container">
         	<div class="row">
-            	<div class="well well-lg" id="eventDiv">
-                	<h2>Loading</h2>
-           		    <img src="../images/loading.gif" alt="Loading" height="30"/>
-  				</div>
+            	<div class="col-md-3"></div>
+            	<div class="col-md-6">
+	            	<div class="well well-lg" id="eventDiv">
+    	            	<p>Loading</p><img src="../images/loading.gif" alt="Loading" height="30"/>
+  					</div>
+                </div>
+                <div class="col-md-3"></div>
 			</div>
 		</div>
 	</body>

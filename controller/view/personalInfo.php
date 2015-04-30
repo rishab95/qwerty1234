@@ -31,12 +31,13 @@
 				while($row = mysqli_fetch_row($result)) {
 					 array_push($out,
 					 	array(
+							'data' => 'true',
 							'username' => $row[0],
 							'fullName' => $row[1],
-							'dob' => $row[2],
+							'dob' => date("F d, Y", strtotime($row[2])),
 							'age' => $row[3],
 							'citizenship' => $row[4],
-							'gender' => $row[5],
+							'gender' => ($row[5]=='M'?'Male':'Female'),
 							'currAddr' => $row[6],
 							'currCity' => $row[7],
 							'currState' => $row[8],
@@ -55,6 +56,9 @@
 						)
 					);
 				}
+			} else {
+				# error in data retrieval
+				array_push($out, array('data' => 'false'));
 			}
 			
 			# output in jSON format
