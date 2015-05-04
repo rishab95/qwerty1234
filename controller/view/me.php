@@ -15,20 +15,18 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			 $query = "SELECT * FROM project where username = $username;";
+			 $query = "SELECT * FROM academic_mtech where username = $username;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {
 				while($row = mysqli_fetch_row($result)) {
 					 array_push($out,
 					 			array(
-								 	'sem' => $row[0],
-									'board' => $row[1],
-									'year' => $row[2],
-									'mm' => $row[3],
-									'mo' => $row[4],
-									'percent' => $row[5],
-									'divi' => $row[6]
+								 	'year' => $row[1],
+									'sem' => $row[2],
+									'cgpa' => $row[3],
+									'max_cgpa' => $row[4],
+									'divi' => $row[5]
 								)		
 					);
 				}
