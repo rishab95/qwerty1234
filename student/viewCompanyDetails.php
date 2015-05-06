@@ -29,21 +29,11 @@
         
         <script>
 			// ajax call
-			var xmlhttp;
-			if (window.XMLHttpRequest)
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp=new XMLHttpRequest();
-			else
-				// code for IE6, IE5
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState==4 && xmlhttp.status==200)
-					var arr = JSON.parse(xmlhttp.responseText);
-					display(arr);
-			}
-			xmlhttp.open("POST", "/controller/viewCompanyDetails.php", true);
-			xmlhttp.send();	
-
+			$.get("/controller/viewCompanyDetails.php?id=<?php echo $id; ?>",
+				function(data) {
+					display(JSON.parse(data));
+				});
+			
 			// function for html output
 			function display(arr) {
 				var html_out = "";
@@ -75,7 +65,7 @@
 				} else {
 					html_out += "<div style='text-align: center;'>No mail for you</div>";
 				}
-//				$("#companyDetailsDiv").html(html_out);
+				$("#companyDetailsDiv").html(html_out);
 			}
 		</script>
             
@@ -94,22 +84,50 @@
         
         <!-- main container for displaying mail -->
 		<div class="container">
-        	<div class="well well-lg">
-                <div class="row">
-                    <div class="col-md-10">
-                        <h3>Microsoft</h3>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="resume/">
-                            <button class="btn btn-group">Apply | View</button>
-                        </a>
+        	<div class="panel panel-default">
+                <div class="panel-heading">
+                	<div class="row">
+	                    <div class="col-md-10">
+    	                    <h2>Microsoft</h2>
+        	            </div>
+            	        <div class="col-md-2">
+                        	<h2>
+                            	<a href="resume/">
+                    	        	<button class="btn btn-group">Apply | View</button>
+                        		</a>
+                            </h2>
+						</div>
                     </div>
                 </div>
                 
-                <div class="divider"></div>
-                
-                <div class="row" id="companyDetailsDiv">
+                <div class="panel-body" id="companyDetailsDiv">
 					<!-- design of the company profile -->
+                    <div class="col-md-6">
+                    	<div class="panel panel-default">
+	                    	<div class="panel-heading">
+		                    	<h4>Description</h4>
+							</div>
+                            <div class="panel-body">
+	                            <p id="description">This is sample description for the company</p>
+                            </div>
+            	        </div>
+                    </div>
+                    <div class="col-md-6">
+                    	<div class="panel panel-default">
+	                    	<div class="panel-heading">
+		                    	<h4>Schedule</h4>
+							</div>
+                        	
+		                    <table class="table table-striped">
+    		                  	<thead>
+        		                   	<tr>
+            		                   	<th>Event</th>
+                		                <th>Date</th>
+                    		        </tr>
+                        	    </thead>
+	                        </table>
+						</div>
+                    </div>
                 </div>
 			</div>
 		</div>

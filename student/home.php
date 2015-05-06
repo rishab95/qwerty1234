@@ -65,7 +65,7 @@
 							"<tbody>";
 					var i;
 					for(i=0; i<arr.length; i++) {
-						html_out += "<tr onClick='document.location = \'/student/?p=viewCompanyDetails&id="+arr[i].companyId+";'>";
+						html_out += "<tr onClick=\"document.location = \'/student/viewCompanyDetails?id="+arr[i].companyId+"\';\">";
 						html_out += "<td>"+arr[i].companyName+"</td>";
 						html_out += "<td>"+arr[i].message+"</td>";
 						html_out += "<td>"+arr[i].status+"</td>";
@@ -140,26 +140,30 @@
         <div class="container">        
         	<!-- main container for displaying mail -->
 	        <div class="col-lg-6">
-    	        <div class="heading">
-                   	<h3>Inbox</h3>
-   	    	    </div>
+            	<div class="panel panel-default">
+	    	        <div class="panel-heading">
+    	               	<h3>Inbox</h3>
+   	    		    </div>
                 
-                <div class="well well-lg" id="inboxDiv">
-                    <h2>Loading</h2>
-                    <img src="../images/loading.gif" alt="Loading" height="30"/>
-                </div>
+	                <div class="panel-body" id="inboxDiv">
+    	                <h2>Loading</h2>
+        	            <img src="../images/loading.gif" alt="Loading" height="30"/>
+            	    </div>
+				</div>
             </div>
         
 	        <!-- main container for displaying the schedule -->
     	    <div class="col-lg-6">
-    	        <div class="heading">
-                   	<h3>Schedule</h3>
-   	    	    </div>
-                
-                <div class="well well-lg" id="scheduleDiv">
-                    <h2>Loading</h2>
-                    <img src="../images/loading.gif" alt="Loading" height="30"/>
-                </div>
+            	<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Schedule</h3>
+                    </div>
+                    
+                    <div class="panel-body" id="scheduleDiv">
+                        <h2>Loading</h2>
+                        <img src="../images/loading.gif" alt="Loading" height="30"/>
+                    </div>
+				</div>
             </div>
 		</div>
 	</body>
