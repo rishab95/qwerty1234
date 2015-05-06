@@ -5,7 +5,6 @@
 	$usernameError = "";
 	$passwordError = "";
 	$cpassError= "";
-	
 	# type of the page
 	$page = "register";
 	if(!empty($_POST)) {
@@ -13,20 +12,21 @@
 		ob_start();
 		include_once("controller/register.php");
 		$inStr = ob_get_clean();
-		
 		# convert the output of registeration from json to assoc array
 		$input = json_decode($inStr, true);
-		echo $inStr;
 		# validate if registration successfull
 		if($input['auth']=='true')
 			header("Location: /?regsuc=1");
 		else {
 			# get data in the error message variables
-			$nameError = $input['name'];
-			$emailError = $input['email'];
-			$usernameError = $input['username'];
-			$passwordError = $input['password'];
-			$cpassError = $input['cpassword'];
+			$nameError = $input['nameError'];
+			$name = $input['name'];
+			$emailError = $input['emailError'];
+			$email = $input['email'];
+			$usernameError = $input['usernameError'];
+			$username = $input['username'];
+			$passwordError = $input['passwordError'];
+			$cpassError = $input['cpasswordError'];
 		}
 	}
 ?>
@@ -81,10 +81,10 @@
         <div class="container">
         	<div class="row">
             	<!-- column for left space -->
-				<div class="col-xs-4"></div>
+				<div class="col-md-4 col-xs-1"></div>
                 
                 <!-- central column for form -->
-                <div class="col-xs-4">
+                <div class="col-md-4 col-xs-10">
 					<!-- login form -->
                     <form action="register" method="post" class="register form-horizontal">
                     	<!-- heading for form -->
@@ -98,7 +98,7 @@
 								<span class="input-group-addon">
                                 	<span class="glyphicon glyphicon-user"></span>
 								</span>
-								<input type="text" class="form-control" name="Name" placeholder="Full name" value="" required />
+								<input type="text" class="form-control" name="Name" placeholder="Full name" value="<?php echo !empty($name)?$name:""; ?>" required />
 							</div>
                             <?php
 							 	if(!empty($nameError)) {
@@ -118,7 +118,7 @@
 								<span class="input-group-addon">
 									<span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-								<input type="email" class="form-control" name="email" placeholder="E-mail" value="" required>
+								<input type="email" class="form-control" name="email" placeholder="E-mail" value="<?php echo !empty($email)?$email:""; ?>" required>
                             </div>
                             <?php
 							 	if(!empty($emailError)) {
@@ -138,7 +138,7 @@
 								<span class="input-group-addon">
                                 	<span class="glyphicon glyphicon-user"></span>
 								</span>
-								<input type="text" class="form-control" name="username" placeholder="Roll number" value="" required />
+								<input type="text" class="form-control" name="username" placeholder="Roll number" value="<?php echo !empty($username)?$username:""; ?>" required />
                             </div>
                             <?php
 							 	if(!empty($usernameError)) {
@@ -200,7 +200,7 @@
 				</div>
                 
                 <!-- right margin -->
-                <div class="col-xs-4"></div>
+                <div class="col-md-4 col-xs-1"></div>
 			</div>
         </div>
 	</body>

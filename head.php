@@ -1,16 +1,16 @@
 <?php
-	# link and link name for the button to be displayed
+	# link and link pageName for the button to be displayed
 	switch($page) {
 		case "register":
-			$name = "Login";
+			$pageName = "Login";
 			$link = "/";
 			break;
 		case "login":
-			$name = "Register";
+			$pageName = "Register";
 			$link = "/register";
 			break;
 		default:
-			$name = "Login";
+			$pageName = "Login";
 			$link = "/";
 			break;
 	}
@@ -32,58 +32,58 @@
 		            </div>
                 </div>
             
-            	<div class="col-sm-6" style="margin-top: 10px;">
-                
+            	<div class="col-sm-9">
                 	<!-- search form -->
-                    	<form action="<?php echo $page!="search"?"search":""?>" method="get">
-                        <div class="input-group">
-                            <input type="search" id="searchInput" class="form-control head-item" placeholder="Search" name="q"
-                        <?php
-							if($page!="search") {
-                        ?>
-                            onInput="document.location='search?q='+document.getElementById('searchInput').value;"
-                        <?php
-							} else {
-						?>
-							onInput="Search()"
-						<?php
-							}
-						?>
-                            value="<?php echo $qVal; ?>" onfocus="this.value = this.value;"/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-					</form>
-                </div>
-                
-                <!-- link for forwarding to next page -->
-            	<div class="col-sm-3">
-                	<div class="pull-right" style="margin-top: 10px;">
-                       	<a href="<?php echo $link; ?>">
-
-    			           	<button class="btn btn-primary navbar-btn pull-right" type="button" id="mainHeadToggleButton">
-        	   		           	<span class="glyphicon glyphicon-user"></span> <?php echo $name; ?>
-    	           	        </button>
-	   	           		</a>
-                    </div>
-                </div>
+			       	<ul class="nav navbar-nav navbar-right">
+        	        	<li class="nav-search">
+		                   	<form action="<?php echo $page!="search"?"search":""?>" method="get">
+    	           		    	<div class="input-group">
+		                            <input type="search" id="searchInput" class="form-control head-item" placeholder="Search" pageName="q"
+        			                <?php
+										if($page!="search") {
+			                        ?>
+			                            onInput="document.location='search?q='+document.getElementById('searchInput').value;"
+			                        <?php
+										} else {
+									?>
+										onInput="Search()"
+									<?php
+										}
+									?>
+			                            value="<?php echo $qVal; ?>" onfocus="this.value = this.value;"/>
+		                            <span class="input-group-btn">
+        		                    	<button class="btn btn-primary form-control" type="submit">
+                	        	        	<span class="glyphicon glyphicon-search"></span>
+                    		            </button>
+                            		</span>
+			                    </div>
+							</form>
+        		        </li>
+                        
+                        <li>
+                            <!-- link for forwarding to next page -->
+                         	<a href="<?php echo $link; ?>">
+                                <button class="btn btn-primary navbar-btn pull-right" type="button" id="mainHeadToggleButton">
+                	                <span class="glyphicon glyphicon-user"></span> <?php echo $pageName; ?>
+            	                </button>
+        	                </a>
+    	                </li>
+	                </ul>
+                </div>               
             </div>
         </div>
     </nav>
     
     <script>
 		window.onload = function() {
-			if(window.location.pathname == "/search")
+			if(window.location.pathpageName == "/search")
 				Search();
 		};
 		
 		// function to retrieve values from database
 		function Search() {
 			var q = $('#searchInput').val();
-			if(window.location.pathname == "/search") {
+			if(window.location.pathpageName == "/search") {
 				var getLink = "/controller/search.php?q="+q;
 				$.get(getLink, function(data, success) {
 					searchDisplay(JSON.parse(data));

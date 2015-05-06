@@ -76,8 +76,8 @@
         <!-- main body container -->
         <div class="container">
         	<div class="row">
-				<div class="col-xs-4"></div>
-                <div class="col-md-4 col-xs-4">
+				<div class="col-md-4 col-xs-1"></div>
+                <div class="col-md-4 col-xs-10">
                    	<!-- login form -->
                    	<form action="/login" method="post" class="login">
                     	<!-- heading for the form -->
@@ -131,7 +131,7 @@
 					</form>
 				</div>
                 
-				<div class="col-xs-4"></div>
+				<div class="col-md-4 col-xs-1"></div>
 			</div>
 		</div>
 	</body>
