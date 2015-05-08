@@ -6,7 +6,9 @@
     	<div class="container">
         	<!-- non collapsable section of header -->
         	<div class="navbar-header">
-            	<a href="" class="navbar-brand">PAP</a>
+            	<a href="" class="navbar-brand">
+                	<img src="/images/foot_white.png" height="20"/>
+                </a>
                 
                 <button class="navbar-toggle" data-toggle="collapse" data-target="header-nav">
                 	<span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -48,6 +50,14 @@
                     	<a href="/student/home">
     		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-home"></span> Home
+               		        </button>
+   	            		</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="/student/setting">
+    		            	<button class="btn btn-primary navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-cog"></span> Setting
                		        </button>
    	            		</a>
                     </li>

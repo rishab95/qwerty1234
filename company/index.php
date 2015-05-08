@@ -1,15 +1,15 @@
 <?php
-/*	#check if session already started
+	#check if session already started
 	if(session_status() == PHP_SESSION_NONE)
 		session_start();
 	#check if user logged in correctly
 	if(!empty($_SESSION['type'])) {
 		if($_SESSION['type'] == 'company') {
-				if(!empty($_SESSION['username'])) {
-					ob_start();
-					include_once("/controller/login.php");
-					$out = ob_get_clean();
-					ob_end_clean();*/
+			if(!empty($_SESSION['username'])) {
+				ob_start();
+				include_once("/controller/login.php");
+				$out = ob_get_clean();
+				ob_end_clean();
 ?>
 
 <!doctype html>
@@ -168,7 +168,7 @@
 </html>
 
 <?php
-/*			} else
+			} else
 				header("Location: /login");
 		} else {
 			# user trying to access other folders
@@ -188,5 +188,5 @@
 			}
 		}
 	} else
-		header("Location: /controller/logout");*/
+		header("Location: /controller/logout");
 ?>

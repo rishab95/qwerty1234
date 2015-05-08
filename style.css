@@ -54,7 +54,7 @@ form.register {
 	border-color: #2c4160;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus {
 	background-position: top center;
 	background-image: linear-gradient(to bottom, #97b59d 0px, #173c4b 100%);
 }
@@ -62,19 +62,16 @@ form.register {
 .btn-primary, .navbar-toggle {
 }
 
-.btn-group {
-}
-
 .navbar-toggle:focus, .navbar-toggle:hover {
 }
 
-.btn-group:hover, .btn-group:focus {
-}
-
-.form-control {
+.btn-group {
+	background-color: #dfdfdf;
 }
 
 .form-control:focus {
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(44, 65, 96, 0.6);
+	border-color: #2c4160;
 }
 
 .input-group-addon {
@@ -185,25 +182,37 @@ table.wrap {
 }
 
 .panel {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 }
 
-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 98%;
-	height: 25px;
-	margin-bottom: 10px;
-	margin-left: 1%;
-	margin-right: 1%;
-	margin-top: 20px;
-	background-image: url('images/foot.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-clip: border-box;
-	background-position: right;
+.navbar-inverse .navbar-brand img{
+	-webkit-filter: opacity(70%);
+	-moz-filter: opacity(70%);
+	-o-filter: opacity(70%);
+	-ms-filter: opacity(70%);
+	filter: opacity(70%);
 }
 
-.navbar-brand {
-	
+.navbar-inverse .navbar-brand:hover img{
+	-webkit-filter: opacity(100%);
+	-moz-filter: opacity(100%);
+	-o-filter: opacity(100%);
+	-ms-filter: opacity(100%);
+	filter: opacity(100%);
+}
+
+.danger {
+	color: #800 !important;
+}
+
+h2 {
+	color: fff;
+}
+
+a {
+	color: inherit;
+}
+
+#password {
+	display: none;
 }

@@ -53,102 +53,25 @@
 				$("#be").html(data);
 			});
 			// ajax for retrieving data for me record
-			$.post("/controller/view/me", {username: user}, function(data){
-				meDisplay(JSON.parse(data));
+			$.post("/view/me", {username: user}, function(data){
+				$("#me").html(data);
 			});
 			// ajax for retrieving data for academic achievement record
-			$.post("/controller/view/academicAchievements", {username: user}, function(data){
-				acadAchDisplay(JSON.parse(data));
+			$.post("/view/academicAchievement?view=profile", {username: user}, function(data){
+				$("#acadAch").html(data);
 			});
 			// ajax for retrieving data for project record
-			$.post("/controller/view/project", {username: user}, function(data){
-				projDisplay(JSON.parse(data));
+			$.post("/view/project?view=profile", {username: user}, function(data){
+				$("#proj").html(data);
 			});
 			// ajax for retrieving data for extra curricular record
-			$.post("/controller/view/extraActivities", {username: user}, function(data){
-				extraCurrDisplay(JSON.parse(data));
+			$.post("/view/extraCurr?view=profile", {username: user}, function(data){
+				$("#extraCurr").html(data);
 			});
 			// ajax for retrieving data for other information record
-			$.post("/controller/view/otherInfo", {username: user}, function(data){
-				otherInfoDisplay(JSON.parse(data));
+			$.post("/view/otherInfo?view=profile", {username: user}, function(data){
+				$("#otherInfo").html(data);
 			});
-			
-			// function for html output for academic record
-			function academicRecordDisplay(input) {
-				var out = "", i;
-				for(i=0 ; i<input.length ; i++)
-					out += "<tr><td>"+input[i].name+"</td><td>"+input[i].board+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
-				$("#academicRecord").html(out);
-			}
-			
-			// function for html output for be record
-			function beDisplay(input) {
-				var out = "", i;
-				for(i=0 ; i<input.length ; i++)
-					out += "<tr><td>"+input[i].sem+"</td><td>"+input[i].uni+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
-				$("#be").html(out);
-			}
-			
-			// function for html output for me record
-			function meDisplay(input) {
-				var out = "", i;
-				if(input.length = 0) {
-					$("#meContainer").css("visibility", "hidden");
-				} else {
-					for(i=0 ; i<input.length ; i++)
-						out += "<tr><td>"+input[i].sem+"</td><td>"+input[i].uni+"</td><td>"+input[i].year+"</td><td>"+input[i].mm+"</td><td>"+input[i].mo+"</td><td>"+input[i].percent+"</td><td>"+input[i].divi+"</td></tr>";
-				$("#me").html(out);
-				}
-			}
-
-			// function for html output for academic achievement record
-			function acadAchDisplay(input) {
-				var out = "<ol type='1'>", i;
-				if(input.length > 0)
-					for(i=0 ; i<input.length ; i++)
-						out += "<li>"+input.desc+"</li>";
-				else
-					out += "Nothing Found";
-				out += "</ol>";
-				$("#acadAch").html(out);
-			}
-			
-			// function for html output for project record
-			function projDisplay(input) {
-				var out = "<ol type='1'>", i;
-				if(input.length > 0)
-					for(i=0 ; i<input.length ; i++)
-						out += "<li>"+input.desc+"</li>";
-				else
-					out += "nohting found";
-				out += "</ol>";
-				$("#proj").html(out);
-			}
-			
-			// function for html output for extra curricular record
-			function extraCurrDisplay(input) {
-				var out = "<ol type='1'>", i;
-				if(input.length > 0)
-					for(i=0 ; i<input.length ; i++)
-						out += "<li>"+input.desc+"</li>";
-				else
-					out += "Nothing found";
-				out += "</ol>";
-				$("#extraCurr").html(out);
-			}
-			
-			// function for html output for other information record
-			function otherInfoDisplay(input) {
-				var out = "<ol type='1'>", i;
-				if(input.length > 0) {
-					for(i=0 ; i<input.length ; i++)
-						out += "<li>"+input.desc+"</li>";
-				} else {
-					out += "Nothing found";
-				}
-				out += "</ol>";
-				$("#otherInfo").html(out);
-			}
 		</script>
             
 	</head>
@@ -164,135 +87,51 @@
         <!-- main container for displaying personal information -->
 		<div class="container">
         	<!-- division for display of personal information -->
-    		<div id="personalInfo"></div>
+            <a name="personalInfo"></a>
+            <div class="col-lg-6">
+	    		<div id="personalInfo"></div>
+			</div>
             
         	<!-- division for display of academic record -->
-    		<div id="academicRecord"></div>
+            <a name="academicRecod"></a>
+            <div class="col-lg-6">
+	    		<div id="academicRecord"></div>
+       	    </div>
 
         	<!-- division for display of be record -->
-    		<div id="be"></div>
-                    
-		    <div class="col-md-6">                
-				<div class="panel panel-default">
-                	<div class="panel-heading">
-						<h4>Masters of Engineering (M.E/M.Tech/MCA/M.Sc.)</h4>
-					</div>
-                        
-                    <table class="table table-bordered">    
-                      	<thead>
-                          	<tr>
-	                           	<th>Examination<br>Passed</th>
-    	                        <th>Univ./Board</th>
-        	                    <th>Year of<br>Passing</th>
-                                <th>Maximum<br>Marks/CGPA</th>
-                                <th>Marks/CGPA<br>Obtained</th>
-                                <th>%age/CGPA</th>
-                            </tr>
-                        </thead>
-                            
-                        <tbody id="me"></tbody>
-					</table>    
-				</div>
-			</div>
-          
-    		<div class="col-md-6">                
-               	<div class="panel panel-default">
-                   	<div class="panel-heading">
-	                    <h4>Academic Achievements</h4>
-                    </div>
-                       
-               		<div class="panel-body">
-                        <div class="row" id="acadAch"></div>
-                    </div>
-               		
-                    <div class="panel-footer">
-   	                    <form action="/controller/add/academicAchievements.php" method="post" class="form-horizontal">
-   	                        <div class="form-group">
-                                <div class="col-xs-10">
-	       	                        <input class="form-control" type="text" name="desc" placeholder="Description" required/>
-                                </div>
-                                <div class="col-xs-2">
-	                       	        <input class="pull-right btn btn-group" type="submit" value="Add" />
-                                </div>
-                            </div>
-               	        </form>
-					</div>
-				</div>
-			</div>
-    		
-		    <div class="col-md-6">                
-				<div class="panel panel-default">
-                	<div class="panel-heading">
-						<h4>Summer Training/Projects Undertaken</h4>
-					</div>
-                        
-					<div class="panel-body">
-	                    <div class="row" id="proj"></div>
-                    </div>
+            <a name="be"></a>
+            <div class="col-lg-6">
+	    		<div id="be"></div>
+       	    </div>
             
-        		    <div class="panel-footer">
-			            <form action="/controller/add/project.php" method="post" class="form-horizontal">
-                        	<div class="form-group">
-                                <div class="col-xs-10">
-                                    <input class="form-control" type="text" name="desc" placeholder="Description" required />
-                                </div>
-                                <div class="col-xs-2">
-                                    <input class=" pull-right btn btn-group" type="submit" value="Add" />
-                                </div>
-							</div>
-						</form>
-					</div>
-				</div>
+        	<!-- division for display of me record -->
+            <a name="me"></a>
+		    <div class="col-lg-6">
+   	        	<div id="me"></div>
 			</div>
-    		
-		    <div class="col-md-6">                
-				<div class="panel panel-default">
-                	<div class="panel-heading">
-						<h4>Extra Curricular Activities</h4>
-                    </div>
-                        
-					<div class="panel-body">
-	                    <div class="row" id="extraCurr"></div>
-                    </div>
-		            
-		            <div class="panel-footer">
-	        		    <form action="/controller/add/ extraActivities.php" method="post" class="form-horizontal">
-                        	<div class="form-group">
-				                <div class="col-xs-10">
-				                	<input class="form-control" type="text" name="desc" placeholder="Description" required />
-				                </div>
-		    		            <div class="col-xs-2">
-                                	<input class="pull-right btn btn-group" type="submit" value="Add" />
-                                </div>
-                        	</div>
-						</form>
-					</div>
-				</div>
-			</div>
-    		
-		    <div class="col-md-6">
-				<div class="panel panel-default">
-                	<div class="panel-heading">
-						<h4>Other Information</h4>
-					</div>
-                    
-                    <div class="panel-body">
-	                    <div class="row" id="otherInfo"></div>
-                    </div>
             
-		            <div class="panel-footer">
-			            <form action="/controller/add/otherInfo.php" method="post" class="form-horizontal">
-                        	<div class="form-group">
-	        			        <div class="col-xs-10">
-			    	            	<input class="form-control" type="text" name="desc" placeholder="Description" required />
-        				        </div>
-	    	    		        <div class="col-sm-2">
-			            	        <input class="pull-right btn btn-group" type="submit" value="Add" />
-			                	</div>
-							</div>
-						</form>
-					</div>
-				</div>     
+        	<!-- division for display of academic achievements -->
+            <a name="acadAch"></a>
+    		<div class="col-lg-6">
+   	           	<div id="acadAch"></div>
+			</div>
+
+        	<!-- division for display of projects and trainings -->
+            <a name="proj"></a>
+    		<div class="col-lg-6">                
+   	           	<div id="proj"></div>
+			</div>
+    		
+        	<!-- division for display of extra curricular activities -->
+            <a name="extraCurr"></a>
+			<div class="col-lg-6">
+   	        	<div id="extraCurr"></div>
+			</div>
+    		
+        	<!-- division for display of other information -->
+            <a name="otherInfo"></a>
+			<div class="col-lg-6">
+   	        	<div id="otherInfo"></div>
 			</div>
 		</div>
 	</body>

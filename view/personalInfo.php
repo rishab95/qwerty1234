@@ -5,61 +5,75 @@
 	$input = json_decode($inStr, true);
 	if($input[0]['data'] == 'true') {
 ?>
-<div class="col-lg-6">
+<div>
 	<div class='panel panel-default'>
         <div class='panel-heading'>
             <h4>Personal Information</h4>
         </div>
         
         <div class='panel-body'>
-            <div class='row'>
-                <!-- profile picture -->
-                <div class='col-md-3'>
-                    <img id='profilePic' src='images/<?php #echo $input[0]['picName']; ?>' width='100%'>
-                </div>
-                                    
-                <!-- full name -->
-                <div class='col-md-9 detailsData'>
-                    <div class='col-xs-5'>
-                        <label>Full Name</label>
+        	<div class="col-md-12">
+                <div class='row detailsData'>
+                    <!-- profile picture -->
+                    <div class='col-md-3'>
+                        <img id='profilePic' src='/student/images/<?php echo $input[0]['username']; ?>.jpg' width='100%'>
                     </div>
-                    <div class='col-xs-7'><?php echo $input[0]['fullName']; ?></div>
-                </div>
-                
-                <!-- date of birth -->
-                <div class='col-md-9 detailsData'>
-                    <div class='col-xs-5'>
-                        <label>Date of Birth</label>
-                    </div>
-                    <div class='col-xs-7'><?php echo $input[0]['dob']; ?></div>
-                </div>
-                
-                <!-- age -->
-                <div class='col-md-9 detailsData'>
-                    <div class='col-xs-5'>
-                        <label>Age</label>
-                    </div>
-                    <div class='col-xs-7'><?php echo $input[0]['age']; ?></div>
-                </div>
                     
-                <!-- citizenship -->
-                <div class='col-md-9 detailsData'>
-                    <div class='col-xs-5'>
-                        <label>Citizenship</label>
+                    <div class="col-md-9">
+                        <!-- full name -->
+                        <div class='row detailsData'>
+                            <div class='col-xs-5'>
+                                <label>Full Name</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['fullName']; ?></div>
+                        </div>
+                        
+                        <!-- date of birth -->
+                        <div class='row detailsData'>
+                            <div class='col-xs-5'>
+                                <label>Date of Birth</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['dob']; ?></div>
+                        </div>
+                        
+                        <!-- age -->
+                        <div class='row detailsData'>
+                            <div class='col-xs-5'>
+                                <label>Age</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['age']; ?></div>
+                        </div>
+                            
+                        <!-- citizenship -->
+                        <div class='row detailsData'>
+                            <div class='col-xs-5'>
+                                <label>Citizenship</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['citizenship']; ?></div>
+                        </div>
+                        
+                        <!-- gender -->
+                        <div class='row detailsData'>
+                            <div class='col-xs-5'>
+                                <label>Gender</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['gender']; ?></div>
+                        </div>
+                        
+                        <!-- email Id -->
+                        <div class='row '>
+                            <div class='col-xs-5'>
+                                <label>E-mail ID</label>
+                            </div>
+                            <div class='col-xs-7'><?php echo $input[0]['email']; ?></div>
+                        </div>
+    
                     </div>
-                    <div class='col-xs-7'><?php echo $input[0]['citizenship']; ?></div>
                 </div>
-                
-                <!-- gender -->
-                <div class='col-md-9 detailsData'>
-                    <div class='col-xs-5'>
-                        <label>Gender</label>
-                    </div>
-                    <div class='col-xs-7'><?php echo $input[0]['gender']; ?></div>
-                </div>
-                
+            
+
                 <!-- currect address -->
-                <div class='col-md-12 detailsData'>
+                <div class='row detailsData'>
                     <div class='row'>
                         <div class='col-xs-5'>
                             <label>Corresponding Address</label>
@@ -82,7 +96,7 @@
                     </div>
                     
                     <!-- telephone numbers -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <div class='row'>
                             <div class='col-xs-5'>
                                 <label>Telephone Numbers</label>
@@ -92,7 +106,7 @@
                     </div>                        
                         
                     <!-- permanent address -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <div class='row'>
                             <div class='col-xs-5'>
                                 <label>Permanent Address</label>
@@ -115,7 +129,7 @@
                     </div>
                     
                     <!-- telephone numbers -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <div class='row'>
                             <div class='col-xs-5'>
                                 <label>Telephone Numbers</label>
@@ -123,19 +137,9 @@
                             <div class='col-xs-7'><?php echo $input[0]['perTele']; ?></div>
                         </div>
                     </div>
-                    
-                    <!-- email Id -->
-                    <div class='col-md-12 detailsData'>
-                        <div class='row'>
-                            <div class='col-xs-5'>
-                                <label>E-mail ID</label>
-                            </div>
-                            <div class='col-xs-7'><?php echo $input[0]['email']; ?></div>
-                        </div>
-                    </div>
-                    
+                                        
                     <!-- father/guardian details -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <div class='row'>
                             <div class='col-xs-5'>
                                 <label>Father's/Guardian's Name</label>
@@ -152,7 +156,7 @@
                     </div>
                     
                     <!-- mother details -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <div class='row'>
                             <div class='col-xs-5'>
                                 <label>Mother's Name</label>
@@ -169,7 +173,7 @@
                 </div>
                 
                 <!-- language details -->
-                    <div class='col-md-12 detailsData'>
+                    <div class='row detailsData'>
                         <table class='table table-bordered'>
                             <thead>
                                 <tr>

@@ -56,6 +56,8 @@
 						)
 					);
 				}
+				if(empty($out))
+					array_push($out, array('data' => 'false'));
 			} else {
 				# error in data retrieval
 				array_push($out, array('data' => 'false'));

@@ -22,13 +22,15 @@
 <header class="page-header">
 	
     <!-- main navigation container -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
     	<div class="container">
         	<div class="row">
             	<!-- branding implementation -->
             	<div class="col-sm-3">
 		        	<div class="navbar-header">
-		            	<a href="" class="navbar-brand">PAP</a>
+		            	<a href="" class="navbar-brand">
+		                	<img src="/images/foot_white.png" height="20"/>
+                        </a>
 		            </div>
                 </div>
             
@@ -72,7 +74,7 @@
                 </div>               
             </div>
         </div>
-    </nav>
+    </div>
     
     <script>
 		window.onload = function() {

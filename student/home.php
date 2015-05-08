@@ -36,6 +36,9 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
+        <!-- Custom common JQuery file -->
+        <script src="../ess.js"></script>
+        
         <!-- script to use JSON and ajax to view output -->
         <script>
 			// ajax call for inbox

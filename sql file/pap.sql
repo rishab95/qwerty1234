@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2015 at 10:32 PM
+-- Generation Time: May 08, 2015 at 03:37 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -15,10 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
-CREATE DATABASE pap;
-
-USE pap;
 
 --
 -- Database: `pap`
@@ -117,15 +113,6 @@ CREATE TABLE IF NOT EXISTS `acad_achieve` (
   PRIMARY KEY (`achieve_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `acad_achieve`
---
-
-INSERT INTO `acad_achieve` (`achieve_id`, `username`, `achievement_description`) VALUES
-(1, 101203075, ''),
-(2, 101203075, ''),
-(3, 101203075, 'hello');
-
 -- --------------------------------------------------------
 
 --
@@ -147,9 +134,9 @@ CREATE TABLE IF NOT EXISTS `auth` (
 --
 
 INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
-(101203072, 'e8d3d3ecac9dd3f1dffd3fc964fb3760', 'student', 'Tanushree Gupta', 'tanushree@gmail.com'),
+(101, 'e8d3d3ecac9dd3f1dffd3fc964fb3760', 'company', 'Microsoft', 'carrer@microsoct.com'),
 (101203075, '098f6bcd4621d373cade4e832627b4f6', 'student', 'prisha', 'prishagupta21@gmail.com'),
-(101203081, 'cc03e747a6afbbcbf8be7668acfebee5', 'student', 'Rohit Saluja', 'ruhi.saluja@gmail.com');
+(101203081, '2d235ace000a3ad85f590e321c89bb99', 'student', 'Rohit Saluja', 'ruhi.saluja@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -163,7 +150,6 @@ CREATE TABLE IF NOT EXISTS `company` (
   `dream_status` tinyint(1) DEFAULT NULL,
   `package` int(11) DEFAULT NULL,
   `cg_criteria` float DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
   `other_criteria` varchar(30) DEFAULT NULL,
   `company_link` varchar(30) DEFAULT NULL,
   `company_profile` varchar(50) DEFAULT NULL,
@@ -175,10 +161,9 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, `cg_criteria`, `password`, `other_criteria`, `company_link`, `company_profile`, `last_date`) VALUES
-(100, 'Microsoft', 1, 18, 7, 'test', NULL, NULL, NULL, '2016-08-04'),
-(101, 'google', 1, 100000, 7, 'test123', NULL, NULL, NULL, '2015-04-30'),
-(102, 'facebook', 0, 90000, 7.5, 'test12345', NULL, NULL, NULL, '2015-07-30');
+INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, `cg_criteria`, `other_criteria`, `company_link`, `company_profile`, `last_date`) VALUES
+(101, 'Microsoft', 1, 18, 7, NULL, NULL, NULL, '2016-08-04'),
+(102, 'facebook', 0, 90000, 7.5, NULL, NULL, NULL, '2015-07-30');
 
 -- --------------------------------------------------------
 
@@ -193,13 +178,6 @@ CREATE TABLE IF NOT EXISTS `curricular_activity` (
   PRIMARY KEY (`activity_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `curricular_activity`
---
-
-INSERT INTO `curricular_activity` (`activity_id`, `username`, `activity_description`) VALUES
-(1, 101203075, 'hello');
-
 -- --------------------------------------------------------
 
 --
@@ -213,14 +191,6 @@ CREATE TABLE IF NOT EXISTS `other_info` (
   PRIMARY KEY (`info_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `other_info`
---
-
-INSERT INTO `other_info` (`info_id`, `username`, `info_description`) VALUES
-(1, 101203075, 'hello'),
-(2, 101203075, 'helloooo');
-
 -- --------------------------------------------------------
 
 --
@@ -233,14 +203,6 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_description` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`project_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `project`
---
-
-INSERT INTO `project` (`project_id`, `username`, `project_description`) VALUES
-(1, 101203075, 'hiiiiiiiiii'),
-(2, 101203075, 'hi');
 
 -- --------------------------------------------------------
 
@@ -277,7 +239,6 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`name`, `username`, `year_of_pass`, `branch`, `dob`, `citizenship`, `gender`, `temp_address`, `temp_city`, `temp_state`, `temp_pin`, `permanent_address`, `permanent_city`, `permanent_state`, `permanent_pin`, `email`, `father_name`, `father_occupation`, `mother_name`, `mother_occupation`) VALUES
-('Tanushree Gupta', 101203072, 2016, 'cse', '1990-04-14', 'indian', 'f', 'power colony no.2', 'patiala', 'punjab', 147001, 'power colony no.2', 'patiala', 'punjab', 147001, 'tanushree@gmail.com', 'sham Gupta', 'Dy. CAO', 'Samita Gupta', 'lecturer'),
 ('Prisha Gupta', 101203075, 2016, 'coe', '1995-01-21', 'Indian', 'F', 'power colony no.2', 'Patiala', 'Punjab', 147001, 'power colony no.2', 'Patiala', 'Punjab', 147001, 'prishagupta@gmail.com', 'Sham Gupta', 'Dy. CAO', 'Samita Gupta', 'Lecturer'),
 ('Rohit saluja', 101203081, 2016, 'cse', '1994-08-15', 'indian', 'm', 'thapar university', 'patiala', 'punjab', 147001, 'ekta colony', 'bhuj', 'gujrat', 123456, 'ruhi.saluja@gmail.com', 'uncle ji', 'army', 'aunty ji', 'housewife');
 
@@ -346,7 +307,6 @@ CREATE TABLE IF NOT EXISTS `stu_eligible` (
 --
 
 INSERT INTO `stu_eligible` (`company_id`, `username`, `applied`) VALUES
-(100, 101203075, 1),
 (101, 101203072, 0),
 (101, 101203081, 0),
 (102, 101203081, 1);

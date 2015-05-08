@@ -56,6 +56,9 @@
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
         
+        <!-- Custom common JQuery file -->
+        <script src="ess.js"></script>
+        
         <!-- custom java script for page -->
         <script>
 			// initialize the page
@@ -103,10 +106,12 @@
                             <?php
 							 	if(!empty($nameError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
+                            	<div class=" well-sm well">
+                                    <p class='help-block danger'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $nameError; ?>
                                     </p>
+								</div>
 							<?php	
 								}
                              ?>
@@ -123,10 +128,12 @@
                             <?php
 							 	if(!empty($emailError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
+                            	<div class=" well-sm well">
+                                    <p class='help-block danger'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $emailError; ?>
                                     </p>
+								</div>
 							<?php	
 								}
                              ?>
@@ -143,10 +150,12 @@
                             <?php
 							 	if(!empty($usernameError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
+                            	<div class=" well-sm well">
+                                    <p class='help-block danger'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $usernameError; ?>
                                     </p>
+								</div>
 							<?php	
 								}
                              ?>
@@ -163,11 +172,13 @@
                             <?php
 							 	if(!empty($passwordError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
+                            	<div class=" well-sm well">
+                                    <p class='help-block danger'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $passwordError; ?>
                                     </p>
-							<?php	
+								</div>
+							<?php
 								}
                              ?>
 						</div>
@@ -183,10 +194,12 @@
                             <?php
 							 	if(!empty($cpassError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
+                            	<div class=" well-sm well">
+                                    <p class='help-block danger'>
                                         <span class='glyphicon glyphicon-remove'></span>
                                         <?php echo $cpassError; ?>
                                     </p>
+								</div>
 							<?php	
 								}
                              ?>

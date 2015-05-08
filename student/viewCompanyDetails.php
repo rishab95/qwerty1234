@@ -1,9 +1,26 @@
 <?php
-#	if(session_status() == PHP_SESSION_NONE)
-#		session_start();
-#	if(!empty($_SESSION['username'])) {
+	# check if session already started
+	if(session_status() == PHP_SESSION_NONE)
+		session_start();
+	# check if user logged in
+	if(!empty($_SESSION['type'])) {
+		if($_SESSION['type']=='student') {
+			if(!empty($_SESSION['username'])) {
+				$username = $_SESSION['username'];
+				# authenticate user
+				ob_start();
+				include_once("../controller/auth.php");
+				$out = ob_get_clean();
+				$outArr = json_decode($out, true);
+				if($outArr['auth']=="true") {
+					# obtain the id
+					if(!empty($_GET['id'])) {
+						$id = $_GET['id'];
+					} else {
+						# illegal request
+						header("Location: ".$_SERVER['REQUEST_URI']);
+					}
 ?>
-
 <!doctype html>
 
 <html>
@@ -27,48 +44,33 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
+        <!-- custom JQuery script for aja calls -->
         <script>
-			// ajax call
-			$.get("/controller/viewCompanyDetails.php?id=<?php echo $id; ?>",
+			// ajax call to fetch json data
+			$.post("/controller/view/companyDetails?id=<?php echo $id; ?>",
+				{username: <?php echo $username; ?>},
 				function(data) {
 					display(JSON.parse(data));
-				});
+			});
 			
-			// function for html output
-			function display(arr) {
-				var html_out = "";
-				if(arr.length>0) {
-					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-hover'>"+
-							"<thead>"+
-								"<tr>"+
-									"<th>Company Name</th>"+
-									"<th>Message</th>"+
-									"<th>Applied?</th>"+
-									"<th>Last Date</th>"+
-								"</tr>"+
-							"</thead>"+
-								
-							"<!-- display all the mail received -->"+
-							"<tbody>";
-					var i;
-					for(i=0; i<arr.length; i++) {
-						html_out += "<tr onClick='redirect("+arr[i].companyId+")';>";
-						html_out += "<td>"+arr[i].companyName+"</td>";
-						html_out += "<td>"+arr[i].message+"</td>";
-						html_out += "<td>"+arr[i].status+"</td>";
-						html_out += "<td>"+arr[i].date+"</td>";
-						html_out += "</tr>";
+			function display(input) {
+				if(input.length>0 && input[0].data=='true') {
+					if(input[0].status == '1') {
+						input[0].name += '*';
 					}
-					html_out += "</tbody>"+
-						"</table>";
+					$("#name").html(input[0].name);
+					if(input[0].applied == '0') {
+						$("#link").attr('href', 'resume/build?id='+input[0].id);
+						$("#linkName").html("Apply");
+					} else if(input[0].applied == '1') {
+						$("#link").attr('href', 'resume/view');
+						$("#linkName").html("View");
+					}
 				} else {
-					html_out += "<div style='text-align: center;'>No mail for you</div>";
+					document.location("/student/");
 				}
-				$("#companyDetailsDiv").html(html_out);
 			}
-		</script>
-            
+        </script>
 	</head>
 
 	<body>
@@ -87,13 +89,13 @@
         	<div class="panel panel-default">
                 <div class="panel-heading">
                 	<div class="row">
-	                    <div class="col-md-10">
-    	                    <h2>Microsoft</h2>
+	                    <div class="col-md-11">
+    	                    <h2 id="name"></h2>
         	            </div>
-            	        <div class="col-md-2">
+            	        <div class="col-md-1">
                         	<h2>
-                            	<a href="resume/">
-                    	        	<button class="btn btn-group">Apply | View</button>
+                            	<a id="link">
+                    	        	<button class="btn btn-group" id="linkName"></button>
                         		</a>
                             </h2>
 						</div>
@@ -133,8 +135,28 @@
 		</div>
 	</body>
 </html>
-
 <?php
-#	} else
-#		header("Location: /");
+				} else
+					header("Location: /login");
+			} else {
+				# user trying to access other folders
+				switch($_SESSION['type']) {
+					# user is coordinator
+					case 'coordinator':
+						header("Location: /coordinator/");
+						break;
+					case 'company':
+						header("Location: /company/");
+						break;
+					case 'admin':
+						header("Location: /admin/");
+						break;
+					default: 
+						; # someone trying to play with session variables
+				}
+			}
+		} else
+			header("Location: /login");
+	} else
+		header("Location: /login");
 ?>
