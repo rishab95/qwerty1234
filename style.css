@@ -59,6 +59,7 @@ form.register {
 }
 
 .btn-primary:hover, .btn-primary:focus {
+
 	border-color: #fff;
 	color: #fff;
 	background-color: #333;;
