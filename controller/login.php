@@ -36,7 +36,7 @@
 					# code injection has occured
 				}
 			}
-			# oupt the authentication status	
+			# ouput the authentication status	
 			$out = array(
 				"auth" => $auth,
 				"type" => $type,
