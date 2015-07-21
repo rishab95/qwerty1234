@@ -4,7 +4,7 @@
 		session_start();
 	# authenticate the user to user the page
 	if(!empty($_SESSION['type'])) {
-		if($_SESSION['type']=='student') {
+		if($_SESSION['type']=='student' || $_SESSION['type']=='coordinator') {
 			if(!empty($_SESSION['username'])) {
 				# authenticate user
 				ob_start();
@@ -26,102 +26,35 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="../bootstrap/js/bootstrap.min.js"></script>
         
         <!-- Latest complied and minified JQuery -->
         <script src="../bootstrap/jquery-2.1.3.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
+        <!-- Custom common JQuery file -->
+        <script src="../ess.js"></script>
+        
         <!-- script to use JSON and ajax to view output -->
         <script>
+			var username = <?php echo $_SESSION['username']; ?>
 			// ajax call for inbox
-			$.post("/controller/inbox.php",
-			{},
-			function(data, status) {
-				var arr = JSON.parse(data);
-				inboxDisplay(arr);
+			$.post("/ajax/studentInbox.php",
+				{username: username},
+				function(data) {
+					$("#inboxDiv").html(data);
 			});
-
-			// function for html output
-			function inboxDisplay(arr) {
-				var html_out = "";
-				if(arr.length>0) {
-					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-hover'>"+
-							"<thead>"+
-								"<tr>"+
-									"<th>Company Name</th>"+
-									"<th>Message</th>"+
-									"<th>Applied?</th>"+
-									"<th>Last Date</th>"+
-								"</tr>"+
-							"</thead>"+
-								
-							"<!-- display all the mail received -->"+
-							"<tbody>";
-					var i;
-					for(i=0; i<arr.length; i++) {
-						html_out += "<tr onClick=\"document.location = \'/student/viewCompanyDetails?id="+arr[i].companyId+"\';\">";
-						html_out += "<td>"+arr[i].companyName+"</td>";
-						html_out += "<td>"+arr[i].message+"</td>";
-						html_out += "<td>"+arr[i].status+"</td>";
-						html_out += "<td>"+arr[i].date+"</td>";
-						html_out += "</tr>";
-					}
-					html_out += "</tbody>"+
-						"</table>";
-				} else {
-					html_out += "<div style='text-align: center;'>No mail for you</div>";
-				}
-				$("#inboxDiv").html(html_out);
-			}
 			
 			// ajax call for schedule
-			$.get("/controller/viewEvent.php?t=schedule",
-			function(data, status) {
-				var arr= JSON.parse(data);
-				scheduleDisplay(arr);
+			$.post("/ajax/studentSchedule?t=schedule",
+				{username: username},
+				function(data, status) {
+					$("#scheduleDiv").html(data);
 			});
-			
-			// function for html output
-			function scheduleDisplay(arr) {
-				var html_out = "";
-				if(arr.length>0) {
-					html_out += "<!-- table to display the mail -->";
-					html_out += "<table class='table table-striped'>"+
-							"<thead>"+
-								"<tr>"+
-									"<th>Company Name</th>"+
-									"<th>Event</th>"+
-									"<th>Venue</th>"+
-									"<th>Date</th>"+
-									"<th>Time</th>"+
-								"</tr>"+
-							"</thead>"+
-								
-							"<!-- display all the schedule -->"+
-							"<tbody>";
-					var i;
-					for(i=0; i<arr.length; i++) {
-						html_out += "<tr>";
-						html_out += "<td>"+arr[i].company+"</td>";
-						html_out += "<td>"+arr[i].eve+"</td>";
-						html_out += "<td>"+arr[i].venue+"</td>";
-						html_out += "<td>"+arr[i].date+"</td>";
-						html_out += "<td>"+arr[i].time+"</td>";
-						html_out += "</tr>";
-					}
-					html_out += "</tbody>"+
-						"</table>";
-				} else {
-					html_out += "<div style='text-align: center;'>Nothing on your calendar</div>";
-				}
-				$("#scheduleDiv").html(html_out);
-			}
 		</script>
             
 	</head>
@@ -146,8 +79,10 @@
    	    		    </div>
                 
 	                <div class="panel-body" id="inboxDiv">
-    	                <h2>Loading</h2>
-        	            <img src="../images/loading.gif" alt="Loading" height="30"/>
+						<label>Loading</label>
+        	            <div class="progress">
+                          	<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+	                    </div>
             	    </div>
 				</div>
             </div>
@@ -160,9 +95,11 @@
                     </div>
                     
                     <div class="panel-body" id="scheduleDiv">
-                        <h2>Loading</h2>
-                        <img src="../images/loading.gif" alt="Loading" height="30"/>
-                    </div>
+						<label>Loading</label>
+        	            <div class="progress">
+                          	<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+	                    </div>
+            	    </div>
 				</div>
             </div>
 		</div>
@@ -175,9 +112,6 @@
 				# user trying to access other folders
 				switch($_SESSION['type']) {
 					# user is coordinator
-					case 'coordinator':
-						header("Location: /coordinator/");
-						break;
 					case 'company':
 						header("Location: /company/");
 						break;

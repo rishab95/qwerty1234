@@ -10,9 +10,10 @@
 		# obtain form data
 		if(!empty($_POST['desc']))
 			$description = $_POST['desc'];
-		else
-			{$description="";}
-			 # form not filled correctly	
+		else {
+			# form not filled correctly
+			header("Location: /student/profile#proj");
+		}
 		
 		# perform validations
 		
@@ -28,20 +29,18 @@
 			# generate project id
 			$query1="SELECT COUNT(project_id) FROM project WHERE username=$username;";
 			 
-			 if ($result = mysqli_query($conn,$query1)){
-				while($row = mysqli_fetch_row($result))
-				{
-				$projectId=$row[0]+1;
+			 if ($result = mysqli_query($conn,$query1)) {
+				while($row = mysqli_fetch_row($result)) {
+					$projectId=$row[0]+1;
 			 	}
 			 }
 			
 			# mysql query to insert the new project
-			 $query = "INSERT INTO project VALUES ($projectId, $username, '$description');";
-		
-			$retval = mysqli_query( $conn, $query );
-			if($retval) {
+			$query = "INSERT INTO project VALUES ($projectId, $username, '$description');";
+			
+			if(mysqli_query($conn, $query)) {
 				# data successfully entered
-				header("Location: /student/?p=profile");
+				header("Location: /student/profile#proj");
 			} else {
 				# data not entered
 			}

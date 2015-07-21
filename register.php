@@ -16,7 +16,7 @@
 		$input = json_decode($inStr, true);
 		# validate if registration successfull
 		if($input['auth']=='true')
-			header("Location: /?regsuc=1");
+			header("Location: /login?regsuc=1");
 		else {
 			# get data in the error message variables
 			$nameError = $input['nameError'];
@@ -43,18 +43,21 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="bootstrap/js/bootstrap.min.js"></script>
         
         <!-- Latest complied and minified JQuery -->
         <script src="bootstrap/jquery-2.1.3.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="bootstrap/js/bootstrap.min.js"></script>
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
         
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
+        
+        <!-- Custom common JQuery file -->
+        <script src="ess.js"></script>
         
         <!-- custom java script for page -->
         <script>
@@ -103,10 +106,10 @@
                             <?php
 							 	if(!empty($nameError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $nameError; ?>
-                                    </p>
+								<p class='help-block danger'>
+                                	<span class='glyphicon glyphicon-remove'></span>
+                                    <?php echo $nameError; ?>
+                                </p>
 							<?php	
 								}
                              ?>
@@ -123,10 +126,10 @@
                             <?php
 							 	if(!empty($emailError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $emailError; ?>
-                                    </p>
+                            	<p class='help-block danger'>
+                                	<span class='glyphicon glyphicon-remove'></span>
+                                    <?php echo $emailError; ?>
+                                </p>
 							<?php	
 								}
                              ?>
@@ -143,10 +146,10 @@
                             <?php
 							 	if(!empty($usernameError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $usernameError; ?>
-                                    </p>
+                            	<p class='help-block danger'>
+                                	<span class='glyphicon glyphicon-remove'></span>
+                                    <?php echo $usernameError; ?>
+                                </p>
 							<?php	
 								}
                              ?>
@@ -163,11 +166,11 @@
                             <?php
 							 	if(!empty($passwordError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $passwordError; ?>
-                                    </p>
-							<?php	
+                            	<p class='help-block danger'>
+                                	<span class='glyphicon glyphicon-remove'></span>
+                                    <?php echo $passwordError; ?>
+                                </p>
+							<?php
 								}
                              ?>
 						</div>
@@ -183,10 +186,10 @@
                             <?php
 							 	if(!empty($cpassError)) {
 							?>
-                                    <p class='help-block' style='color: #880000'>
-                                        <span class='glyphicon glyphicon-remove'></span>
-                                        <?php echo $cpassError; ?>
-                                    </p>
+                            	<p class='help-block danger'>
+                                	<span class='glyphicon glyphicon-remove'></span>
+                                    <?php echo $cpassError; ?>
+                                </p>
 							<?php	
 								}
                              ?>
@@ -194,7 +197,7 @@
                         
                         <!-- submit form button -->
                         <div class="form-group">
-                        	<button type="submit" class="btn btn-group">Register</button>
+                        	<button type="submit" class="btn btn-primary">Register</button>
                         </div>    
 					</form>
 				</div>

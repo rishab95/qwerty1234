@@ -22,57 +22,49 @@
 <header class="page-header">
 	
     <!-- main navigation container -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
     	<div class="container">
         	<div class="row">
             	<!-- branding implementation -->
             	<div class="col-sm-3">
 		        	<div class="navbar-header">
-		            	<a href="" class="navbar-brand">PAP</a>
+		            	<a href="/about" class="navbar-brand">
+		                	<img src="/images/foot_white.png" height="20"/>
+                        </a>
+                        
+                        <button class="navbar-toggle" data-toggle="collapse" data-target="header-nav">
+        		        	<span class="glyphicon glyphicon-menu-hamburger"></span>
+		                </button>
 		            </div>
                 </div>
             
-            	<div class="col-sm-9">
-                	<!-- search form -->
-			       	<ul class="nav navbar-nav navbar-right">
-        	        	<li class="nav-search">
-		                   	<form action="<?php echo $page!="search"?"search":""?>" method="get">
-    	           		    	<div class="input-group">
-		                            <input type="search" id="searchInput" class="form-control head-item" placeholder="Search" pageName="q"
-        			                <?php
-										if($page!="search") {
-			                        ?>
-			                            onInput="document.location='search?q='+document.getElementById('searchInput').value;"
-			                        <?php
-										} else {
-									?>
-										onInput="Search()"
-									<?php
-										}
-									?>
-			                            value="<?php echo $qVal; ?>" onfocus="this.value = this.value;"/>
-		                            <span class="input-group-btn">
-        		                    	<button class="btn btn-primary form-control" type="submit">
-                	        	        	<span class="glyphicon glyphicon-search"></span>
-                    		            </button>
-                            		</span>
-			                    </div>
-							</form>
-        		        </li>
-                        
-                        <li>
-                            <!-- link for forwarding to next page -->
-                         	<a href="<?php echo $link; ?>">
-                                <button class="btn btn-primary navbar-btn pull-right" type="button" id="mainHeadToggleButton">
-                	                <span class="glyphicon glyphicon-user"></span> <?php echo $pageName; ?>
-            	                </button>
-        	                </a>
-    	                </li>
-	                </ul>
-                </div>               
+            <!-- collapsable section of header -->
+            <div class="collapse navbar-collapse" id="header-nav">
+            	<!-- list of all the options -->
+            	<ul class="nav navbar-nav navbar-right">
+                	<li class="nav-search">
+                    	<div class="input-group">
+                        	<input type="search" class="head-input-inverse form-control" placeholder="Search" />
+                            <span class="input-group-btn">
+                            	<button class="btn btn-toolbar form-control" type="submit">
+                                	<span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<!-- link for forwarding to next page -->
+                        <a href="<?php echo $link; ?>">
+                        	<button class="btn btn-toolbar navbar-btn pull-right" type="button" id="mainHeadToggleButton">
+                            	<span class="glyphicon glyphicon-user"></span> <?php echo $pageName; ?>
+                            </button>
+        	        	</a>
+    	            </li>
+				</ul>
             </div>
         </div>
-    </nav>
+    </div>
     
     <script>
 		window.onload = function() {

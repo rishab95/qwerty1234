@@ -15,7 +15,7 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql querie to retrieve all projects
-			 $query = "SELECT * FROM academic_mtech where username = $username;";
+			$query = "SELECT semester, university, year, max_cgpa, cgpa FROM academic_mtech where username = $username ORDER BY semester;";
 			
 			# retrieve data from sql
 			if ($result = mysqli_query($conn,$query)) {

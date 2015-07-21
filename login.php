@@ -41,12 +41,12 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="bootstrap/js/bootstrap.js"></script>
         
         <!-- Latest complied and minified JQuery -->
         <script src="bootstrap/jquery-2.1.3.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="bootstrap/js/bootstrap.js"></script>
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="style.css">
@@ -54,11 +54,15 @@
         <!-- link icon file to html page -->
         <link rel="shortcut icon" href="images/logo.ico">
         
+        <!-- Custom common JQuery file -->
+        <script src="ess.js"></script>
+        
         <!-- custom java script for page -->
         <script>
 			// focus on the username field
 			$(document).ready(function() {
 				$("input[name~='username']").focus();
+				$("#Modal").modal();
 			});
 		</script>
 	</head>
@@ -76,62 +80,64 @@
         <!-- main body container -->
         <div class="container">
         	<div class="row">
-				<div class="col-md-4 col-xs-1"></div>
-                <div class="col-md-4 col-xs-10">
-                   	<!-- login form -->
-                   	<form action="/login" method="post" class="login">
-                    	<!-- heading for the form -->
-                   		<div class="form-group">
-	                       	<h2>Log-in</h2>
-	                    </div>                            
-                    <?php 
-						if ($attempt) {
-					?>
-                    		<!-- incorrect login message -->
-	                        <p class='help-block' style='color: #880000'>
-    	                      	<span class='glyphicon glyphicon-remove'></span>
-        	                    User type or Username or Password incorrect.
-            	            </p>
-                    <?php
-						}
-						if ($regSuc) {
-					?>
-							<!-- registration successfull -->
-                            <p class="help-block" style="color: #006600";>
-                            	<span class="glyphicon glyphicon-ok"></span>
-                                You have successfully registered.
-                            </p>
-                    <?php
-						}
-					?>
-                        <!-- input for username -->
-						<div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
-                        	<div class="input-group">
-								<span class="input-group-addon">
-                                	<span class="glyphicon glyphicon-user"></span>
-                                </span>
-								<input type="text" class="form-control" name="username" placeholder="Roll Number" value="" required />
-							</div>
-						</div>
-                        
-                        <!-- input for password -->
-                        <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
-                        	<div class="input-group">
-                        		<span class="input-group-addon">
-	                            	<span class="glyphicon glyphicon-lock"></span>
-                                </span>
-                                <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
-							</div>
-						</div>
-                        
-                        <!-- submit button -->
-						<div class="form-group">
-                        	<button type="submit" class="btn btn-group">Log in</button>
-                        </div>
-					</form>
+				<div class="col-md-4 col-sm-2 col-xs-1"></div>
+                
+                <div class="col-md-4 col-sm-8 col-xs-10">
+                	<center>
+	                   	<!-- login form -->
+                        <form action="/login" method="post" class="login">
+                            <!-- heading for the form -->
+                            <div class="form-group">
+                                <h2>Log-in</h2>
+                            </div>                            
+                        <?php 
+                            if ($attempt) {
+                        ?>
+                                <p class="help-block" style="color: #800">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    Username or password is incorrect.
+                                </p>
+                        <?php
+                            }
+                            if ($regSuc) {
+                        ?>
+                                <!-- registration successfull -->
+                                <p class="help-block" style="color: #060";>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    You have successfully registered.
+                                </p>
+                        <?php
+                            }
+                        ?>
+                            <!-- input for username -->
+                            <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="username" placeholder="Roll Number" value="" required maxlength="9" />
+                                </div>
+                            </div>
+                            
+                            <!-- input for password -->
+                            <div class="form-group <?php echo ($attempt) ?"has-error" : ""; ?>">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                    </span>
+                                    <input class="form-control" type="password" placeholder="Password" name="password" value="" required />
+                                </div>
+                            </div>
+                            
+                            <!-- submit button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Log in</button>
+                            </div>
+                        </form>
+					</center>
 				</div>
                 
-				<div class="col-md-4 col-xs-1"></div>
+				<div class="col-md-4 col-sm-2 col-xs-1"></div>
 			</div>
 		</div>
 	</body>

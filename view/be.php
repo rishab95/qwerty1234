@@ -5,12 +5,15 @@
 	$input = json_decode($inStr, true);
 ?>
 
-<div class="col-lg-6">
+<div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>Bachelor of Engineering (B.E/B.Tech), Graduation:</h4>
 		</div>
 		
+        <?php
+          	if($input[0]['data'] == 'true') {
+        ?>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -22,9 +25,7 @@
                     <th>%age/CGPA</th>
 				</tr>
 			</thead>
-			<?php
-            	if($input[0]['data'] == 'true') {
-			?>
+            
 			<tbody>
               	<?php
 					for($i=0; $i<count($input); $i++) {
@@ -42,9 +43,15 @@
 					}
 				?>
             </tbody>
-			<?php
-				}
-			?>
 		</table>
+        <?php
+			} else {
+		?>
+        <div class="panel-body">
+        	<p>No records for B.E found</p>
+        </div>
+		<?php
+			}
+		?>
 	</div>
 </div>
