@@ -12,6 +12,7 @@
         
         <!-- Latest complied and minified JQuery -->
         <script src="bootstrap/jquery-2.1.3.js"></script>
+
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="bootstrap/js/bootstrap.js"></script>
     
