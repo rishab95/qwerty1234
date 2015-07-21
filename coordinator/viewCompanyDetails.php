@@ -44,10 +44,20 @@
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
         
-        <!-- custom JQuery script -->
+        <!-- custom JQuery script for ajaj calls -->
         <script>
 			var username = <?php echo $username; ?>;
 			var id = <?php echo $id; ?>;
+			
+			// ajax call to fetch head data
+			var lin = "/controller/view/companyDetails?id="+id+"&p=head";
+			$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayHead(JSON.parse(data)); });
+			lin = "/controller/view/companyDetails?id="+id+"&p=body";
+			$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayBody(JSON.parse(data)); });
+			lin = "/controller/view/companyDetails?id="+id+"&p=lastDate";
+			$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayLastDate(JSON.parse(data)); });
+			// ajax call to fetch schedule
+			$.post("/ajax/companySchedule?type=company", {username: id}, function(data) { $("#companySchedule").html(data); });
 			
 			// function to display the head of company details
 			function displayHead(input) {
@@ -76,82 +86,38 @@
 			}
 			
 			// function to remove the field from the database
-			function removeEvent(id, ele) {
-				$.post("/controller/delete/event", {id: id}, function(data) {
-					var input = JSON.parse(data);
-					if(input.auth) {
-						ele = ele.parent();
-						ele.slideUp("slow", function() {
-							ele.remove();
-						});
-						ref();
-					}
-				});
+			function removeEvent() {
+				alert("removeEvent");
 			}
 			
 			// function to edit the fields in the database
-			function editEvent(id, ele) {
-				var htmlIn = ele.html().trim();
-				var htmlOut = "";
-				var arr = htmlIn.split("</td>");
-				htmlOut += "<td><input class='form-control' name='eve' title='Description of the event' value='"+arr[0].trim().slice(4)+"' /></td>";
-				htmlOut += "<td><input class='form-control' name='d' title='Date of the event' value='"+arr[1].trim().slice(4)+"' /></td>";
-				htmlOut += "<td><input class='form-control' name='t' title='Time of the event' value='"+arr[2].trim().slice(4)+"' /></td>";
-				htmlOut += "<td><input class='form-control' name='v' title='Venue of the event' value='"+arr[3].trim().slice(4)+"' /></td>";
-				htmlOut += "<td onclick='updateSchedule("+id+")' style='padding-top: 15px; cursor: pointer;'><span class='glyphicon glyphicon-arrow-up'></span></td>";
-				ele.attr("onclick", "");
-				ele.css('cursor', 'default');
-				ele.html(htmlOut);
-			}
-			
-			// function to update the schedule with event id
-			function updateSchedule(eve_id) {
-				var lin = "/controller/update/schedule?eve="+$("input[name='eve']").val()+"&d="+$("input[name='d']").val()+"&t="+$("input[name='t']").val()+"&v="+$("input[name='v']").val();
-				$.post(lin, {id: eve_id}, function(data) {
-					var input = JSON.parse(data);
-					if(input.auth = 'true') {
-						ref();
-					}
-				});
-			}
-			
-			function ref() {
-				$.post("/ajax/companySchedule?type=company", {username: id}, function(data1) { $("#companySchedule").html(data1);});
+			function editEvent() {
+				
 			}
 			
 			window.onload = function() {
-				// ajax call to fetch head data
-				var lin = "/controller/view/companyDetails?id="+id+"&p=head";
-				$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayHead(JSON.parse(data)); });
-				lin = "/controller/view/companyDetails?id="+id+"&p=body";
-				$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayBody(JSON.parse(data)); });
-				lin = "/controller/view/companyDetails?id="+id+"&p=lastDate";
-				$.post(lin, {username: username, type: 'coordinator'}, function(data) { displayLastDate(JSON.parse(data)); });
-				// ajax call to fetch schedule
-				ref();
-						
-				$("#addToScheduleBtn").click(function() {
+				$("#addToScheduleBtn").click(function(e) {
 					var eve = $("input[name='eve']").val();
 					var d = $("input[name='d']").val();
 					var v = $("input[name='v']").val();
 					var t = $("input[name='t']").val();
-						$.post("/controller/add/schedule",
-							{id: id, eve: eve, d: d, v: v, t: t},
-							function(data) {
-								data = JSON.parse(data);
+                	$.post("/controller/add/schedule",
+						{id: id, eve: eve, d: d, v: v, t: t},
+						function(data) {
+							data = JSON.parse(data);
 							if(data.auth == 'true') {
 								// ajax call to fetch schedule
-								ref();
+								$.post("/ajax/companySchedule?type=company", {username: id}, function(data1) { $("#companySchedule").html(data1); alert("");});
 								$("input[name='eve']").val("");
 								$("input[name='d']").val("");
 								$("input[name='v']").val("");
 								$("input[name='t']").val("");
 							} else {
-							// display the error
+								// display the error
 							}
 						}
 					);
-				});
+                });
 				
 				$("form").submit(function() {
 					$(this).append("<input type='hidden' name='id' value='"+id+"' />");

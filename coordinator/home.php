@@ -79,7 +79,7 @@
 			
 			// update the read status
 			function updateReadStatus(id, ele) {
-				var lin = "/controller/update/messageStatus?id="+id+"&t=coordinator_msg";
+				var lin = "/controller/updateMessageStatus?id="+id+"&t=coordinator_msg";
 				$.get(lin, function(data) {
 					var input = JSON.parse(data);
 					if(input['auth']=='false') {
