@@ -4,7 +4,7 @@
 	$inStr = ob_get_clean();
 	$input = json_decode($inStr, true);
 ?>
-<div class="col-lg-6">
+<div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>Academic Records</h4>
