@@ -7,7 +7,6 @@
 		# obtain username and type
 		$username = $_POST['username'];
 		$type = isset($_POST['type']) ? $_POST['type'] : "";
-		
 		# establish connection to MySQL
 		$servername = "localhost";
 		$dbname = "pap";
@@ -20,7 +19,7 @@
 		} else {
 			# initilize the output array for json
 			$out = array();
-			
+
 			if($type == 'coordinator') {
 				# query to select  data from sql
 				$query = "SELECT a.username, a.name FROM auth a, company_coordinator cc WHERE a.username = cc.company_id AND cc.roll_number = $username ORDER BY a.name;";
@@ -39,7 +38,7 @@
 			} else {
 				# query to select  data from sql
 				$query = "SELECT company_id, company_name, last_date FROM company ORDER BY company_name;";
-				
+
 				# execute the  query
 				if ($result = mysqli_query($conn,$query)) {
 					while($row = mysqli_fetch_row($result)) {

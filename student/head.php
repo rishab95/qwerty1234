@@ -19,7 +19,11 @@
             	<!-- list of all the options -->
             	<ul class="nav navbar-nav navbar-right">
                 	<li>
+<<<<<<< HEAD
                     	<form class="navbar-form">
+=======
+                    	<form>
+>>>>>>> origin/master
                             <div class="input-group">
                                 <input type="search" class="head-input-inverse form-control" placeholder="Search" />
                                 <span class="input-group-btn">
@@ -37,6 +41,7 @@
                     	<a href="/coordinator/home">
     		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
            		            	<span class="glyphicon glyphicon-"></span> Coordinator
+<<<<<<< HEAD
                		        </button>
    	            		</a>
                     </li>
@@ -73,6 +78,52 @@
                                 </a>
                             </li>
             	        </ul>
+=======
+               		        </button>
+   	            		</a>
+                    </li>
+				<?php
+					}
+				?>
+                    <li>
+                    	<a href="/student/profile">
+    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-user"></span> Profile
+               		        </button>
+   	            		</a>
+                    </li>
+
+                    <li>
+                    	<a href="/student/timeline">
+    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-list"></span> Timeline
+               		        </button>
+   	            		</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="/student/home">
+    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-home"></span> Home
+               		        </button>
+   	            		</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="/student/setting">
+    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-cog"></span> Setting
+               		        </button>
+   	            		</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="/logout">
+    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
+           		            	<span class="glyphicon glyphicon-log-out"></span> Logout
+               		        </button>
+   	            		</a>
+>>>>>>> origin/master
                     </li>
                 </ul>
             </div>

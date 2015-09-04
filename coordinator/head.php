@@ -31,14 +31,6 @@
                         </form>
                     </li>
                     
-					<li>
-                    	<a href="/student/home">
-    		            	<button class="btn btn-toolbar navbar-btn pull-right" type="button">
-           		            	<span class="glyphicon glyphicon-"></span> Student
-               		        </button>
-   	            		</a>
-                    </li>
-                    
                 	<li>
               			<button class="btn btn-toolbar navbar-btn pull-right dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Menu <span class="caret"></span></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu">

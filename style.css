@@ -50,7 +50,11 @@ form.register {
 .page-header {
 	border-bottom-width: 0px;
 	display: list-item;
+<<<<<<< HEAD
 	margin: 25px 0px 0px;
+=======
+	margin: 40px 0px 0px;
+>>>>>>> origin/master
 }
 
 .image-container {
@@ -85,6 +89,7 @@ form.register {
 	background-color: transparent;
 	border: none;
 	box-shadow: none;
+<<<<<<< HEAD
 }
 
 .btn-default:hover, .btn-default:focus {
@@ -94,11 +99,17 @@ form.register {
 }
 
 .btn-primary, .navbar-toggle {
+=======
+>>>>>>> origin/master
 }
 
-.navbar-toggle:focus, .navbar-toggle:hover {
+.btn-default:hover, .btn-default:focus {
+	background-position: top center;
+	background-image: none;
+	background-color: transparent;
 }
 
+<<<<<<< HEAD
 .btn-group {
 	background-color: #dfdfdf;
 	color: #333;
@@ -114,14 +125,37 @@ form.register {
 }
 
 input.head-input-inverse:empty:hover, input.head-input-inverse:empty:focus, input.head-input-inverse:hover, input.head-input-inverse:focus, input.head-input-inverse {
+=======
+.btn-primary, .navbar-toggle {
+}
+
+.navbar-toggle:focus, .navbar-toggle:hover {
+}
+
+.btn-group {
+	background-color: #dfdfdf;
+}
+
+.form-control:focus {
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(44, 65, 96, 0.6);
+	border-color: #2c4160;
+}
+
+.head-input-inverse:hover, .head-input-inverse:focus {
+>>>>>>> origin/master
 	background-color: transparent;
 	border-color: #fff;
 	box-shadow: none;
 	border-right: 1px solid #bbb;
+<<<<<<< HEAD
 	color: #fff;
 }
 
 input.head-input-inverse:empty {
+=======
+}
+.head-input-inverse {
+>>>>>>> origin/master
 	background-color: transparent;
 	color:fff;
 	border-color: #bbb;
@@ -237,6 +271,7 @@ table.wrap {
 	background-color: rgba(255, 255, 255, 0.8);
 }
 
+<<<<<<< HEAD
 .navbar-inverse {
 	box-shadow: 0px 2px 5px #000;
 }
@@ -249,6 +284,16 @@ table.wrap {
 	filter: opacity(70%);
 }
 
+=======
+.navbar-inverse .navbar-brand img{
+	-webkit-filter: opacity(70%);
+	-moz-filter: opacity(70%);
+	-o-filter: opacity(70%);
+	-ms-filter: opacity(70%);
+	filter: opacity(70%);
+}
+
+>>>>>>> origin/master
 .navbar-inverse .navbar-brand:hover img{
 	-webkit-filter: opacity(100%);
 	-moz-filter: opacity(100%);
@@ -261,9 +306,14 @@ table.wrap {
 	color: #800 !important;
 }
 
+<<<<<<< HEAD
 h2.shadow {
 	color: fff;
 	text-shadow: 0px 2px 5px #333;
+=======
+h2 {
+	color: fff;
+>>>>>>> origin/master
 }
 
 a {
@@ -274,22 +324,40 @@ a {
 	display: none;
 }
 
+<<<<<<< HEAD
 .input-group-btn > .btn-toolbar {
+=======
+
+.btn-toolbar {
+>>>>>>> origin/master
 	background-color: transparent;
 	color: #bbb;
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 	border-bottom: 1px solid #bbb;
 	border-top: 1px solid #bbb;
+<<<<<<< HEAD
 	border-left: none !important;
 	border-right: none !important;
 }
 
 .input-group-btn > .btn-toolbar:hover, .input-group-btn > .btn-toolbar:focus, .btn-toolbar.navbar-btn:hover, .btn-toolbar.navbar-btn:focus, li.open > .btn-toolbar.navbar-btn {
+=======
+}
+
+.btn-toolbar:hover, .btn-toolbar:focus {
+>>>>>>> origin/master
 	color: #fff;
 	border-bottom: 1px solid #fff;
 	border-top: 1px solid #fff;
 }
 
+<<<<<<< HEAD
+=======
+.btn-toolbar > .glyphicon-search {
+	margin-left: -6px;
+}
+
+>>>>>>> origin/master
 img {
 	border: 1px solid #333;
 	border-radius: 10px;
@@ -301,6 +369,7 @@ img {
 
 .unread {
 	background-color: rgba(200, 200, 200, 0.5);
+<<<<<<< HEAD
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -421,4 +490,6 @@ img {
 	padding: 10px 15px;
 	font-size: 20px;
 	height: auto;
+=======
+>>>>>>> origin/master
 }

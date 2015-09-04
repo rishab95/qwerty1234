@@ -222,6 +222,7 @@
             </div>
             
             <div class="col-sm-8 col-md-9 col-lg-10">
+            
 			<!-- container to display add company option -->
 	        <div class="col-lg-3">
             	<div class="panel panel-default">
