@@ -14,24 +14,21 @@
 		$auth = False;
 		
 		# initialize query
-		$query = "select user_type from auth where username = $username;";
+		$query = "select user_type from auth where username = $username LIMIT 1;";
 		$result = $conn->query($query);
 		
 		# check result
 		if($result->num_rows == 1) {
 			$row = $result->fetch_assoc();
 			if($row['user_type'] == $type) {
+				# username and type match
 				$auth = True;
 			} else
-				# password does not match
+				# username and type do not match
 				$auth = False;
 		} else {
 			$auth = False;
-			if($result->num_rows < 1) {
-				# password not found
-			} else {
-				# code injection has occured
-			}
+			# code injection has occured
 		}
 		# oupt the authentication status	
 		$out = array(

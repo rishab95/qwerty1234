@@ -1,13 +1,11 @@
 <?php
-	if(session_status() == PHP_SESSION_NONE)
-		session_start();
-	if(!empty($_SESSION['username'])) {
+	if(!empty($_POST['username'])) {
 		# check for type of operation
 		if(!empty($_GET['t'])) {
 			switch($_GET['t']) {
 				case 'schedule':
 					# return schedule operation
-					$username = $_SESSION['username'];
+					$username = $_POST['username'];
 					$query = "SELECT cd.company_name, s.event_descp, s.venue, s.date, s.time
 							FROM stu_schedule s, company cd, stu_eligible se
 							WHERE se.company_id = s.company_id AND se.applied=1 AND se.username = $username AND s.date>CURDATE() AND s.time>CURTIME()
@@ -15,10 +13,6 @@
 					break;
 				case 'timeline':
 					# return timeline operation
-					$query = "SELECT cd.company_name, s.event_descp, s.venue, s.date, s.time
-							FROM stu_schedule s, company cd WHERE cd.company_id = s.company_id AND s.date>CURDATE() AND s.time>CURTIME()
-							ORDER BY s.date, s.time;";
-					break;
 				default:
 					# retrun timeline operation
 					$query = "SELECT cd.company_name, s.event_descp, s.venue, s.date, s.time
@@ -62,6 +56,7 @@
 			echo json_encode($out);
 		}
 	} else {
+		session_destroy();
 		header("Location: /");
 	}
 ?>

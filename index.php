@@ -1,4 +1,4 @@
 <?php
-	# redirect to default page (login)
+	# redirect to the necessary page
 	header("Location: /login");
 ?>

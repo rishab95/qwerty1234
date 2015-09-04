@@ -16,7 +16,7 @@
 			$auth = False;
 			
 			# initialize query
-			$query = "select password, user_type from auth where username = $username;";
+			$query = "select password, user_type from auth where username = $username LIMIT 1;";
 			$result = $conn->query($query);
 			
 			# check result
@@ -36,7 +36,7 @@
 					# code injection has occured
 				}
 			}
-			# oupt the authentication status	
+			# ouput the authentication status	
 			$out = array(
 				"auth" => $auth,
 				"type" => $type,

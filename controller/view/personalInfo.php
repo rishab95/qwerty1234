@@ -8,8 +8,7 @@
 		if(!empty($_POST['username'])) {
 			$username = $_POST['username'];
 		} else {
-			# illegal request
-			header("Location: ".$_SERVER['REQUEST_URI']);
+			$username = $_SESSION['username'];
 		}
 		# initialize MySQL connection
 		$servername="localhost";
@@ -19,7 +18,7 @@
 			# die("connection failed") mysql_error()
 		} else {
 			# mysql query to retrive the personal details of the given username
-			$query = "SELECT s.username,s.name,s.dob,TIMESTAMPDIFF(year,s.dob,CURDATE()) AS age, s.citizenship, s.gender, s.temp_address, s.temp_city, s.temp_state, s.temp_pin, s.permanent_address, s.permanent_city, s.permanent_state, s.permanent_pin, tel.phone_num, tel.permanent_number, s.email, s.father_name, s.father_occupation, s.mother_name, s.mother_occupation FROM student s, student_telephone tel WHERE s.username=$username AND tel.username=s.username;";
+			$query = "SELECT s.username,a.name,s.dob,TIMESTAMPDIFF(year,s.dob,CURDATE()) AS age, s.citizenship, s.gender, s.temp_address, s.temp_city, s.temp_state, s.temp_pin, s.permanent_address, s.permanent_city, s.permanent_state, s.permanent_pin, tel.phone_num, tel.permanent_number, a.email, s.father_name, s.father_occupation, s.mother_name, s.mother_occupation FROM student s, student_telephone tel, auth a WHERE s.username=$username AND tel.username=s.username AND a.username=s.username;";
 			
 			# query for language
 			
@@ -56,6 +55,8 @@
 						)
 					);
 				}
+				if(empty($out))
+					array_push($out, array('data' => 'false'));
 			} else {
 				# error in data retrieval
 				array_push($out, array('data' => 'false'));
