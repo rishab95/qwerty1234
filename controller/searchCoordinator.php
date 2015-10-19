@@ -20,7 +20,7 @@
 			#die("Connection failed"); #mysqli_error()
 	} else {
 		# initialize query
-		$query = "SELECT username, name FROM auth WHERE user_type='coordinator' AND name like '$q' LIMIT 5;";
+		$query = "SELECT username, name FROM auth WHERE user_type='student' AND name like '$q' LIMIT 5;";
 		$result = $conn->query($query);
 		
 		# initialize the output variable
