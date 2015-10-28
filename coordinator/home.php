@@ -184,6 +184,7 @@
                     </div>
                 </div>
             </div>
+			<a href="../student/biodata.php" class="btn btn-primary">CLICK HERE</a>
 		</div>
 	</body>
 </html>
