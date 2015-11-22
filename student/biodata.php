@@ -382,15 +382,24 @@
 							</div>
 						</div>
 						
+						
+						<div class="col-md-6">
+								<div class="panel-body">
+									
+										<center>
+											<button class="btn btn-primary" type="button" id="submitbutton" >Submit</button>
+										</center>
+									
+								</div>
+						</div>
+						
+						
 
 						
 					</div>
 				</div>
-					<div class="submitbutton">
-						<center>
-							<button class="btn btn-primary" type="button" id="submitbutton">Submit</button>
-						</center>
-					</div>
+						
+					
 			</div>
 					
 						
