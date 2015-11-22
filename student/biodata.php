@@ -278,11 +278,119 @@
 							</div>
 						</div>
 						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Father's Name</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="State" maxlength='6' rows='1' type="text" id="text" placeholder="State" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Father's Occupation</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="yearofpass" type="number" placeholder="Year of Pass"/>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Mother's Name</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="yearofpass" type="number" placeholder="Year of Pass"/>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Mother's Occupation</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="yearofpass" type="number" placeholder="Year of Pass"/>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Citizenship</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="yearofpass" type="number" placeholder="Year of Pass"/>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Gender</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												
+													<input type="radio" value="female">female</button>
+													<input type="radio" value="male">male</button>
+												
+												
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
 						
 
 						
 					</div>
 				</div>
+					<div class="submitbutton">
+						<center>
+							<button class="btn btn-primary" type="button" id="submitbutton">Submit</button>
+						</center>
+					</div>
 			</div>
 					
 						
@@ -290,7 +398,7 @@
 								
 									
 									
-									<button type="button" class="btn btn-primary">Submit</button>
+									
 						
 			
 		</form>
