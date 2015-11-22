@@ -24,7 +24,7 @@
 <html>
 
 	<head>
-		<title>Add biodata</title>
+		<title>Personal Details</title>
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -40,6 +40,9 @@
     
 	    <!-- Custom made CSS file -->
     	<link rel="stylesheet" href="../style.css">
+		
+		<!-- link icon file to html page -->
+        <link rel="shortcut icon" href="images/logo.ico">
         
         <!-- Custom common JQuery file -->
         <script src="../ess.js"></script>
@@ -49,7 +52,8 @@
         	include_once('head.php');
 			?>
 		
-
+	
+	<div class="body1"></div>
 	<div class="body2"></div>
         <div class = "container">	
 			<form method = "post" action = "biodata.php">
@@ -62,13 +66,108 @@
 					</div>
 				</div>
 		
-			
-				<div class = "form group">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="panel panel-default">
+                            	<div class="panel-heading">
+                                	<h5>Username</h5>
+                                </div>
+								
+								<div class="panel-body">
+									<div class="form-inline">
+										<center>
+											<div class="form-group">
+												<input class="form-control" name="username" type="number" placeholder="Username"/>
+											</div>
+										</center>
+									</div>
+								</div>	
+							</div>
+						</div>
 				
-									<label for = "name"><h5>Username</h5></label>
-									<input type = "text" name = "Username" value= ""><br>
-									<label for = "name"><h5>Year Of Pass</h5></label>
-									<input type = "text" name = "Year Of Pass" value= ""><br>
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Year Of Pass</h5>
+								</div>
+											
+									<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="yearofpass" type="number" placeholder="Year of Pass"/>
+												</div>
+											</center>
+										</div>
+									</div>	
+							</div>
+						</div>
+						
+					
+				
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Branch</h5>
+								</div>
+											
+									<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="branch" type="string" placeholder="Branch"/>
+												</div>
+											</center>
+										</div>
+									</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Daye Of Birth</h5>
+								</div>
+											
+									<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="DOB" type="date" placeholder="Dob (yyyy-mm-dd)"/>
+												</div>
+											</center>
+										</div>
+									</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5></h5>
+								</div>
+											
+									<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<input class="form-control" name="DOB" type="date" placeholder="Dob (yyyy-mm-dd)"/>
+												</div>
+											</center>
+										</div>
+									</div>	
+							</div>
+						</div>
+
+						
+					</div>
+				</div>
+			</div>
+					
+						
+								
 									<label for = "name"><h5>Branch</h5></label>
 									<input type = "text" name = "Branch" value= ""><br>
 									<label for = "name"><h5>DOB</h5></label>
@@ -103,9 +202,7 @@
 									<input type = "text" name = "Mother's Occupation" value= ""><br>
 									<button type="button" class="btn btn-primary">Submit</button>
 						
-				</div>
-			</div>
-		</div>
+			
 		</form>
 </body>
 </html>
