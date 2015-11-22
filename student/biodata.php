@@ -21,17 +21,8 @@
 
 <!IDOCTYPE html>
 
-<html long = "en">
-<head>
-		<meta charset = "utf-8">
-		<meta http-equiv= "X-UA-Compatible" content= "IE=edge,chrome=1">
-		
-		
-		<title> Biodata Form </title>
-</head>
-
-
 <html>
+
 	<head>
 		<title>Add biodata</title>
 		
@@ -54,6 +45,11 @@
         <script src="../ess.js"></script>
 	</head>
 <body>
+	        <?php
+        	include_once('head.php');
+			?>
+		
+
 	<div class="body2"></div>
         <div class = "container">	
 			<form method = "post" action = "biodata.php">
@@ -68,7 +64,7 @@
 		
 			
 				<div class = "form group">
-				<div class = "panel-heading">
+				
 									<label for = "name"><h5>Username</h5></label>
 									<input type = "text" name = "Username" value= ""><br>
 									<label for = "name"><h5>Year Of Pass</h5></label>
@@ -106,7 +102,7 @@
 									<label for = "name"><h5>Mother's Occupation</h5></label>
 									<input type = "text" name = "Mother's Occupation" value= ""><br>
 									<button type="button" class="btn btn-primary">Submit</button>
-					</div>	
+						
 				</div>
 			</div>
 		</div>
