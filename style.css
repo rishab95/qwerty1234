@@ -435,3 +435,16 @@ img {
 	font-size: 20px;
 	height: auto;
 }
+
+.submitbutton{
+	position: fixed;
+    bottom: 85px;
+    right: 305px;
+    
+}
+
+#submitbutton{
+	height: 40px;
+	width:  100px;
+	font-size: 20px;
+}
