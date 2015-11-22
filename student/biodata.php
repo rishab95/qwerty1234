@@ -21,7 +21,7 @@
 
 <!IDOCTYPE html>
 
-<html>
+<html lang="en">
 
 	<head>
 		<title>Personal Details</title>
@@ -128,7 +128,7 @@
 						<div class="col-md-3">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h5>Daye Of Birth</h5>
+									<h5>Date Of Birth</h5>
 								</div>
 											
 									<div class="panel-body">
@@ -143,23 +143,142 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3">
+						
+						
+						
+						<div class="col-md-6">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h5></h5>
+									<h5>Temporary Address</h5>
 								</div>
 											
 									<div class="panel-body">
-										<div class="form-inline">
-											<center>
-												<div class="form-group">
-													<input class="form-control" name="DOB" type="date" placeholder="Dob (yyyy-mm-dd)"/>
-												</div>
-											</center>
+										<div class="form-group">
+											<textarea class="form-control " name="Address" maxlength='100' rows='3' type="text" id="text" placeholder="Address" class="tadd"></textarea>
 										</div>
 									</div>	
 							</div>
 						</div>
+						
+						
+						
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Permanent Address</h5>
+								</div>
+											
+									<div class="panel-body">
+										<div class="form-group">
+											<textarea class="form-control " name="Address" maxlength='100' rows='3' type="text" id="text" placeholder="Address" class="tadd"/></textarea>
+										</div>
+									</div>	
+							</div>
+						</div>	
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Pin</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="Address" maxlength='6' rows='1' type="text" id="text" placeholder="Address" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>City</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="Address" maxlength='6' rows='1' type="text" id="text" placeholder="Address" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>State</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="Address" maxlength='6' rows='1' type="text" id="text" placeholder="Address" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Pin</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="pin" maxlength='6' rows='1' type="text" id="text" placeholder="Pin" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>City</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="City" maxlength='6' rows='1' type="text" id="text" placeholder="City" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>State</h5>
+								</div>
+								<div class="panel-body">
+										<div class="form-inline">
+											<center>
+												<div class="form-group">
+													<textarea class="form-control " name="State" maxlength='6' rows='1' type="text" id="text" placeholder="State" class="tadd"/></textarea>
+												</div>
+											</center>
+										</div>
+								</div>	
+							</div>
+						</div>
+						
+						
 
 						
 					</div>
@@ -168,38 +287,9 @@
 					
 						
 								
-									<label for = "name"><h5>Branch</h5></label>
-									<input type = "text" name = "Branch" value= ""><br>
-									<label for = "name"><h5>DOB</h5></label>
-									<input type = "text" name = "DOB" value= ""><br>
-									<label for = "name"><h5>Citizenship</h5></label>
-									<input type = "text" name = "Citizenship" value= ""><br>
-									<label for = "name"><h5>Gender</h5></label>
-									<input type = "text" name = "Gender" value= ""><br>
-									<label for = "name"><h5>Temporary Address</h5></label>
-									<input type = "text" name = "Temporary Address" value= ""><br>
-									<label for = "name"><h5>Temporary City</h5></label>
-									<input type = "text" name = "Temporary City" value= ""><br>
-									<label for = "name"><h5>Temporary State</h5></label>
-									<input type = "text" name = "Temporary State" value= ""><br>
-									<label for = "name"><h5>Temporary Pin</h5></label>
-									<input type = "text" name = "Temporary Pin" value= ""><br>
-									<label for = "name"><h5>Permanent Address</h5></label>
-									<input type = "text" name = "Permanent Address" value= ""><br>
-									<label for = "name"><h5>Permanent City</h5></label>
-									<input type = "text" name = "Permanent City" value= ""><br>
-									<label for = "name"><h5>Permanent State</h5></label>
-									<input type = "text" name = "Permanent State" value= ""><br>
-									<label for = "name"><h5>Permanent Pin</h5></label>
-									<input type = "text" name = "Permanent Pin" value= ""><br>
-									<label for = "name"><h5>Father's Name</h5></label>
-									<input type = "text" name = "Father's Name" value= ""><br>
-									<label for = "name"><h5>Father's Occupation</h5></label>
-									<input type = "text" name = "Father's Occupation" value= ""><br>
-									<label for = "name"><h5>Mother's Name</h5></label>
-									<input type = "text" name = "Mother's Name" value= ""><br>
-									<label for = "name"><h5>Mother's Occupation</h5></label>
-									<input type = "text" name = "Mother's Occupation" value= ""><br>
+								
+									
+									
 									<button type="button" class="btn btn-primary">Submit</button>
 						
 			
