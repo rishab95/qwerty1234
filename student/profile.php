@@ -4,7 +4,7 @@
 		session_start();
 	# check if user logged in
 	if(!empty($_SESSION['type'])) {
-		if($_SESSION['type']=='student') {
+		if($_SESSION['type']=='student'||'coordiantor') {
 			if(!empty($_SESSION['username'])) {
 				# authenticate user
 				ob_start();
