@@ -28,14 +28,17 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css">
         
-        <!-- Latest complied and minified JQuery -->
-        <script src="../bootstrap/jquery-2.1.3.min.js"></script>
+        	<!-- Latest complied and minified JQuery -->
+        	<script src="../bootstrap/jquery-2.1.3.min.js"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
+		
+		<!-- link icon file to html page -->
+        	<link rel="shortcut icon" href="images/logo.ico">
     
-	    <!-- Custom made CSS file -->
-    	<link rel="stylesheet" href="../style.css">
+	    	<!-- Custom made CSS file -->
+    		<link rel="stylesheet" href="../style.css">
         
         <!-- script to populate the page -->
         <script>
