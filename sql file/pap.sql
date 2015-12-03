@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2015 at 01:01 PM
+-- Generation Time: Dec 03, 2015 at 11:15 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -95,6 +95,13 @@ CREATE TABLE IF NOT EXISTS `acad_achieve` (
   PRIMARY KEY (`achieve_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `acad_achieve`
+--
+
+INSERT INTO `acad_achieve` (`achieve_id`, `username`, `achievement_description`) VALUES
+(1, 101403150, 'MOOC in Python from edx.org');
+
 -- --------------------------------------------------------
 
 --
@@ -116,10 +123,20 @@ CREATE TABLE IF NOT EXISTS `auth` (
 --
 
 INSERT INTO `auth` (`username`, `password`, `user_type`, `name`, `email`) VALUES
-(7, '21232f297a57a5a743894a0e4a801fc3', 'admin', 'H.S. Bawa', 'placements@thapar.edu'),
+(7, '2aefc34200a294a3cc7db81b43a81873', 'admin', 'H.S. Bawa', 'placements@thapar.edu'),
+(198, '96cc2c201437c99839fd432003f2c37a', 'company', 'Zomato', 'careers@zomato.com'),
+(299, '4f9b5317ab943e4f3fc04656dc616716', 'company', 'Facebook', 'fb@facebook.com'),
 (766, '8bea92391bc93aa75b2ed7228de98554', 'company', 'Google', 'careers@gmail.com'),
+(776, '9e5c5624d6ef4f88f313fcbbd26e0edb', 'company', 'Flipkart', 'careers@flipkart.com'),
+(844, '9959a8b5289ea5b90dbad0cea1431ccc', 'company', 'Microsoft', 'microsoft@hotmail.com'),
 (101203075, 'cc03e747a6afbbcbf8be7668acfebee5', 'student', 'Prisha Gupta', 'prishagupta@gmail.com'),
-(101203081, '2d235ace000a3ad85f590e321c89bb99', 'coordinator', 'Rohit Saluja', 'ruhi.saluja@gmail.com');
+(101203081, '2d235ace000a3ad85f590e321c89bb99', 'coordinator', 'Rohit Saluja', 'ruhi.saluja@gmail.com'),
+(101403002, '2285f0df4f3b9030a8b419cd31b3c017', 'student', 'Aaish Sindwani', 'aaishsindwani@gmail.com'),
+(101403140, 'a6d420cb77a4b29af1c5f58dd6877401', 'student', 'Pranshu Aggarwal', 'pranshu2612@gmail.com'),
+(101403143, '9f42d5bdf1f00206df4b9093048d61b3', 'student', 'pravar', 'pravarchandamsd@gmail.com'),
+(101403150, 'be1522c665d3d9a98c00fc0f77a9bf0b', 'coordinator', 'Rishab Goyal', 'rishab954@gmail.com'),
+(101403189, '1ee1ea0867c698b1e41dac9cece59613', 'student', 'Tushar Raina', 'tusharraina@gmail.com'),
+(101453006, 'c64e8e7b05a6d831605cfe23dd617deb', 'student', 'Rishabh Kumar Saini', 'rishabhkumarsaini1001@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -143,7 +160,11 @@ CREATE TABLE IF NOT EXISTS `company` (
 --
 
 INSERT INTO `company` (`company_id`, `company_name`, `dream_status`, `package`, `cg_criteria`, `description`, `last_date`) VALUES
-(766, 'Google', 1, 800000, 7.00, 'Testing 123', '2015-03-04');
+(198, 'Zomato', 0, NULL, NULL, NULL, NULL),
+(299, 'Facebook', 0, 1100000, 8.00, NULL, '2015-12-06'),
+(766, 'Google', 1, 8000000, 7.00, 'Testing 123', '2015-11-09'),
+(776, 'Flipkart', 0, NULL, NULL, NULL, NULL),
+(844, 'Microsoft', 0, 1600000, 7.00, 'Software Developer', '2015-11-14');
 
 -- --------------------------------------------------------
 
@@ -161,7 +182,11 @@ CREATE TABLE IF NOT EXISTS `company_coordinator` (
 --
 
 INSERT INTO `company_coordinator` (`company_id`, `roll_number`) VALUES
-(766, 101203081);
+(766, 101203081),
+(844, 101403150),
+(299, 101403143),
+(198, 101403140),
+(776, 101403143);
 
 -- --------------------------------------------------------
 
@@ -180,14 +205,18 @@ CREATE TABLE IF NOT EXISTS `coordinator_msg` (
   PRIMARY KEY (`message_id`),
   KEY `from` (`sender`),
   KEY `receiver` (`receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `coordinator_msg`
 --
 
 INSERT INTO `coordinator_msg` (`message_id`, `receiver`, `sender`, `message`, `date`, `label`, `read_status`) VALUES
-(6, 101203081, 7, 'Google is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-06-10', 'n', 1);
+(6, 101203081, 7, 'Google is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-06-10', 'n', 1),
+(7, 101403150, 7, 'Microsoft is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-10-26', 'n', 1),
+(8, 101403143, 7, 'Facebook is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-11-24', 'n', 0),
+(9, 101403140, 7, 'Zomato is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-11-30', 'n', 0),
+(10, 101403143, 7, 'Flipkart is the new company coming to the campus. Please collect the details of the same from me and update the company details.', '2015-11-30', 'n', 0);
 
 -- --------------------------------------------------------
 
@@ -202,6 +231,13 @@ CREATE TABLE IF NOT EXISTS `curricular_activity` (
   PRIMARY KEY (`activity_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `curricular_activity`
+--
+
+INSERT INTO `curricular_activity` (`activity_id`, `username`, `activity_description`) VALUES
+(1, 101403150, 'Member of LUGTU');
+
 -- --------------------------------------------------------
 
 --
@@ -215,6 +251,13 @@ CREATE TABLE IF NOT EXISTS `other_info` (
   PRIMARY KEY (`info_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `other_info`
+--
+
+INSERT INTO `other_info` (`info_id`, `username`, `info_description`) VALUES
+(1, 101403150, '');
+
 -- --------------------------------------------------------
 
 --
@@ -227,6 +270,14 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_description` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`project_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`project_id`, `username`, `project_description`) VALUES
+(1, 101403143, 'Learned java'),
+(1, 101403150, 'Developed an Android app');
 
 -- --------------------------------------------------------
 
@@ -261,7 +312,9 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`username`, `year_of_pass`, `branch`, `dob`, `citizenship`, `gender`, `temp_address`, `temp_city`, `temp_state`, `temp_pin`, `permanent_address`, `permanent_city`, `permanent_state`, `permanent_pin`, `father_name`, `father_occupation`, `mother_name`, `mother_occupation`) VALUES
-(101203081, 2016, 'COE', '1994-08-04', 'Indian', 'M', 'WD-207, Hostel J, Thapar Universtiy', 'Patiala', 'Punjab', 147004, 'C-2/275, Sector F, Jankipuram', 'Lucknow', 'Uttar Pradesh', 226001, 'Gp. Capt. Yogesh Saluja', 'Governmet Services', 'Mrs. Mitali Saluja', 'Home Maker');
+(101203081, 2016, 'COE', '1994-08-04', 'Indian', 'M', 'WD-207, Hostel J, Thapar Universtiy', 'Patiala', 'Punjab', 147004, 'C-2/275, Sector F, Jankipuram', 'Lucknow', 'Uttar Pradesh', 226001, 'Gp. Capt. Yogesh Saluja', 'Governmet Services', 'Mrs. Mitali Saluja', 'Home Maker'),
+(101403143, 2018, 'COE', '1996-12-15', 'Indian', 'M', 'B-104 ,Hostel PG Thapar University', 'Patiala', 'Punjab', 147004, 'Rohini', 'Delhi', 'Delhi', 162004, 'Rajesh Chanda', 'Private Job', 'Mrs. Chanda', 'Homemaker'),
+(101403150, 2018, 'COE', '1995-08-04', 'Indian', 'M', 'Hostel PG, B 319 Thapar University', 'Patiala', 'Punjab', 147001, 'B-36/208, Vikas Nagar Pakhowal Road', 'Ludhiana', 'Punjab', 141001, 'Munish Kumar Goyal', 'Private Job', 'Neena Goyal', 'Homemaker');
 
 -- --------------------------------------------------------
 
@@ -327,13 +380,13 @@ INSERT INTO `stu_eligible` (`company_id`, `username`, `applied`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `timeline` (
-  `event_id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `venue` varchar(40) DEFAULT NULL,
   `time` time DEFAULT NULL,
   `event_desc` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`event_id`),
+  PRIMARY KEY (`id`),
   KEY `company_id` (`company_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -341,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `timeline` (
 -- Dumping data for table `timeline`
 --
 
-INSERT INTO `timeline` (`event_id`, `company_id`, `date`, `venue`, `time`, `event_desc`) VALUES
+INSERT INTO `timeline` (`id`, `company_id`, `date`, `venue`, `time`, `event_desc`) VALUES
 (6, 766, NULL, 'Auditorium', NULL, 'Online Test');
 
 --
