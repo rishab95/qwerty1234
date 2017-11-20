@@ -19,11 +19,11 @@
 	<head>
 
 		<meta charset="utf-8">
-<<<<<<< HEAD
+
 		<title>PAP > Coordinator > Home</title>
-=======
+
 		<title>PAP | Coordinator | Home</title>
->>>>>>> origin/master
+
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -109,11 +109,11 @@
 		<!-- main body container -->
         <div class="container">
 	        <!-- modal for displaying the message -->
-<<<<<<< HEAD
+
             <!-- button to trigerring the modal -->
-=======
+
             <!-- button to triiger the modal -->
->>>>>>> origin/master
+
             <button type="button" style="display: none" data-toggle="modal" data-target="#inboxMessageModal" id="inboxMessageModalTrigger"></button>
             
             <!-- the modal -->
